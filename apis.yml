@@ -5,13 +5,152 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Food Delivery
-  - Technology
+  - Grocery
   - Marketplace
-description: 'A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East. Connects consumers with restaurants and grocery retailers through its platform, offering on-demand delivery and a subscription service called Deliveroo Plus.'
+  - Logistics
+  - Restaurants
+description: 'A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East. Deliveroo''s Developer Portal exposes three API suites — Partner Platform, Retail Platform, and Signature — that restaurants, grocers, and merchants use to integrate menus, orders, sites, and on-demand courier delivery.'
 created: '2026-05-05'
-modified: '2026-05-05'
+modified: '2026-05-16'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: deliveroo:order-api
+    name: Deliveroo Order API
+    tags:
+      - Orders
+      - Webhooks
+      - Restaurants
+      - Real-Time
+      - Riders
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api-docs.deliveroo.com/v2.0/docs
+    baseURL: https://api.developers.deliveroo.com
+    description: >-
+      The Deliveroo Order API is part of the Partner Platform Suite and manages
+      restaurant orders and rider lifecycle events in real time. Orders and
+      rider status updates are delivered to integrators via webhooks so that
+      POS, kitchen display, and fulfillment systems can stay in sync without
+      polling. Authentication uses OAuth-based credentials provisioned through
+      the Deliveroo Developer Portal.
+    properties:
+      - type: Documentation
+        url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: Webhooks
+        url: https://api-docs.deliveroo.com/v2.0/docs
+  - aid: deliveroo:menu-api
+    name: Deliveroo Menu API
+    tags:
+      - Menus
+      - Pricing
+      - Stock
+      - Allergens
+      - POS
+      - Restaurants
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api-docs.deliveroo.com/v2.0/docs
+    baseURL: https://api.developers.deliveroo.com
+    description: >-
+      The Deliveroo Menu API lets Partner Platform integrators publish and
+      maintain restaurant menus, including stock levels, prices, POS
+      identifiers, and allergen data. Menu updates can be pushed in near real
+      time so that the consumer-facing Deliveroo experience reflects merchant
+      inventory and pricing changes.
+    properties:
+      - type: Documentation
+        url: https://api-docs.deliveroo.com/v2.0/docs
+  - aid: deliveroo:site-api
+    name: Deliveroo Site API
+    tags:
+      - Sites
+      - Restaurants
+      - Hours
+      - Status
+      - Operations
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api-docs.deliveroo.com/v2.0/docs
+    baseURL: https://api.developers.deliveroo.com
+    description: >-
+      The Deliveroo Site API controls a merchant site's open/close status,
+      operating hours, and workload mode (e.g., busy, paused). It is shared by
+      both the Partner Platform Suite and the Signature Suite so that
+      restaurants and merchants can govern fulfillment availability
+      programmatically from their own systems.
+    properties:
+      - type: Documentation
+        url: https://api-docs.deliveroo.com/v2.0/docs
+  - aid: deliveroo:catalogue-api
+    name: Deliveroo Catalogue API
+    tags:
+      - Catalogue
+      - Grocery
+      - Retail
+      - Products
+      - Inventory
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api-docs.deliveroo.com/v2.0/docs
+    baseURL: https://api.developers.deliveroo.com
+    description: >-
+      The Deliveroo Catalogue API is part of the Retail Platform Suite and
+      manages master grocery catalogues of up to 30,000 items per merchant.
+      Retailers use it to publish product data, variations, and availability
+      across one or more retail sites operating on Deliveroo.
+    properties:
+      - type: Documentation
+        url: https://api-docs.deliveroo.com/v2.0/docs
+  - aid: deliveroo:picking-api
+    name: Deliveroo Picking API
+    tags:
+      - Picking
+      - Grocery
+      - Retail
+      - Order Fulfillment
+      - Substitutions
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api-docs.deliveroo.com/v2.0/docs
+    baseURL: https://api.developers.deliveroo.com
+    description: >-
+      The Deliveroo Picking API supports the Retail Platform Suite picking flow,
+      letting grocery operators process incoming orders, remove unavailable
+      items, propose substitutions, and accept or reject orders prior to
+      handoff to a courier.
+    properties:
+      - type: Documentation
+        url: https://api-docs.deliveroo.com/v2.0/docs
+  - aid: deliveroo:signature-api
+    name: Deliveroo Signature API
+    tags:
+      - On-Demand Delivery
+      - Couriers
+      - Logistics
+      - Merchant Integration
+      - Custom Apps
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api-docs.deliveroo.com/v2.0/docs
+    baseURL: https://api.developers.deliveroo.com
+    description: >-
+      The Deliveroo Signature API powers the Signature Suite, which lets
+      merchants request on-demand delivery by Deliveroo couriers for orders
+      that originate in their own apps, websites, or channels — for example,
+      a restaurant's branded ordering app dispatching a Deliveroo rider.
+    properties:
+      - type: Documentation
+        url: https://api-docs.deliveroo.com/v2.0/docs
 common:
   - type: Website
     url: https://deliveroo.co.uk/
+  - type: DeveloperPortal
+    url: https://developers.deliveroo.com/
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: SignupURL
+    url: https://developers.deliveroo.com/
+  - type: Authentication
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: PrivacyPolicy
+    url: https://deliveroo.co.uk/privacy
+  - type: TermsOfService
+    url: https://deliveroo.co.uk/legal
+  - type: Support
+    url: https://deliveroo.co.uk/help
+  - type: Blog
+    url: https://deliveroo.co.uk/blog
