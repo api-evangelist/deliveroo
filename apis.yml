@@ -136,6 +136,10 @@ apis:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
 common:
+  - type: GitHubOrganization
+    url: https://github.com/deliveroo
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/deliveroo
   - type: Website
     url: https://deliveroo.co.uk/
   - type: DeveloperPortal
