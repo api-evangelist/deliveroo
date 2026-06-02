@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "droo": "https://deliveroo.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "OrderStatusUpdate": "droo:OrderStatusUpdate",
+    "SyncStatus": "droo:SyncStatus",
+    "status": {
+      "@id": "droo:status",
+      "@type": "xsd:string"
+    },
+    "rejectReason": {
+      "@id": "droo:reject_reason",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "droo:notes",
+      "@type": "xsd:string"
+    },
+    "reason": {
+      "@id": "droo:reason",
+      "@type": "xsd:string"
+    },
+    "occurredAt": {
+      "@id": "schema:dateCreated"
+    }
+  }
+}

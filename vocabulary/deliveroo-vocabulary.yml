@@ -1,0 +1,250 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Deliveroo
+  description: >-
+    Unified vocabulary for the Deliveroo Developer Portal APIs, mapping the
+    operational dimension (Order, Menu, Site, Catalogue, Picking, and Signature
+    OpenAPI surfaces plus webhook events) to the capability dimension (Naftiko
+    REST and MCP exposers) across the Partner Platform, Retail Platform, and
+    Signature suites.
+  created: '2026-06-02'
+  modified: '2026-06-02'
+
+# OPERATIONAL DIMENSION (from OpenAPI / AsyncAPI)
+operational:
+  apis:
+    - name: Deliveroo Order API
+      namespace: order
+      suite: Partner Platform
+      version: v1
+      baseUrl: https://api.developers.deliveroo.com
+      status: active
+    - name: Deliveroo Menu API
+      namespace: menu
+      suite: Partner Platform
+      version: v1
+      baseUrl: https://api.developers.deliveroo.com
+      status: active
+    - name: Deliveroo Site API
+      namespace: site
+      suite: Partner Platform / Signature
+      version: v1
+      baseUrl: https://api.developers.deliveroo.com
+      status: active
+    - name: Deliveroo Catalogue API
+      namespace: catalogue
+      suite: Retail Platform
+      version: v1
+      baseUrl: https://api.developers.deliveroo.com
+      status: active
+    - name: Deliveroo Picking API
+      namespace: picking
+      suite: Retail Platform
+      version: v1, v2
+      baseUrl: https://api.developers.deliveroo.com
+      status: active
+    - name: Deliveroo Signature API
+      namespace: signature
+      suite: Signature
+      version: v1
+      baseUrl: https://api.developers.deliveroo.com
+      status: active
+    - name: Deliveroo Webhooks
+      namespace: webhooks
+      suite: Partner Platform / Signature
+      version: v1
+      transport: HTTPS callbacks (HMAC-SHA256 signed)
+      status: active
+
+  resources:
+    - name: orders
+      apis: [order, picking, signature]
+      actions: [update, confirm, accept, reject, sync, start-picking, amend, create, get]
+    - name: menus
+      apis: [menu]
+      actions: [upload, get]
+    - name: sites
+      apis: [site, picking]
+      actions: [get-opening-hours, list-active-orders]
+    - name: catalogues
+      apis: [catalogue]
+      actions: [get, update-prices]
+    - name: quotes
+      apis: [signature]
+      actions: [create]
+    - name: deliveries
+      apis: [signature]
+      actions: [schedule]
+
+  actions:
+    - verb: get
+      methods: [GET]
+      pattern: read
+    - verb: list
+      methods: [GET]
+      pattern: query
+    - verb: create
+      methods: [POST]
+      pattern: write
+    - verb: update
+      methods: [PATCH, PUT]
+      pattern: write
+    - verb: upload
+      methods: [PUT]
+      pattern: write
+    - verb: accept
+      methods: [PUT]
+      pattern: write
+    - verb: reject
+      methods: [PUT]
+      pattern: write
+
+  schemas:
+    orders:
+      - OrderStatusUpdate
+      - SyncStatus
+      - RejectOrder
+      - ItemAmendments
+      - Order
+      - OrderRequest
+    menus:
+      - MenuUpload
+    sites:
+      - OpeningHours
+    catalogues:
+      - Catalogue
+      - SitePriceOverrides
+    signature:
+      - QuoteRequest
+      - Quote
+      - DeliveryRequest
+      - Location
+    events:
+      - OrderEventPayload
+      - RiderEventPayload
+      - MenuEventPayload
+
+  parameters:
+    identifiers:
+      - order_id
+      - brand_id
+      - site_id
+      - restaurant_id
+      - catalogue_id
+      - id
+    pagination:
+      - page
+      - per_page
+
+  enums:
+    order_status: [accepted, rejected, confirmed]
+    reject_reason: [closing_early, busy, ingredient_unavailable, other]
+    sync_status: [succeeded, failed]
+    picking_reject_reason: [INGREDIENT_UNAVAILABLE, CLOSING_EARLY, BUSY, OTHER]
+    webhook_events: [order.new, order.status_update]
+
+  authentication:
+    scheme: OAuth 2.0 Client Credentials (Bearer)
+    tokenEndpoint: https://auth.developers.deliveroo.com/oauth2/token
+    grant: client_credentials
+    tokenLifetimeMinutes: 5
+    refreshTokens: false
+    usedBy: [order, menu, site, catalogue, picking, signature]
+
+# CAPABILITY DIMENSION (from Naftiko)
+capability:
+  workflows:
+    - name: Order Lifecycle
+      file: capabilities/order-api-orders.yaml
+      apis: [order]
+      personas: [POS Integrator]
+    - name: Order Sync Reporting
+      file: capabilities/order-api-sync-status.yaml
+      apis: [order]
+      personas: [POS Integrator]
+    - name: Menu Management
+      file: capabilities/menu-api-menus.yaml
+      apis: [menu]
+      personas: [Restaurant Operator]
+    - name: Site Availability
+      file: capabilities/site-api-opening-hours.yaml
+      apis: [site]
+      personas: [Restaurant Operator]
+    - name: Grocery Catalogue
+      file: capabilities/catalogue-api-catalogue.yaml
+      apis: [catalogue]
+      personas: [Grocery Retailer]
+    - name: Site Pricing
+      file: capabilities/catalogue-api-pricing.yaml
+      apis: [catalogue]
+      personas: [Grocery Retailer]
+    - name: Grocery Picking
+      file: capabilities/picking-api-picking.yaml
+      apis: [picking]
+      personas: [Grocery Picker]
+    - name: Signature Quotes
+      file: capabilities/signature-api-quotes.yaml
+      apis: [signature]
+      personas: [Merchant Integrator]
+    - name: Signature Orders
+      file: capabilities/signature-api-orders.yaml
+      apis: [signature]
+      personas: [Merchant Integrator]
+    - name: Signature Deliveries
+      file: capabilities/signature-api-deliveries.yaml
+      apis: [signature]
+      personas: [Merchant Integrator]
+
+  personas:
+    - id: pos-integrator
+      name: POS Integrator
+      description: Builds point-of-sale and kitchen-display integrations that receive and update Deliveroo orders.
+    - id: restaurant-operator
+      name: Restaurant Operator
+      description: Manages restaurant menus and site availability on Deliveroo.
+    - id: grocery-retailer
+      name: Grocery Retailer
+      description: Publishes and prices grocery catalogues across retail sites.
+    - id: grocery-picker
+      name: Grocery Picker
+      description: Processes grocery picking, substitutions, and order acceptance.
+    - id: merchant-integrator
+      name: Merchant Integrator
+      description: Requests on-demand Deliveroo courier delivery from their own channels via Signature.
+
+  domains:
+    - Food Delivery
+    - Grocery Retail
+    - On-Demand Logistics
+
+  namespaces:
+    consumed: [order-api-orders, order-api-sync-status, menu-api-menus, site-api-opening-hours, catalogue-api-catalogue, catalogue-api-pricing, picking-api-picking, signature-api-quotes, signature-api-orders, signature-api-deliveries]
+    rest: 8080
+    mcp: 9090
+
+  binds:
+    - DELIVEROO_ACCESS_TOKEN
+
+# CROSS-REFERENCE
+crossReference:
+  - resource: orders
+    operations: [updateOrderStatus, createSyncStatus, acceptPickingOrder, rejectPickingOrder, startPicking, updateOrderItems, createOrder]
+    workflows: [Order Lifecycle, Order Sync Reporting, Grocery Picking, Signature Orders]
+    personas: [POS Integrator, Grocery Picker, Merchant Integrator]
+  - resource: menus
+    operations: [uploadMenu, getMenu]
+    workflows: [Menu Management]
+    personas: [Restaurant Operator]
+  - resource: catalogues
+    operations: [getCatalogue, updatePricesPerSite]
+    workflows: [Grocery Catalogue, Site Pricing]
+    personas: [Grocery Retailer]
+  - resource: quotes
+    operations: [createQuote]
+    workflows: [Signature Quotes]
+    personas: [Merchant Integrator]
+  - resource: deliveries
+    operations: [scheduleDelivery]
+    workflows: [Signature Deliveries]
+    personas: [Merchant Integrator]

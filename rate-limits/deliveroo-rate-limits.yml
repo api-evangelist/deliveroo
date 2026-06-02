@@ -1,0 +1,87 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Deliveroo
+providerId: deliveroo
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Food Delivery
+  - Grocery
+  - Webhooks
+description: >-
+  The Deliveroo Developer Portal APIs publish per-resource rate limits scoped
+  to individual orders, sites, and catalogues rather than a single global
+  account quota. Limits are documented per endpoint in the API reference. OAuth
+  2.0 access tokens issued from the auth host expire after 5 minutes and no
+  refresh tokens are issued, so integrators generate a new token per session.
+  The limits below are taken from the published endpoint documentation. Exceeded
+  limits return HTTP 429.
+sources:
+  - https://api-docs.deliveroo.com/docs/api-and-webhooks
+  - https://api-docs.deliveroo.com/reference/put_v1-brands-brand-id-menus-id
+  - https://api-docs.deliveroo.com/reference/picking-v1-accept-order
+  - https://api-docs.deliveroo.com/reference/patch-order-1
+  - https://api-docs.deliveroo.com/reference/getcatalogue
+responseCodes:
+  throttled: 429
+limits:
+  - name: Upload Menu
+    scope: site
+    metric: requests_per_minute
+    limit: 1
+    timeFrame: minute
+    notes: 1 request per minute per site. Menu processing is asynchronous.
+  - name: Update Order Status (Order API)
+    scope: order
+    metric: requests_per_minute
+    limit: 5
+    timeFrame: minute
+    notes: 5 requests per minute per order.
+  - name: Accept / Reject Order (Picking API)
+    scope: order
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    notes: 2 requests per second per order.
+  - name: Update Order Items Availability (Picking API v2)
+    scope: order
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    notes: 2 requests per second per order.
+  - name: Reject Order (Picking API v1)
+    scope: order
+    metric: varies
+    limit: '1 request per order per 30 seconds'
+    notes: May only be called once per order; order must be in PLACED status.
+  - name: Get Catalogue
+    scope: catalogue
+    metric: requests_per_minute
+    limit: 95
+    timeFrame: minute
+    notes: 95 requests per catalogue per minute.
+policies:
+  - name: Short-lived access tokens
+    description: >-
+      OAuth 2.0 client-credentials tokens expire after 5 minutes; no refresh
+      tokens are issued. Request a new token from
+      https://auth.developers.deliveroo.com/oauth2/token when the current one
+      expires.
+  - name: Per-resource scoping
+    description: >-
+      Rate limits are scoped to the individual order, site, or catalogue, not to
+      the account as a whole, so high-volume merchants can operate many resources
+      concurrently within each per-resource limit.
+  - name: Order acceptance timeout
+    description: >-
+      ASAP orders not accepted within 10 minutes (7 minutes for the Kuwait and
+      UAE markets) are auto-rejected. Sync status not received within 3 minutes
+      prompts site staff via the Deliveroo tablet.
+  - name: Sandbox isolation
+    description: >-
+      A separate sandbox environment (api-sandbox.developers.deliveroo.com,
+      auth-sandbox.developers.deliveroo.com) is provided for testing before
+      production.

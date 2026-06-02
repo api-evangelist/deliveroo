@@ -1,0 +1,107 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Deliveroo
+providerId: deliveroo
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Food Delivery
+  - Grocery
+  - Marketplace
+description: >-
+  FOCUS-aligned FinOps for Deliveroo: a marketplace take-rate model where
+  partner cost is a commission percentage on completed orders plus a one-time
+  onboarding fee, with the Signature suite billed per delivery. There is no
+  per-API-call charge; the billable surface is the order and delivery volume
+  flowing through the integration.
+sources:
+  - https://merchants.deliveroo.com/legal/terms
+  - https://restaurants.deliveroo.com/
+  - https://api-docs.deliveroo.com/docs/introduction
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Deliveroo plc
+serviceCategory: Food Delivery + Grocery Marketplace
+billingModel:
+  pricingCategory: Take Rate + Per-Delivery
+  billingFrequency: Continuous Settlement (deducted from partner earnings)
+  billingCurrency: GBP/EUR (region-dependent)
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Adjustment
+    - Refund
+focusColumns:
+  ServiceName: Deliveroo Developer Portal APIs
+  ServiceCategory: Food Delivery + Grocery Marketplace
+  ProviderName: Deliveroo
+  PublisherName: Deliveroo plc
+  InvoiceIssuerName: Deliveroo plc
+  BillingCurrency: GBP
+  ChargeCategory: Usage
+meters:
+  - name: order_commission
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - contract_type
+      - region
+      - site_id
+  - name: order_value
+    unit: GBP
+    aggregation: sum
+    dimensions:
+      - region
+      - site_id
+  - name: signature_deliveries
+    unit: delivery
+    aggregation: count
+    dimensions:
+      - region
+  - name: onboarding_fee
+    unit: account
+    aggregation: sum
+    dimensions:
+      - site_id
+  - name: refund_clawbacks
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - reason
+      - site_id
+  - name: commission_vat
+    unit: GBP
+    aggregation: sum
+    dimensions:
+      - region
+principles:
+  - name: Visibility
+    description: >-
+      Partners see order-level economics in the Deliveroo merchant/restaurant
+      hub and in payout statements; the Order API and Order Events webhooks give
+      real-time per-order data that can be reconciled against settlement.
+  - name: Allocation
+    description: >-
+      Costs allocate naturally by site_id and brand_id, which thread through
+      every Partner Platform and Retail Platform endpoint, letting multi-site
+      operators attribute commission and delivery cost per location and region.
+  - name: Optimization
+    description: >-
+      Operators lower effective cost by selecting the own-driver (Marketplace+)
+      contract for a reduced commission, maintaining accurate menus and stock to
+      cut refund clawbacks, and using the Signature quote endpoint to price
+      delivery before committing an order.
+  - name: Accountability
+    description: >-
+      Finance owners reconcile Deliveroo payout statements against captured
+      order webhooks; site managers own acceptance-timeout and sync-status
+      discipline that directly affects refund clawbacks and chargebacks.

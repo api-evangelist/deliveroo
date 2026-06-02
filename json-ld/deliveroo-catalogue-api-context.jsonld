@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "droo": "https://deliveroo.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Catalogue": "droo:Catalogue",
+    "SitePriceOverrides": "droo:SitePriceOverrides",
+    "catalogueId": {
+      "@id": "droo:catalogue_id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "items": {
+      "@id": "droo:items",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "droo:id",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "droo:price",
+      "@type": "xsd:integer"
+    },
+    "prices": {
+      "@id": "droo:prices",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "itemId": {
+      "@id": "droo:item_id",
+      "@type": "xsd:string"
+    }
+  }
+}

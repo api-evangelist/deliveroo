@@ -1,0 +1,148 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Deliveroo
+providerId: deliveroo
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: true
+tags:
+  - Food Delivery
+  - Grocery
+  - Marketplace
+  - Commission
+  - Logistics
+description: >-
+  Deliveroo does not charge developers per API call for its Developer Portal
+  APIs (Partner Platform, Retail Platform, Signature). Access is gated behind a
+  partner relationship: an approved restaurant, grocer, or merchant integrates
+  for free and Deliveroo monetizes via a commission take-rate on completed
+  orders plus a one-time onboarding fee. Commission varies by contract type,
+  number of locations, and region. The figures below reflect publicly reported
+  UK partner economics; the commission percentage on any given contract is
+  negotiated and may differ. The Signature Suite (delivery-as-a-service) is
+  priced per delivery via a quote returned by the Create Quote endpoint rather
+  than a fixed published rate.
+sources:
+  - https://merchants.deliveroo.com/legal/terms
+  - https://restaurants.deliveroo.com/
+  - https://api-docs.deliveroo.com/docs/introduction
+plans:
+  - id: deliveroo-marketplace-standard
+    name: Marketplace (Standard)
+    type: usage-based
+    description: >-
+      Standard marketplace partnership where Deliveroo handles courier delivery
+      and charges a commission on each completed order.
+    entries:
+      - label: Order Commission (Standard)
+        name: order_commission_standard
+        type: metered
+        metric: order
+        limit: -1
+        timeFrame: usage
+        geo: GB
+        unit: 1
+        price: '~35% of order value'
+        userMultiplied: false
+      - label: Onboarding Fee
+        name: onboarding_fee
+        type: flat
+        metric: account
+        limit: 1
+        timeFrame: usage
+        geo: GB
+        unit: 1
+        price: '£510.00 inc VAT (8 x £63.75, deducted from Deliveroo earnings)'
+        userMultiplied: false
+    elements:
+      - name: Order API access
+      - name: Menu API access
+      - name: Site API access
+      - name: Order and Rider Events webhooks
+      - name: Courier delivery fulfillment
+  - id: deliveroo-marketplace-exclusive
+    name: Marketplace (Exclusive)
+    type: usage-based
+    description: >-
+      Reduced-commission marketplace partnership for merchants that use
+      Deliveroo as their only delivery provider.
+    entries:
+      - label: Order Commission (Exclusive)
+        name: order_commission_exclusive
+        type: metered
+        metric: order
+        limit: -1
+        timeFrame: usage
+        geo: GB
+        unit: 1
+        price: '~33% of order value'
+        userMultiplied: false
+    elements:
+      - name: Exclusive-partner commission rate
+      - name: Full Partner Platform API access
+  - id: deliveroo-marketplace-plus
+    name: Marketplace+ (Own Delivery)
+    type: usage-based
+    description: >-
+      Listing on the Deliveroo marketplace while the merchant fulfills delivery
+      with their own drivers, lowering the commission rate.
+    entries:
+      - label: Order Commission (Own Driver)
+        name: order_commission_own_driver
+        type: metered
+        metric: order
+        limit: -1
+        timeFrame: usage
+        geo: GB
+        unit: 1
+        price: '~14% of order value'
+        userMultiplied: false
+    elements:
+      - name: Marketplace listing
+      - name: Merchant-fulfilled delivery
+      - name: Partner Platform API access
+  - id: deliveroo-signature
+    name: Signature (Delivery-as-a-Service)
+    type: pay-as-you-go
+    description: >-
+      On-demand Deliveroo courier delivery for orders originating in the
+      merchant's own apps, websites, or channels. Priced per delivery via the
+      quote returned at order time.
+    entries:
+      - label: Per-Delivery Fee
+        name: signature_delivery_fee
+        type: metered
+        metric: delivery
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'per-delivery fee returned by Create Quote endpoint'
+        userMultiplied: false
+    elements:
+      - name: Signature API access
+      - name: Create Quote / Create Order endpoints
+      - name: On-demand courier dispatch
+  - id: deliveroo-retail
+    name: Retail Platform
+    type: usage-based
+    description: >-
+      Grocery and non-food retail partnership using the Catalogue and Picking
+      APIs, monetized by commission on completed retail orders. Commercial terms
+      are negotiated per retailer.
+    entries:
+      - label: Retail Order Commission
+        name: retail_order_commission
+        type: metered
+        metric: order
+        limit: -1
+        timeFrame: usage
+        geo: GB
+        unit: 1
+        price: 'custom (negotiated per retailer)'
+        userMultiplied: false
+    elements:
+      - name: Catalogue API access (up to 30,000 items)
+      - name: Picking API access
+      - name: Site API access

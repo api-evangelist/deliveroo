@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/catalogue-api-site-price-overrides-structure.json",
+  "name": "SitePriceOverrides",
+  "description": "Site-level price overrides for catalogue items.",
+  "type": "object",
+  "properties": {
+    "prices": {
+      "type": "array",
+      "description": "The per-item price overrides for the site.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "description": "The catalogue item identifier."
+          },
+          "price": {
+            "type": "int32",
+            "description": "The overridden price in minor currency units.",
+            "example": 499
+          }
+        }
+      }
+    }
+  }
+}

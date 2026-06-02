@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Location",
+  "description": "A pickup or dropoff location.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/signature-api-location-schema.json",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "The location address.",
+      "example": "123 Example Street, London"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "The location latitude.",
+      "example": 1.0
+    },
+    "longitude": {
+      "type": "number",
+      "description": "The location longitude.",
+      "example": 1.0
+    }
+  }
+}

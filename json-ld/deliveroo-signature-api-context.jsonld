@@ -1,0 +1,51 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "droo": "https://deliveroo.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "QuoteRequest": "droo:QuoteRequest",
+    "Quote": "droo:Quote",
+    "OrderRequest": "droo:OrderRequest",
+    "Order": "droo:Order",
+    "DeliveryRequest": "droo:DeliveryRequest",
+    "Location": "droo:Location",
+    "pickup": {
+      "@id": "droo:pickup",
+      "@type": "xsd:string"
+    },
+    "dropoff": {
+      "@id": "droo:dropoff",
+      "@type": "xsd:string"
+    },
+    "quoteId": {
+      "@id": "droo:quote_id",
+      "@type": "xsd:string"
+    },
+    "fee": {
+      "@id": "droo:fee",
+      "@type": "xsd:integer"
+    },
+    "orderId": {
+      "@id": "droo:order_id",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "droo:status",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "droo:address",
+      "@type": "xsd:string"
+    },
+    "latitude": {
+      "@id": "droo:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "droo:longitude",
+      "@type": "xsd:decimal"
+    }
+  }
+}

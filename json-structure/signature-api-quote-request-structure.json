@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/signature-api-quote-request-structure.json",
+  "name": "QuoteRequest",
+  "description": "Request body for creating a delivery quote.",
+  "type": "object",
+  "properties": {
+    "pickup": {
+      "$ref": "#/components/schemas/Location"
+    },
+    "dropoff": {
+      "$ref": "#/components/schemas/Location"
+    }
+  }
+}

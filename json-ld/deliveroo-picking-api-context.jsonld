@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "droo": "https://deliveroo.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "RejectOrder": "droo:RejectOrder",
+    "ItemAmendments": "droo:ItemAmendments",
+    "rejectReason": {
+      "@id": "droo:reject_reason",
+      "@type": "xsd:string"
+    },
+    "itemAmendments": {
+      "@id": "droo:item_amendments",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "itemId": {
+      "@id": "droo:item_id",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "droo:quantity",
+      "@type": "xsd:integer"
+    }
+  }
+}

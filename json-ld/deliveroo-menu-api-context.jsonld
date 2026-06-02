@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "droo": "https://deliveroo.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "MenuUpload": "droo:MenuUpload",
+    "name": {
+      "@id": "schema:name"
+    },
+    "menu": {
+      "@id": "droo:menu",
+      "@type": "@id"
+    },
+    "siteIds": {
+      "@id": "droo:site_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

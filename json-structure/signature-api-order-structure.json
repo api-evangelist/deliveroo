@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/signature-api-order-structure.json",
+  "name": "Order",
+  "description": "A created Signature order.",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "description": "The identifier of the created order.",
+      "example": "gb-12345"
+    },
+    "status": {
+      "type": "string",
+      "description": "The current order status.",
+      "example": "active"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/picking-api-item-amendments-structure.json",
+  "name": "ItemAmendments",
+  "description": "Request body for amending order item availability.",
+  "type": "object",
+  "properties": {
+    "item_amendments": {
+      "type": "array",
+      "description": "The list of item-level amendments to apply.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "description": "The order item identifier."
+          },
+          "quantity": {
+            "type": "int32",
+            "description": "The amended available quantity.",
+            "example": 0
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "item_amendments"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrderRequest",
+  "description": "Request body for creating a Signature order.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/signature-api-order-request-schema.json",
+  "type": "object",
+  "properties": {
+    "quote_id": {
+      "type": "string",
+      "description": "The identifier of a valid quote.",
+      "example": "gb-12345"
+    },
+    "pickup": {
+      "$ref": "#/components/schemas/Location"
+    },
+    "dropoff": {
+      "$ref": "#/components/schemas/Location"
+    }
+  }
+}

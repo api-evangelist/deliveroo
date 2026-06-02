@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrderEventPayload",
+  "description": "OrderEventPayload schema from Deliveroo webhooks",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/webhooks-order-event-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "enum": [
+        "order.new",
+        "order.status_update"
+      ],
+      "description": "The order event type.",
+      "example": "order.new"
+    },
+    "body": {
+      "type": "object",
+      "description": "The Order Event Body object containing the event details."
+    }
+  }
+}

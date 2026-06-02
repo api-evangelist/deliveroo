@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RejectOrder",
+  "description": "Request body for rejecting a picking order.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/picking-api-reject-order-schema.json",
+  "type": "object",
+  "properties": {
+    "reject_reason": {
+      "type": "string",
+      "enum": [
+        "INGREDIENT_UNAVAILABLE",
+        "CLOSING_EARLY",
+        "BUSY",
+        "OTHER"
+      ],
+      "description": "The reason for rejecting the order.",
+      "example": "OTHER"
+    }
+  },
+  "required": [
+    "reject_reason"
+  ]
+}

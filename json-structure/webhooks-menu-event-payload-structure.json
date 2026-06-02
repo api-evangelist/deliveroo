@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/webhooks-menu-event-payload-structure.json",
+  "name": "MenuEventPayload",
+  "description": "MenuEventPayload schema from Deliveroo webhooks",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "description": "The menu event type.",
+      "example": "example"
+    },
+    "body": {
+      "type": "object",
+      "description": "The menu upload result, indicating whether asynchronous menu processing succeeded or failed."
+    }
+  }
+}

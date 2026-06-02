@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/order-api-sync-status-structure.json",
+  "name": "SyncStatus",
+  "description": "Reports the result of synchronizing the order to the in-store system.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "succeeded",
+        "failed"
+      ],
+      "description": "Whether the order was successfully sent to the in-store system.",
+      "example": "succeeded"
+    },
+    "reason": {
+      "type": "string",
+      "nullable": true,
+      "enum": [
+        "price_mismatched",
+        "pos_item_id_mismatched",
+        "pos_item_id_not_found",
+        "items_out_of_stock",
+        "location_offline",
+        "location_not_supported",
+        "unsupported_order_type",
+        "no_webhook_url",
+        "webhook_failed",
+        "timed_out",
+        "other",
+        "no_sync_confirmation"
+      ],
+      "description": "Reason for a failed sync status.",
+      "example": "items_out_of_stock"
+    },
+    "notes": {
+      "type": "string",
+      "nullable": true,
+      "description": "Free-text notes about the sync result.",
+      "example": "example"
+    },
+    "occurred_at": {
+      "type": "datetime",
+      "description": "Timestamp when the sync result occurred.",
+      "example": "2026-06-02T12:00:00Z"
+    }
+  },
+  "required": [
+    "status",
+    "occurred_at"
+  ]
+}

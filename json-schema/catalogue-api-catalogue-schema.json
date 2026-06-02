@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalogue",
+  "description": "A master catalogue of retail items for a brand.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/catalogue-api-catalogue-schema.json",
+  "type": "object",
+  "properties": {
+    "catalogue_id": {
+      "type": "string",
+      "description": "The catalogue identifier.",
+      "example": "gb-12345"
+    },
+    "name": {
+      "type": "string",
+      "description": "The catalogue name.",
+      "example": "Example"
+    },
+    "items": {
+      "type": "array",
+      "description": "The products in the catalogue (up to 30,000 per brand).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The item identifier."
+          },
+          "name": {
+            "type": "string",
+            "description": "The product name."
+          },
+          "price": {
+            "type": "integer",
+            "description": "The price in minor currency units."
+          }
+        }
+      }
+    }
+  }
+}

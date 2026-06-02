@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/signature-api-quote-structure.json",
+  "name": "Quote",
+  "description": "A delivery estimate and fee.",
+  "type": "object",
+  "properties": {
+    "quote_id": {
+      "type": "string",
+      "description": "The identifier of the quote, valid for 5 minutes.",
+      "example": "gb-12345"
+    },
+    "fee": {
+      "type": "int32",
+      "description": "The delivery fee in minor currency units.",
+      "example": 299
+    }
+  }
+}

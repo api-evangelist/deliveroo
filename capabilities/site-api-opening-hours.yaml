@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Deliveroo Site API — Opening Hours
+  description: 'Site API — Opening Hours. 1 operations. Lead operation: Deliveroo Get Site Opening Hours. Self-contained Naftiko capability covering one Deliveroo business surface.'
+  tags:
+  - Deliveroo
+  - Site
+  - Opening Hours
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    DELIVEROO_ACCESS_TOKEN: DELIVEROO_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: site-api-opening-hours
+    baseUri: https://api.developers.deliveroo.com
+    description: Deliveroo Site API — Opening Hours business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.DELIVEROO_ACCESS_TOKEN}}'
+    resources:
+    - name: site-v1-brands-brand-id-sites-site-id-opening-hours
+      path: /site/v1/brands/{brand_id}/sites/{site_id}/opening_hours
+      operations:
+      - name: getSiteOpeningHours
+        method: GET
+        description: Deliveroo Get Site Opening Hours
+        inputParameters:
+        - name: brand_id
+          in: path
+          type: string
+          required: true
+          description: The brand identifier.
+        - name: site_id
+          in: path
+          type: string
+          required: true
+          description: The site identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: site-api-opening-hours-rest
+    port: 8080
+    description: REST adapter for Deliveroo Site API — Opening Hours. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/site-v1-brands-brand-id-sites-site-id-opening-hours
+      name: site-v1-brands-brand-id-sites-site-id-opening-hours
+      description: REST surface for Deliveroo Get Site Opening Hours.
+      operations:
+      - method: GET
+        name: getSiteOpeningHours
+        description: REST surface for Deliveroo Get Site Opening Hours.
+        call: site-api-opening-hours.getSiteOpeningHours
+        with:
+          brand_id: rest.brand_id
+          site_id: rest.site_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: site-api-opening-hours-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Deliveroo Site API — Opening Hours. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-site-opening-hours
+      description: Deliveroo Get Site Opening Hours
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: site-api-opening-hours.getSiteOpeningHours
+      with:
+        brand_id: tools.brand_id
+        site_id: tools.site_id
+      outputParameters:
+      - type: object
+        mapping: $.

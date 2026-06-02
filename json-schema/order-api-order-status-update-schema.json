@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrderStatusUpdate",
+  "description": "Request body for updating an order's status.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/order-api-order-status-update-schema.json",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "accepted",
+        "rejected",
+        "confirmed"
+      ],
+      "description": "The new status for the order.",
+      "example": "accepted"
+    },
+    "reject_reason": {
+      "type": "string",
+      "nullable": true,
+      "enum": [
+        "closing_early",
+        "busy",
+        "ingredient_unavailable",
+        "other"
+      ],
+      "description": "Required when status is rejected. The reason for rejection.",
+      "example": "busy"
+    },
+    "notes": {
+      "type": "string",
+      "nullable": true,
+      "description": "Free-text notes accompanying the status change.",
+      "example": "example"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

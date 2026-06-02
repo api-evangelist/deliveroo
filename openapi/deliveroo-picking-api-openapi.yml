@@ -1,0 +1,266 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Picking API
+  description: >-
+    Part of the Deliveroo Retail Platform Suite. The Picking API supports the
+    grocery picking flow, letting operators fetch active orders, start picking,
+    update item availability with substitutions or amendments, and accept or
+    reject orders prior to courier handoff. Authentication uses an OAuth 2.0
+    client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+tags:
+- name: Picking
+security:
+- bearerAuth: []
+paths:
+  /picking/v1/sites/{restaurant_id}/orders/active:
+    get:
+      operationId: getActiveOrders
+      summary: Deliveroo Fetch Active Orders
+      description: Retrieve the active orders for a site, paginated.
+      tags:
+      - Picking
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: restaurant_id
+        in: path
+        required: true
+        description: The site (restaurant) identifier.
+        schema:
+          type: string
+        example: gb-12345
+      - name: page
+        in: query
+        required: true
+        description: The zero-based page index.
+        schema:
+          type: integer
+          minimum: 0
+          example: 0
+        example: 0
+      - name: per_page
+        in: query
+        required: true
+        description: The number of orders per page.
+        schema:
+          type: integer
+          minimum: 1
+          example: 20
+        example: 20
+      responses:
+        '200':
+          description: A paginated list of active orders.
+        '400':
+          description: Bad request.
+        '500':
+          description: Server error.
+  /picking/v1/orders/{order_id}/accept:
+    put:
+      operationId: acceptPickingOrder
+      summary: Deliveroo Accept Order
+      description: >-
+        Accept an order. The order must be in PLACED status. Rate limited to 2
+        requests per second per order.
+      tags:
+      - Picking
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        description: The unique identifier of the order.
+        schema:
+          type: string
+        example: gb-12345
+      responses:
+        '200':
+          description: Order status information.
+        '400':
+          description: Bad request.
+        '401':
+          description: Invalid API key/token or disabled integration.
+        '404':
+          description: Order not found.
+        '429':
+          description: Rate limit exceeded (2 requests/second/order).
+        '500':
+          description: Server error.
+  /picking/v1/orders/{order_id}/reject:
+    put:
+      operationId: rejectPickingOrder
+      summary: Deliveroo Reject Order
+      description: >-
+        Reject an order. The order must be in PLACED status and may only be
+        rejected once. Rate limited to 1 request per order per 30 seconds.
+      tags:
+      - Picking
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        description: The unique identifier of the order.
+        schema:
+          type: string
+        example: gb-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RejectOrder'
+            examples:
+              RejectPickingOrderRequestExample:
+                summary: Default rejectPickingOrder request
+                x-microcks-default: true
+                value:
+                  reject_reason: OTHER
+      responses:
+        '200':
+          description: Order rejected.
+        '400':
+          description: Bad request.
+        '404':
+          description: Order not found.
+        '500':
+          description: Server error.
+  /picking/v1/orders/{order_id}/start_picking:
+    put:
+      operationId: startPicking
+      summary: Deliveroo Start Picking Process for Order
+      description: Inform Deliveroo that the picking process for an order has started.
+      tags:
+      - Picking
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        description: The unique identifier of the order.
+        schema:
+          type: string
+        example: gb-12345
+      responses:
+        '200':
+          description: Picking process started.
+        '400':
+          description: Bad request.
+        '404':
+          description: Order not found.
+        '500':
+          description: Server error.
+  /picking/v2/orders/{order_id}:
+    put:
+      operationId: updateOrderItems
+      summary: Deliveroo Update Order Items Availability
+      description: >-
+        Apply item amendments, such as removing unavailable items or proposing
+        substitutions, before accepting or rejecting an order. Rate limited to 2
+        requests per second per order.
+      tags:
+      - Picking
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        description: The unique identifier of the order.
+        schema:
+          type: string
+        example: gb-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemAmendments'
+            examples:
+              UpdateOrderItemsRequestExample:
+                summary: Default updateOrderItems request
+                x-microcks-default: true
+                value:
+                  item_amendments:
+                  - item_id: gb-12345
+                    quantity: 0
+      responses:
+        '200':
+          description: Item availability updated.
+        '400':
+          description: Validation failed for one or more items in the request.
+        '404':
+          description: Order not found.
+        '500':
+          description: Server error.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth 2.0 client credentials access token obtained from
+        https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after
+        5 minutes; no refresh tokens are issued.
+  schemas:
+    RejectOrder:
+      title: Reject Order
+      description: >-
+        Request body for rejecting a picking order.
+        x-schema-source: documentation
+        x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order
+      type: object
+      required:
+      - reject_reason
+      properties:
+        reject_reason:
+          type: string
+          enum:
+          - INGREDIENT_UNAVAILABLE
+          - CLOSING_EARLY
+          - BUSY
+          - OTHER
+          description: The reason for rejecting the order.
+          example: OTHER
+    ItemAmendments:
+      title: Item Amendments
+      description: >-
+        Request body for amending order item availability.
+        x-schema-source: documentation
+        x-source-url: https://api-docs.deliveroo.com/reference/picking-v2-update-order
+      type: object
+      required:
+      - item_amendments
+      properties:
+        item_amendments:
+          type: array
+          description: The list of item-level amendments to apply.
+          items:
+            type: object
+            properties:
+              item_id:
+                type: string
+                description: The order item identifier.
+              quantity:
+                type: integer
+                description: The amended available quantity.
+                example: 0

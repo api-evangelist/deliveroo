@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Deliveroo Menu API — Menus
+  description: 'Menu API — Menus. 2 operations. Lead operation: Deliveroo Upload Menu. Self-contained Naftiko capability covering one Deliveroo business surface.'
+  tags:
+  - Deliveroo
+  - Menu
+  - Menus
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    DELIVEROO_ACCESS_TOKEN: DELIVEROO_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: menu-api-menus
+    baseUri: https://api.developers.deliveroo.com
+    description: Deliveroo Menu API — Menus business capability. Self-contained, no shared references.
+    authentication:
+      type: bearer
+      token: '{{env.DELIVEROO_ACCESS_TOKEN}}'
+    resources:
+    - name: menu-v1-brands-brand-id-menus-id
+      path: /menu/v1/brands/{brand_id}/menus/{id}
+      operations:
+      - name: uploadMenu
+        method: PUT
+        description: Deliveroo Upload Menu
+        inputParameters:
+        - name: brand_id
+          in: path
+          type: string
+          required: true
+          description: The brand identifier.
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The menu identifier.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: menu-v1-brands-brand-id-menus-id
+      path: /menu/v1/brands/{brand_id}/menus/{id}
+      operations:
+      - name: getMenu
+        method: GET
+        description: Deliveroo Get Menu
+        inputParameters:
+        - name: brand_id
+          in: path
+          type: string
+          required: true
+          description: The brand identifier.
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The menu identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: menu-api-menus-rest
+    port: 8080
+    description: REST adapter for Deliveroo Menu API — Menus. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/menu-v1-brands-brand-id-menus-id
+      name: menu-v1-brands-brand-id-menus-id
+      description: REST surface for Deliveroo Upload Menu.
+      operations:
+      - method: PUT
+        name: uploadMenu
+        description: REST surface for Deliveroo Upload Menu.
+        call: menu-api-menus.uploadMenu
+        with:
+          brand_id: rest.brand_id
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/menu-v1-brands-brand-id-menus-id
+      name: menu-v1-brands-brand-id-menus-id
+      description: REST surface for Deliveroo Get Menu.
+      operations:
+      - method: GET
+        name: getMenu
+        description: REST surface for Deliveroo Get Menu.
+        call: menu-api-menus.getMenu
+        with:
+          brand_id: rest.brand_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: menu-api-menus-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Deliveroo Menu API — Menus. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: upload-menu
+      description: Deliveroo Upload Menu
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: menu-api-menus.uploadMenu
+      with:
+        brand_id: tools.brand_id
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-menu
+      description: Deliveroo Get Menu
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: menu-api-menus.getMenu
+      with:
+        brand_id: tools.brand_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

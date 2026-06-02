@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "droo": "https://deliveroo.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "OpeningHours": "droo:OpeningHours",
+    "openingHours": {
+      "@id": "droo:opening_hours",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "dayOfWeek": {
+      "@id": "droo:day_of_week",
+      "@type": "xsd:string"
+    },
+    "timePeriods": {
+      "@id": "droo:time_periods",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "start": {
+      "@id": "droo:start",
+      "@type": "xsd:string"
+    },
+    "end": {
+      "@id": "droo:end",
+      "@type": "xsd:string"
+    }
+  }
+}

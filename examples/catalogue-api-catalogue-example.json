@@ -1,0 +1,11 @@
+{
+  "catalogue_id": "gb-12345",
+  "name": "Example",
+  "items": [
+    {
+      "id": "gb-123456",
+      "name": "Lunch Menu",
+      "price": 1
+    }
+  ]
+}

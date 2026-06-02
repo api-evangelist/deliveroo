@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/signature-api-location-structure.json",
+  "name": "Location",
+  "description": "A pickup or dropoff location.",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "The location address.",
+      "example": "123 Example Street, London"
+    },
+    "latitude": {
+      "type": "double",
+      "description": "The location latitude.",
+      "example": 1.0
+    },
+    "longitude": {
+      "type": "double",
+      "description": "The location longitude.",
+      "example": 1.0
+    }
+  }
+}

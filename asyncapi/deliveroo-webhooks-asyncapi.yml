@@ -1,0 +1,130 @@
+asyncapi: 2.6.0
+info:
+  title: Deliveroo Webhooks
+  version: v1
+  description: >-
+    Event-driven webhook callbacks delivered by the Deliveroo Developer Portal
+    APIs. Integrators configure HTTPS webhook URLs for Order Events, Rider
+    Events, and Menu (upload result) events. Each delivery is signed with an
+    HMAC-SHA256 signature so receivers can verify authenticity. Webhook events
+    are how the Partner Platform Order API and the Signature Suite keep POS,
+    kitchen display, and fulfillment systems in sync without polling.
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+defaultContentType: application/json
+channels:
+  order-events:
+    description: >-
+      Order Events webhook. Notifies the integrator of a new order or a status
+      update of an existing order.
+    subscribe:
+      operationId: onOrderEvent
+      summary: Receive Order Events
+      message:
+        $ref: '#/components/messages/OrderEvent'
+  rider-events:
+    description: >-
+      Rider Events webhook. Notifies the integrator of updates to rider status
+      for an order. Requires a configured Rider Events webhook URL.
+    subscribe:
+      operationId: onRiderEvent
+      summary: Receive Rider Events
+      message:
+        $ref: '#/components/messages/RiderEvent'
+  menu-events:
+    description: >-
+      Menu webhook. Delivered after each Upload Menu request once the
+      asynchronous menu processing finishes, regardless of success or failure.
+    subscribe:
+      operationId: onMenuEvent
+      summary: Receive Menu Upload Result Events
+      message:
+        $ref: '#/components/messages/MenuEvent'
+components:
+  messages:
+    OrderEvent:
+      name: orderEvent
+      title: Order Event
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          x-deliveroo-sequence-guid:
+            type: string
+            description: A unique GUID identifying the delivery sequence.
+          x-deliveroo-hmac-sha256:
+            type: string
+            description: HMAC-SHA256 signature of the payload for verification.
+          x-deliveroo-payload-type:
+            type: string
+            description: The payload type.
+          x-deliveroo-webhook-version:
+            type: string
+            description: The webhook schema version.
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            enum:
+            - order.new
+            - order.status_update
+            description: The order event type.
+            example: order.new
+          body:
+            type: object
+            description: The Order Event Body object containing the event details.
+      examples:
+      - name: OrderEventDefaultExample
+        summary: Default OrderEvent example payload
+        x-microcks-default: true
+        payload:
+          event: order.new
+          body: {}
+    RiderEvent:
+      name: riderEvent
+      title: Rider Event
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            description: The rider event type.
+            example: example
+          body:
+            type: object
+            description: The rider status details for the order.
+      examples:
+      - name: RiderEventDefaultExample
+        summary: Default RiderEvent example payload
+        x-microcks-default: true
+        payload:
+          event: example
+          body: {}
+    MenuEvent:
+      name: menuEvent
+      title: Menu Event
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            description: The menu event type.
+            example: example
+          body:
+            type: object
+            description: >-
+              The menu upload result, indicating whether asynchronous menu
+              processing succeeded or failed.
+      examples:
+      - name: MenuEventDefaultExample
+        summary: Default MenuEvent example payload
+        x-microcks-default: true
+        payload:
+          event: example
+          body: {}

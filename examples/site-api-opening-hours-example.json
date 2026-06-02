@@ -1,0 +1,10 @@
+{
+  "opening_hours": [
+    {
+      "day_of_week": "monday",
+      "time_periods": [
+        {}
+      ]
+    }
+  ]
+}

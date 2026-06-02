@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/site-api-opening-hours-structure.json",
+  "name": "OpeningHours",
+  "description": "A site's weekly opening-hours schedule.",
+  "type": "object",
+  "properties": {
+    "opening_hours": {
+      "type": "array",
+      "description": "A list of opening-hours entries per day of week.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day_of_week": {
+            "type": "string",
+            "description": "The day of week the entry applies to.",
+            "example": "monday"
+          },
+          "time_periods": {
+            "type": "array",
+            "description": "The open time periods for the day.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "type": "string",
+                  "description": "Period start time (HH:MM).",
+                  "example": "09:00"
+                },
+                "end": {
+                  "type": "string",
+                  "description": "Period end time (HH:MM).",
+                  "example": "22:00"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RiderEventPayload",
+  "description": "RiderEventPayload schema from Deliveroo webhooks",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-schema/webhooks-rider-event-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "description": "The rider event type.",
+      "example": "example"
+    },
+    "body": {
+      "type": "object",
+      "description": "The rider status details for the order."
+    }
+  }
+}

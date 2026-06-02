@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/signature-api-delivery-request-structure.json",
+  "name": "DeliveryRequest",
+  "description": "Request body for scheduling a delivery-as-a-service delivery.",
+  "type": "object",
+  "properties": {
+    "pickup": {
+      "$ref": "#/components/schemas/Location"
+    },
+    "dropoff": {
+      "$ref": "#/components/schemas/Location"
+    }
+  }
+}

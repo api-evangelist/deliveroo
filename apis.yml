@@ -11,7 +11,7 @@ tags:
   - Restaurants
 description: 'A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East. Deliveroo''s Developer Portal exposes three API suites — Partner Platform, Retail Platform, and Signature — that restaurants, grocers, and merchants use to integrate menus, orders, sites, and on-demand courier delivery.'
 created: '2026-05-05'
-modified: '2026-05-16'
+modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
   - aid: deliveroo:order-api
@@ -37,6 +37,14 @@ apis:
         url: https://api-docs.deliveroo.com/v2.0/docs
       - type: Webhooks
         url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: OpenAPI
+        url: openapi/deliveroo-order-api-openapi.yml
+      - type: AsyncAPI
+        url: asyncapi/deliveroo-webhooks-asyncapi.yml
+      - type: NaftikoCapability
+        url: capabilities/order-api-orders.yaml
+      - type: NaftikoCapability
+        url: capabilities/order-api-sync-status.yaml
   - aid: deliveroo:menu-api
     name: Deliveroo Menu API
     tags:
@@ -58,6 +66,10 @@ apis:
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: OpenAPI
+        url: openapi/deliveroo-menu-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/menu-api-menus.yaml
   - aid: deliveroo:site-api
     name: Deliveroo Site API
     tags:
@@ -78,6 +90,10 @@ apis:
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: OpenAPI
+        url: openapi/deliveroo-site-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/site-api-opening-hours.yaml
   - aid: deliveroo:catalogue-api
     name: Deliveroo Catalogue API
     tags:
@@ -97,6 +113,12 @@ apis:
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: OpenAPI
+        url: openapi/deliveroo-catalogue-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/catalogue-api-catalogue.yaml
+      - type: NaftikoCapability
+        url: capabilities/catalogue-api-pricing.yaml
   - aid: deliveroo:picking-api
     name: Deliveroo Picking API
     tags:
@@ -116,6 +138,10 @@ apis:
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: OpenAPI
+        url: openapi/deliveroo-picking-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/picking-api-picking.yaml
   - aid: deliveroo:signature-api
     name: Deliveroo Signature API
     tags:
@@ -135,6 +161,14 @@ apis:
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
+      - type: OpenAPI
+        url: openapi/deliveroo-signature-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/signature-api-quotes.yaml
+      - type: NaftikoCapability
+        url: capabilities/signature-api-orders.yaml
+      - type: NaftikoCapability
+        url: capabilities/signature-api-deliveries.yaml
 common:
   - type: GitHubOrganization
     url: https://github.com/deliveroo
@@ -158,3 +192,13 @@ common:
     url: https://deliveroo.co.uk/help
   - type: Blog
     url: https://deliveroo.co.uk/blog
+  - type: Spectral
+    url: rules/deliveroo-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/deliveroo-vocabulary.yml
+  - type: Plans
+    url: plans/deliveroo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/deliveroo-rate-limits.yml
+  - type: FinOps
+    url: finops/deliveroo-finops.yml

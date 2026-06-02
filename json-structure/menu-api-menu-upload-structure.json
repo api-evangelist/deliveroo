@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/json-structure/menu-api-menu-upload-structure.json",
+  "name": "MenuUpload",
+  "description": "Request body for creating or updating a menu.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for the menu.",
+      "example": "Lunch Menu"
+    },
+    "menu": {
+      "type": "object",
+      "description": "The menu document containing categories, items, modifiers, prices, POS identifiers, stock, and allergen data."
+    },
+    "site_ids": {
+      "type": "array",
+      "description": "The site identifiers this menu applies to.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "gb-site-001"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "menu",
+    "site_ids"
+  ]
+}
