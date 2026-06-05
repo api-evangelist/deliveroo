@@ -9,7 +9,10 @@ tags:
   - Marketplace
   - Logistics
   - Restaurants
-description: 'A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East. Deliveroo''s Developer Portal exposes three API suites — Partner Platform, Retail Platform, and Signature — that restaurants, grocers, and merchants use to integrate menus, orders, sites, and on-demand courier delivery.'
+description: >-
+  A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East.
+  Deliveroo's Developer Portal exposes three API suites — Partner Platform, Retail Platform, and Signature — that
+  restaurants, grocers, and merchants use to integrate menus, orders, sites, and on-demand courier delivery.
 created: '2026-05-05'
 modified: '2026-06-02'
 specificationVersion: '0.19'
@@ -26,12 +29,10 @@ apis:
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
-      The Deliveroo Order API is part of the Partner Platform Suite and manages
-      restaurant orders and rider lifecycle events in real time. Orders and
-      rider status updates are delivered to integrators via webhooks so that
-      POS, kitchen display, and fulfillment systems can stay in sync without
-      polling. Authentication uses OAuth-based credentials provisioned through
-      the Deliveroo Developer Portal.
+      The Deliveroo Order API is part of the Partner Platform Suite and manages restaurant orders and rider lifecycle
+      events in real time. Orders and rider status updates are delivered to integrators via webhooks so that POS,
+      kitchen display, and fulfillment systems can stay in sync without polling. Authentication uses OAuth-based
+      credentials provisioned through the Deliveroo Developer Portal.
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
@@ -41,10 +42,6 @@ apis:
         url: openapi/deliveroo-order-api-openapi.yml
       - type: AsyncAPI
         url: asyncapi/deliveroo-webhooks-asyncapi.yml
-      - type: NaftikoCapability
-        url: capabilities/order-api-orders.yaml
-      - type: NaftikoCapability
-        url: capabilities/order-api-sync-status.yaml
   - aid: deliveroo:menu-api
     name: Deliveroo Menu API
     tags:
@@ -58,18 +55,14 @@ apis:
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
-      The Deliveroo Menu API lets Partner Platform integrators publish and
-      maintain restaurant menus, including stock levels, prices, POS
-      identifiers, and allergen data. Menu updates can be pushed in near real
-      time so that the consumer-facing Deliveroo experience reflects merchant
-      inventory and pricing changes.
+      The Deliveroo Menu API lets Partner Platform integrators publish and maintain restaurant menus, including stock
+      levels, prices, POS identifiers, and allergen data. Menu updates can be pushed in near real time so that the
+      consumer-facing Deliveroo experience reflects merchant inventory and pricing changes.
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
       - type: OpenAPI
         url: openapi/deliveroo-menu-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/menu-api-menus.yaml
   - aid: deliveroo:site-api
     name: Deliveroo Site API
     tags:
@@ -82,18 +75,14 @@ apis:
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
-      The Deliveroo Site API controls a merchant site's open/close status,
-      operating hours, and workload mode (e.g., busy, paused). It is shared by
-      both the Partner Platform Suite and the Signature Suite so that
-      restaurants and merchants can govern fulfillment availability
-      programmatically from their own systems.
+      The Deliveroo Site API controls a merchant site's open/close status, operating hours, and workload mode (e.g.,
+      busy, paused). It is shared by both the Partner Platform Suite and the Signature Suite so that restaurants and
+      merchants can govern fulfillment availability programmatically from their own systems.
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
       - type: OpenAPI
         url: openapi/deliveroo-site-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/site-api-opening-hours.yaml
   - aid: deliveroo:catalogue-api
     name: Deliveroo Catalogue API
     tags:
@@ -106,19 +95,14 @@ apis:
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
-      The Deliveroo Catalogue API is part of the Retail Platform Suite and
-      manages master grocery catalogues of up to 30,000 items per merchant.
-      Retailers use it to publish product data, variations, and availability
-      across one or more retail sites operating on Deliveroo.
+      The Deliveroo Catalogue API is part of the Retail Platform Suite and manages master grocery catalogues of up to
+      30,000 items per merchant. Retailers use it to publish product data, variations, and availability across one or
+      more retail sites operating on Deliveroo.
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
       - type: OpenAPI
         url: openapi/deliveroo-catalogue-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/catalogue-api-catalogue.yaml
-      - type: NaftikoCapability
-        url: capabilities/catalogue-api-pricing.yaml
   - aid: deliveroo:picking-api
     name: Deliveroo Picking API
     tags:
@@ -131,17 +115,14 @@ apis:
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
-      The Deliveroo Picking API supports the Retail Platform Suite picking flow,
-      letting grocery operators process incoming orders, remove unavailable
-      items, propose substitutions, and accept or reject orders prior to
-      handoff to a courier.
+      The Deliveroo Picking API supports the Retail Platform Suite picking flow, letting grocery operators process
+      incoming orders, remove unavailable items, propose substitutions, and accept or reject orders prior to handoff to
+      a courier.
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
       - type: OpenAPI
         url: openapi/deliveroo-picking-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/picking-api-picking.yaml
   - aid: deliveroo:signature-api
     name: Deliveroo Signature API
     tags:
@@ -154,21 +135,14 @@ apis:
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
-      The Deliveroo Signature API powers the Signature Suite, which lets
-      merchants request on-demand delivery by Deliveroo couriers for orders
-      that originate in their own apps, websites, or channels — for example,
-      a restaurant's branded ordering app dispatching a Deliveroo rider.
+      The Deliveroo Signature API powers the Signature Suite, which lets merchants request on-demand delivery by
+      Deliveroo couriers for orders that originate in their own apps, websites, or channels — for example, a
+      restaurant's branded ordering app dispatching a Deliveroo rider.
     properties:
       - type: Documentation
         url: https://api-docs.deliveroo.com/v2.0/docs
       - type: OpenAPI
         url: openapi/deliveroo-signature-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/signature-api-quotes.yaml
-      - type: NaftikoCapability
-        url: capabilities/signature-api-orders.yaml
-      - type: NaftikoCapability
-        url: capabilities/signature-api-deliveries.yaml
 common:
   - type: GitHubOrganization
     url: https://github.com/deliveroo
