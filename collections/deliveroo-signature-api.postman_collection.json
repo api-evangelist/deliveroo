@@ -1,0 +1,658 @@
+{
+  "item": [
+    {
+      "id": "47bfea88-201b-45b2-b62f-261c489bc2a1",
+      "name": "Quotes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cdf30701-29e7-4734-82ee-8e38320f1cd3",
+          "name": "Deliveroo Create Quote",
+          "request": {
+            "name": "Deliveroo Create Quote",
+            "description": {
+              "content": "Return an estimate and the delivery fee Deliveroo would charge for a given delivery. Creating a quote runs validation steps that surface errors which might otherwise cause order rejection. A quote is valid for 5 minutes, after which a new quote must be created before placing the order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "signature",
+                "v1",
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bc2ec92-495d-467c-9b4b-55c9e7ceeeac",
+              "name": "The quote estimate and delivery fee.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signature",
+                    "v1",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quote_id\": \"gb-12345\",\n  \"fee\": 299\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a4bdefa-c678-449a-8592-8afb55cad46b",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signature",
+                    "v1",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5cee1fa-cfb7-4989-9a35-a1c8b4f8ec23",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signature",
+                    "v1",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c63b91ad-e550-4358-aec6-cfb8a873c69e",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e9c5168e-23f2-48f5-b261-746dec5f034d",
+          "name": "Deliveroo Create a New Order",
+          "request": {
+            "name": "Deliveroo Create a New Order",
+            "description": {
+              "content": "Create a new order for fulfillment by Deliveroo. It is recommended to create a quote first; the quote must be valid (created within the last 5 minutes) when the order is placed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "signature",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quote_id\": \"<string>\",\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90c1a718-e73f-4cf6-ae3b-4e4b4743d095",
+              "name": "The created order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signature",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quote_id\": \"gb-12345\",\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"gb-12345\",\n  \"status\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03fb4ed4-c97b-4358-addb-a17a7c33d504",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signature",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quote_id\": \"gb-12345\",\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8949be4f-c20d-438d-ab77-dc85a62691b1",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "signature",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quote_id\": \"gb-12345\",\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1d333509-eb5b-489b-8055-0ff071c6baa7",
+      "name": "Deliveries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "70fadb93-4da8-4600-b115-2659496b6ada",
+          "name": "Deliveroo Schedule Delivery",
+          "request": {
+            "name": "Deliveroo Schedule Delivery",
+            "description": {
+              "content": "Schedule a delivery via Deliveroo's delivery-as-a-service offering for an order managed by the merchant's own systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "daas",
+                "v1",
+                "deliveries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10e4aa57-e19e-4ea1-ad49-fca595dbbe2d",
+              "name": "The scheduled delivery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daas",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4687df7a-3d94-4957-8965-fd6e5bf2e412",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daas",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c03bdbc-fdcc-4e7d-a329-2977b9c1bab2",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daas",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pickup\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"dropoff\": {\n    \"address\": \"123 Example Street, London\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.developers.deliveroo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cd710c8a-45e4-441b-bcf2-c001ba805f42",
+    "name": "Deliveroo Signature API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Powers the Deliveroo Signature Suite, letting merchants request on-demand delivery by Deliveroo couriers for orders that originate in their own apps, websites, or channels. Integrators create a quote, then create an order for fulfillment, and can schedule deliveries via the delivery-as-a-service endpoint. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

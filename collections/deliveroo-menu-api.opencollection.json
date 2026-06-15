@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Menu API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Menus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Get Menu",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developers.deliveroo.com/menu/v1/brands/:brand_id/menus/:id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The brand identifier."
+              },
+              {
+                "name": "id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The menu identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a menu previously created via Upload Menu and view the latest status of the menu in Deliveroo."
+        },
+        {
+          "info": {
+            "name": "Deliveroo Upload Menu",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/menu/v1/brands/:brand_id/menus/:id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The brand identifier."
+              },
+              {
+                "name": "id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The menu identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a menu or update an existing menu so that customers see the most up-to-date offerings, stock, pricing, and allergen data. Menu processing is asynchronous; the result is delivered via the menu webhook. Rate limited to 1 request per minute per site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

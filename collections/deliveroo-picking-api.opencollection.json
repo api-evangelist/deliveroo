@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Picking API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Picking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Fetch Active Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developers.deliveroo.com/picking/v1/sites/:restaurant_id/orders/active",
+            "params": [
+              {
+                "name": "restaurant_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The site (restaurant) identifier."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "The zero-based page index."
+              },
+              {
+                "name": "per_page",
+                "value": "20",
+                "type": "query",
+                "description": "The number of orders per page."
+              }
+            ]
+          },
+          "docs": "Retrieve the active orders for a site, paginated."
+        },
+        {
+          "info": {
+            "name": "Deliveroo Accept Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/picking/v1/orders/:order_id/accept",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Accept an order. The order must be in PLACED status. Rate limited to 2 requests per second per order."
+        },
+        {
+          "info": {
+            "name": "Deliveroo Reject Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/picking/v1/orders/:order_id/reject",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject an order. The order must be in PLACED status and may only be rejected once. Rate limited to 1 request per order per 30 seconds."
+        },
+        {
+          "info": {
+            "name": "Deliveroo Start Picking Process for Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/picking/v1/orders/:order_id/start_picking",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ]
+          },
+          "docs": "Inform Deliveroo that the picking process for an order has started."
+        },
+        {
+          "info": {
+            "name": "Deliveroo Update Order Items Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/picking/v2/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The unique identifier of the order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply item amendments, such as removing unavailable items or proposing substitutions, before accepting or rejecting an order. Rate limited to 2 requests per second per order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

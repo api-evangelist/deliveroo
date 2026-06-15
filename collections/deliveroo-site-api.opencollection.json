@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Site API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Opening Hours",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Get Site Opening Hours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developers.deliveroo.com/site/v1/brands/:brand_id/sites/:site_id/opening_hours",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The brand identifier."
+              },
+              {
+                "name": "site_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve the configured opening hours for a site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

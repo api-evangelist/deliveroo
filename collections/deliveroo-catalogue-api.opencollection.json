@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Catalogue API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalogue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Get Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.developers.deliveroo.com/brands/:brand_id/catalogue/:catalogue_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The brand identifier."
+              },
+              {
+                "name": "catalogue_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The catalogue identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve the latest uploaded catalogue for a brand by catalogue ID. Rate limited to 95 requests per catalogue per minute."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Update Prices Per Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The brand identifier."
+              },
+              {
+                "name": "catalogue_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The catalogue identifier."
+              },
+              {
+                "name": "site_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The site identifier whose prices are being overridden."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Override item prices at the site level, enabling site-specific pricing without creating multiple master catalogues."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

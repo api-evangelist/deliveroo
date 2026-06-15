@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Order API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Update Order Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.developers.deliveroo.com/order/v1/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb:1234abcd-5678-90ef-ghij-klmnopqrstuv",
+                "type": "path",
+                "description": "The unique identifier of the Deliveroo order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept, reject, or confirm an order. The order must be in the PLACED status to be accepted or rejected. ASAP orders not accepted within 10 minutes (7 minutes for the Kuwait and UAE markets) are rejected automatically. Rate limited to 5 requests per minute per order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sync Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Create Sync Status for an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developers.deliveroo.com/order/v1/orders/:order_id/sync_status",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The unique identifier of the Deliveroo order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Report whether the order was successfully sent to the site's in-store system. If Deliveroo does not receive a sync status within 3 minutes, or receives a failed status, it prompts site staff via the Deliveroo tablet to check their in-store system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

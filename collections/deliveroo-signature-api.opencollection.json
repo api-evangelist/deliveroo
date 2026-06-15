@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Signature API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Create Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developers.deliveroo.com/signature/v1/quotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return an estimate and the delivery fee Deliveroo would charge for a given delivery. Creating a quote runs validation steps that surface errors which might otherwise cause order rejection. A quote is valid for 5 minutes, after which a new quote must be created before placing the order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Create a New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developers.deliveroo.com/signature/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new order for fulfillment by Deliveroo. It is recommended to create a quote first; the quote must be valid (created within the last 5 minutes) when the order is placed."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Deliveries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Schedule Delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developers.deliveroo.com/daas/v1/deliveries",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedule a delivery via Deliveroo's delivery-as-a-service offering for an order managed by the merchant's own systems."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
