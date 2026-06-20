@@ -2,7 +2,7 @@ aid: deliveroo
 url: https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/apis.yml
 name: Deliveroo
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Food Delivery
   - Grocery
@@ -25,7 +25,7 @@ apis:
       - Restaurants
       - Real-Time
       - Riders
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
@@ -51,7 +51,7 @@ apis:
       - Allergens
       - POS
       - Restaurants
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
@@ -71,7 +71,7 @@ apis:
       - Hours
       - Status
       - Operations
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
@@ -91,7 +91,7 @@ apis:
       - Retail
       - Products
       - Inventory
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
@@ -111,7 +111,7 @@ apis:
       - Retail
       - Order Fulfillment
       - Substitutions
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
@@ -131,7 +131,7 @@ apis:
       - Logistics
       - Merchant Integration
       - Custom Apps
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.deliveroo.com/v2.0/docs
     baseURL: https://api.developers.deliveroo.com
     description: >-
