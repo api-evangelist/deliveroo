@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/deliveroo-catalogue-api-openapi.yml, openapi/deliveroo-menu-api-openapi.yml,
+  openapi/deliveroo-order-api-openapi.yml, openapi/deliveroo-picking-api-openapi.yml, openapi/deliveroo-signature-api-openapi.yml,
+  openapi/deliveroo-site-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token.
+    Tokens expire after 5 minutes; no refresh tokens are issued.
+  sources:
+  - openapi/deliveroo-catalogue-api-openapi.yml
+  - openapi/deliveroo-menu-api-openapi.yml
+  - openapi/deliveroo-order-api-openapi.yml
+  - openapi/deliveroo-picking-api-openapi.yml
+  - openapi/deliveroo-signature-api-openapi.yml
+  - openapi/deliveroo-site-api-openapi.yml
