@@ -2,12 +2,14 @@
   "repo": "deliveroo",
   "feeds": [
     {
-      "source": "https://deliveroo.co.uk/blog",
+      "source": "https://deliveroo.co.uk/help",
+      "feed_url": "https://deliveroo.co.uk/help",
+      "title": "",
       "saved": 0,
-      "error": "blog redirects to foodscene then to /terms; no live blog listing"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:35:44Z",
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }

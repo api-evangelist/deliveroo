@@ -1,10 +1,24 @@
-# Spectral ruleset for the Deliveroo Developer Portal APIs.
-# Derived from the Order, Menu, Site, Catalogue, Picking, and Signature
-# OpenAPI specifications in openapi/. Enforces the conventions observed
-# across the Deliveroo Partner Platform, Retail Platform, and Signature suites.
+# deliveroo — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 12/12 servers on deliveroo.com
+#   - path-params-casing: snake @ 100% (n=18)
+#   - operationid-casing: camel @ 100% (n=15)
+#   - schema-names-casing: pascal @ 100% (n=14)
+#   - schema-properties-casing: snake @ 100% (n=31)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - operation-documents-400: 87% adherence
+#   - operation-documents-500: 100% adherence
+#   - pagination params observed: ['page', 'per_page']
+#   - merge: kept 31 existing, added 5 measured, upgraded 0
+#   - added: servers-expected-domain, schema-names-casing, operation-documents-400, operation-documents-500, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
-
-  # ── INFO / METADATA ───────────────────────────────────────────────
   info-title-deliveroo-prefix:
     description: API title should start with "Deliveroo".
     severity: warn
@@ -12,7 +26,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^Deliveroo'
+        match: ^Deliveroo
   info-description-required:
     description: API must have a non-trivial description.
     severity: warn
@@ -34,8 +48,6 @@ rules:
     then:
       field: contact
       function: truthy
-
-  # ── OPENAPI VERSION ───────────────────────────────────────────────
   openapi-version-303:
     description: Specs should target OpenAPI 3.0.3.
     severity: warn
@@ -43,9 +55,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^3\.0\.3$'
-
-  # ── SERVERS ───────────────────────────────────────────────────────
+        match: ^3\.0\.3$
   servers-defined:
     description: Servers must be defined.
     severity: error
@@ -60,7 +70,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^https://'
+        match: ^https://
   server-description-required:
     description: Each server should have a description.
     severity: warn
@@ -68,8 +78,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # ── PATHS — NAMING CONVENTIONS ────────────────────────────────────
   path-no-trailing-slash:
     description: Paths must not end with a trailing slash.
     severity: warn
@@ -78,7 +86,7 @@ rules:
       field: '@key'
       function: pattern
       functionOptions:
-        notMatch: '.+/$'
+        notMatch: .+/$
   path-kebab-case-segments:
     description: Static path segments should be lowercase (kebab/snake), not camelCase.
     severity: warn
@@ -96,9 +104,7 @@ rules:
       field: '@key'
       function: pattern
       functionOptions:
-        match: '/v[0-9]+/'
-
-  # ── OPERATIONS ────────────────────────────────────────────────────
+        match: /v[0-9]+/
   operation-operationid-required:
     description: Every operation must have an operationId.
     severity: error
@@ -113,7 +119,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[a-z][a-zA-Z0-9]*$'
+        match: ^[a-z][a-zA-Z0-9]*$
   operation-summary-required:
     description: Every operation must have a summary.
     severity: warn
@@ -150,8 +156,6 @@ rules:
     then:
       field: x-microcks-operation
       function: truthy
-
-  # ── PARAMETERS ────────────────────────────────────────────────────
   parameter-description-required:
     description: Every parameter must have a description.
     severity: warn
@@ -166,7 +170,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[a-z][a-z0-9_]*$'
+        match: ^[a-z][a-z0-9_]*$
   parameter-schema-typed:
     description: Every parameter must declare a schema with a type.
     severity: warn
@@ -174,8 +178,6 @@ rules:
     then:
       field: type
       function: truthy
-
-  # ── REQUEST BODIES ────────────────────────────────────────────────
   request-body-json:
     description: Request bodies should offer application/json content.
     severity: warn
@@ -183,8 +185,6 @@ rules:
     then:
       field: application/json
       function: truthy
-
-  # ── RESPONSES ─────────────────────────────────────────────────────
   response-success-defined:
     description: Each operation must define at least one 2xx response.
     severity: error
@@ -195,9 +195,12 @@ rules:
         schema:
           type: object
           anyOf:
-            - required: ['200']
-            - required: ['201']
-            - required: ['204']
+          - required:
+            - '200'
+          - required:
+            - '201'
+          - required:
+            - '204'
   response-description-required:
     description: Each response must have a description.
     severity: warn
@@ -212,8 +215,6 @@ rules:
     then:
       field: '401'
       function: truthy
-
-  # ── SCHEMAS — PROPERTY NAMING ─────────────────────────────────────
   schema-property-snake-case:
     description: Schema property names should be snake_case.
     severity: warn
@@ -222,15 +223,13 @@ rules:
       field: '@key'
       function: pattern
       functionOptions:
-        match: '^[a-z][a-z0-9_]*$'
+        match: ^[a-z][a-z0-9_]*$
   schema-property-typed:
     description: Schema properties should declare a type.
     severity: info
     given: $.components.schemas[*].properties[*]
     then:
       function: truthy
-
-  # ── SECURITY ──────────────────────────────────────────────────────
   global-security-defined:
     description: A global security requirement must be defined.
     severity: warn
@@ -245,8 +244,6 @@ rules:
     then:
       field: bearerAuth
       function: truthy
-
-  # ── TAGS ──────────────────────────────────────────────────────────
   tag-title-case:
     description: Tag names should be Title Case.
     severity: warn
@@ -254,9 +251,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[A-Z]'
-
-  # ── HTTP METHOD CONVENTIONS ───────────────────────────────────────
+        match: ^[A-Z]
   get-no-request-body:
     description: GET operations must not declare a request body.
     severity: error
@@ -264,3 +259,40 @@ rules:
     then:
       field: requestBody
       function: falsy
+  servers-expected-domain:
+    description: Server URLs should be on the deliveroo.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: deliveroo\.com
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  operation-documents-400:
+    description: Operations should document a 400 response (documented on 87% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '400'
+      function: truthy
+  operation-documents-500:
+    description: Operations should document a 500 response (documented on 100% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '500'
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
