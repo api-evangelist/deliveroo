@@ -144,6 +144,8 @@ apis:
       - type: OpenAPI
         url: openapi/deliveroo-signature-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/deliveroo-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/deliveroo-vulnerability-disclosure.yml
   - type: DomainSecurity
