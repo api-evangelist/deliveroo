@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Catalogue Pricing API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Pricing
+paths:
+  /brands/{brand_id}/catalogue/{catalogue_id}/sites/{site_id}/prices:
+    put:
+      operationId: updatePricesPerSite
+      summary: Deliveroo Update Prices Per Site
+      description: Override item prices at the site level, enabling site-specific pricing without creating multiple master catalogues.
+      tags:
+      - Pricing
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: brand_id
+        in: path
+        required: true
+        description: The brand identifier.
+        schema:
+          type: string
+        example: gb-12345
+      - name: catalogue_id
+        in: path
+        required: true
+        description: The catalogue identifier.
+        schema:
+          type: string
+        example: gb-12345
+      - name: site_id
+        in: path
+        required: true
+        description: The site identifier whose prices are being overridden.
+        schema:
+          type: string
+        example: gb-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SitePriceOverrides'
+            examples:
+              UpdatePricesPerSiteRequestExample:
+                summary: Default updatePricesPerSite request
+                x-microcks-default: true
+                value:
+                  prices:
+                  - item_id: gb-12345
+                    price: 499
+      responses:
+        '200':
+          description: Prices updated.
+        '400':
+          description: Bad request.
+        '404':
+          description: Catalogue or site not found.
+        '500':
+          description: Server error.
+components:
+  schemas:
+    SitePriceOverrides:
+      title: Site Price Overrides
+      description: 'Site-level price overrides for catalogue items. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/updateprices'
+      type: object
+      properties:
+        prices:
+          type: array
+          description: The per-item price overrides for the site.
+          items:
+            type: object
+            properties:
+              item_id:
+                type: string
+                description: The catalogue item identifier.
+              price:
+                type: integer
+                description: The overridden price in minor currency units.
+                example: 499
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.

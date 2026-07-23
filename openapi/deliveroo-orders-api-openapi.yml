@@ -1,0 +1,193 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Catalogue Orders API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Orders
+paths:
+  /order/v1/orders/{order_id}:
+    patch:
+      operationId: updateOrderStatus
+      summary: Deliveroo Update Order Status
+      description: Accept, reject, or confirm an order. The order must be in the PLACED status to be accepted or rejected. ASAP orders not accepted within 10 minutes (7 minutes for the Kuwait and UAE markets) are rejected automatically. Rate limited to 5 requests per minute per order.
+      tags:
+      - Orders
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        description: The unique identifier of the Deliveroo order.
+        schema:
+          type: string
+          example: gb:1234abcd-5678-90ef-ghij-klmnopqrstuv
+        example: gb:1234abcd-5678-90ef-ghij-klmnopqrstuv
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+            examples:
+              UpdateOrderStatusRequestExample:
+                summary: Default updateOrderStatus request
+                x-microcks-default: true
+                value:
+                  status: accepted
+                  reject_reason: busy
+                  notes: example
+      responses:
+        '204':
+          description: The order was successfully accepted, rejected, or confirmed.
+        '400':
+          description: Bad request, often a missing required parameter or incorrect content type.
+        '401':
+          description: The API key and token combination is invalid or the integration is disabled.
+        '409':
+          description: Conflict, for example the status was already sent or a timeout occurred.
+        '500':
+          description: Server error. Retry later.
+  /signature/v1/orders:
+    post:
+      operationId: createOrder
+      summary: Deliveroo Create a New Order
+      description: Create a new order for fulfillment by Deliveroo. It is recommended to create a quote first; the quote must be valid (created within the last 5 minutes) when the order is placed.
+      tags:
+      - Orders
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+            examples:
+              CreateOrderRequestExample:
+                summary: Default createOrder request
+                x-microcks-default: true
+                value:
+                  quote_id: gb-12345
+                  pickup:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+                  dropoff:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+      responses:
+        '200':
+          description: The created order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+              examples:
+                CreateOrder200Example:
+                  summary: Default createOrder 200 response
+                  x-microcks-default: true
+                  value:
+                    order_id: gb-12345
+                    status: active
+        '400':
+          description: Bad request.
+        '500':
+          description: Server error.
+components:
+  schemas:
+    Location:
+      title: Location
+      description: A pickup or dropoff location.
+      type: object
+      properties:
+        address:
+          type: string
+          description: The location address.
+          example: 123 Example Street, London
+        latitude:
+          type: number
+          description: The location latitude.
+          example: 1.0
+        longitude:
+          type: number
+          description: The location longitude.
+          example: 1.0
+    OrderRequest:
+      title: Order Request
+      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of a valid quote.
+          example: gb-12345
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
+    Order:
+      title: Order
+      description: A created Signature order.
+      type: object
+      properties:
+        order_id:
+          type: string
+          description: The identifier of the created order.
+          example: gb-12345
+        status:
+          type: string
+          description: The current order status.
+          example: active
+    OrderStatusUpdate:
+      title: Order Status Update
+      description: 'Request body for updating an order''s status. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/patch-order-1'
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - accepted
+          - rejected
+          - confirmed
+          description: The new status for the order.
+          example: accepted
+        reject_reason:
+          type: string
+          nullable: true
+          enum:
+          - closing_early
+          - busy
+          - ingredient_unavailable
+          - other
+          description: Required when status is rejected. The reason for rejection.
+          example: busy
+        notes:
+          type: string
+          nullable: true
+          description: Free-text notes accompanying the status change.
+          example: example
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.

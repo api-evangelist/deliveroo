@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Catalogue Deliveries API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Deliveries
+paths:
+  /daas/v1/deliveries:
+    post:
+      operationId: scheduleDelivery
+      summary: Deliveroo Schedule Delivery
+      description: Schedule a delivery via Deliveroo's delivery-as-a-service offering for an order managed by the merchant's own systems.
+      tags:
+      - Deliveries
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryRequest'
+            examples:
+              ScheduleDeliveryRequestExample:
+                summary: Default scheduleDelivery request
+                x-microcks-default: true
+                value:
+                  pickup:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+                  dropoff:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+      responses:
+        '200':
+          description: The scheduled delivery.
+        '400':
+          description: Bad request.
+        '500':
+          description: Server error.
+components:
+  schemas:
+    DeliveryRequest:
+      title: Delivery Request
+      description: 'Request body for scheduling a delivery-as-a-service delivery. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/scheduledeliveryv1'
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
+    Location:
+      title: Location
+      description: A pickup or dropoff location.
+      type: object
+      properties:
+        address:
+          type: string
+          description: The location address.
+          example: 123 Example Street, London
+        latitude:
+          type: number
+          description: The location latitude.
+          example: 1.0
+        longitude:
+          type: number
+          description: The location longitude.
+          example: 1.0
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.

@@ -1,12 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Deliveroo Picking API
-  description: >-
-    Part of the Deliveroo Retail Platform Suite. The Picking API supports the
-    grocery picking flow, letting operators fetch active orders, start picking,
-    update item availability with substitutions or amendments, and accept or
-    reject orders prior to courier handoff. Authentication uses an OAuth 2.0
-    client credentials bearer token.
+  title: Deliveroo Catalogue Picking API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
   version: v1
   x-generated-from: documentation
   x-last-validated: '2026-06-02'
@@ -18,10 +13,10 @@ servers:
   description: Production
 - url: https://api-sandbox.developers.deliveroo.com
   description: Sandbox
-tags:
-- name: Picking
 security:
 - bearerAuth: []
+tags:
+- name: Picking
 paths:
   /picking/v1/sites/{restaurant_id}/orders/active:
     get:
@@ -70,9 +65,7 @@ paths:
     put:
       operationId: acceptPickingOrder
       summary: Deliveroo Accept Order
-      description: >-
-        Accept an order. The order must be in PLACED status. Rate limited to 2
-        requests per second per order.
+      description: Accept an order. The order must be in PLACED status. Rate limited to 2 requests per second per order.
       tags:
       - Picking
       x-microcks-operation:
@@ -103,9 +96,7 @@ paths:
     put:
       operationId: rejectPickingOrder
       summary: Deliveroo Reject Order
-      description: >-
-        Reject an order. The order must be in PLACED status and may only be
-        rejected once. Rate limited to 1 request per order per 30 seconds.
+      description: Reject an order. The order must be in PLACED status and may only be rejected once. Rate limited to 1 request per order per 30 seconds.
       tags:
       - Picking
       x-microcks-operation:
@@ -171,10 +162,7 @@ paths:
     put:
       operationId: updateOrderItems
       summary: Deliveroo Update Order Items Availability
-      description: >-
-        Apply item amendments, such as removing unavailable items or proposing
-        substitutions, before accepting or rejecting an order. Rate limited to 2
-        requests per second per order.
+      description: Apply item amendments, such as removing unavailable items or proposing substitutions, before accepting or rejecting an order. Rate limited to 2 requests per second per order.
       tags:
       - Picking
       x-microcks-operation:
@@ -212,22 +200,10 @@ paths:
         '500':
           description: Server error.
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: >-
-        OAuth 2.0 client credentials access token obtained from
-        https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after
-        5 minutes; no refresh tokens are issued.
   schemas:
     RejectOrder:
       title: Reject Order
-      description: >-
-        Request body for rejecting a picking order.
-        x-schema-source: documentation
-        x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order
+      description: 'Request body for rejecting a picking order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order'
       type: object
       required:
       - reject_reason
@@ -243,10 +219,7 @@ components:
           example: OTHER
     ItemAmendments:
       title: Item Amendments
-      description: >-
-        Request body for amending order item availability.
-        x-schema-source: documentation
-        x-source-url: https://api-docs.deliveroo.com/reference/picking-v2-update-order
+      description: 'Request body for amending order item availability. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v2-update-order'
       type: object
       required:
       - item_amendments
@@ -264,3 +237,9 @@ components:
                 type: integer
                 description: The amended available quantity.
                 example: 0
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.

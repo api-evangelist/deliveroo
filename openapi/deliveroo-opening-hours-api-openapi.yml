@@ -1,12 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Deliveroo Site API
-  description: >-
-    Shared by the Deliveroo Partner Platform Suite and the Signature Suite. The
-    Site API lets merchants govern fulfillment availability programmatically,
-    including a site's open/close status, operating hours, days off, and
-    workload mode. Authentication uses an OAuth 2.0 client credentials bearer
-    token.
+  title: Deliveroo Catalogue Opening Hours API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
   version: v1
   x-generated-from: documentation
   x-last-validated: '2026-06-02'
@@ -18,10 +13,10 @@ servers:
   description: Production
 - url: https://api-sandbox.developers.deliveroo.com
   description: Sandbox
-tags:
-- name: Opening Hours
 security:
 - bearerAuth: []
+tags:
+- name: Opening Hours
 paths:
   /site/v1/brands/{brand_id}/sites/{site_id}/opening_hours:
     get:
@@ -63,7 +58,7 @@ paths:
                     opening_hours:
                     - day_of_week: monday
                       time_periods:
-                      - start: '09:00'
+                      - start: 09:00
                         end: '22:00'
         '400':
           description: Bad request.
@@ -72,22 +67,10 @@ paths:
         '500':
           description: Server error.
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: >-
-        OAuth 2.0 client credentials access token obtained from
-        https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after
-        5 minutes; no refresh tokens are issued.
   schemas:
     OpeningHours:
       title: Opening Hours
-      description: >-
-        A site's weekly opening-hours schedule.
-        x-schema-source: documentation
-        x-source-url: https://api-docs.deliveroo.com/reference/get-site-opening-hours
+      description: 'A site''s weekly opening-hours schedule. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/get-site-opening-hours'
       type: object
       properties:
         opening_hours:
@@ -109,8 +92,14 @@ components:
                     start:
                       type: string
                       description: Period start time (HH:MM).
-                      example: '09:00'
+                      example: 09:00
                     end:
                       type: string
                       description: Period end time (HH:MM).
                       example: '22:00'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.

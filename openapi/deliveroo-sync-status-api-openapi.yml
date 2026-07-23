@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Catalogue Sync Status API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Sync Status
+paths:
+  /order/v1/orders/{order_id}/sync_status:
+    post:
+      operationId: createSyncStatus
+      summary: Deliveroo Create Sync Status for an Order
+      description: Report whether the order was successfully sent to the site's in-store system. If Deliveroo does not receive a sync status within 3 minutes, or receives a failed status, it prompts site staff via the Deliveroo tablet to check their in-store system.
+      tags:
+      - Sync Status
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        description: The unique identifier of the Deliveroo order.
+        schema:
+          type: string
+        example: gb-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncStatus'
+            examples:
+              CreateSyncStatusRequestExample:
+                summary: Default createSyncStatus request
+                x-microcks-default: true
+                value:
+                  status: succeeded
+                  reason: items_out_of_stock
+                  notes: example
+                  occurred_at: '2026-06-02T12:00:00Z'
+      responses:
+        '200':
+          description: Everything worked as expected.
+        '400':
+          description: Bad request, missing required parameter or incorrect content type.
+        '401':
+          description: Invalid API credentials or disabled integration.
+        '404':
+          description: An order with that ID was not found.
+        '409':
+          description: Sync status was already sent or the timeout occurred.
+        '500':
+          description: Server error. Retry later.
+components:
+  schemas:
+    SyncStatus:
+      title: Sync Status
+      description: 'Reports the result of synchronizing the order to the in-store system. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-sync-status-1'
+      type: object
+      required:
+      - status
+      - occurred_at
+      properties:
+        status:
+          type: string
+          enum:
+          - succeeded
+          - failed
+          description: Whether the order was successfully sent to the in-store system.
+          example: succeeded
+        reason:
+          type: string
+          nullable: true
+          enum:
+          - price_mismatched
+          - pos_item_id_mismatched
+          - pos_item_id_not_found
+          - items_out_of_stock
+          - location_offline
+          - location_not_supported
+          - unsupported_order_type
+          - no_webhook_url
+          - webhook_failed
+          - timed_out
+          - other
+          - no_sync_confirmation
+          description: Reason for a failed sync status.
+          example: items_out_of_stock
+        notes:
+          type: string
+          nullable: true
+          description: Free-text notes about the sync result.
+          example: example
+        occurred_at:
+          type: string
+          format: date-time
+          description: Timestamp when the sync result occurred.
+          example: '2026-06-02T12:00:00Z'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.

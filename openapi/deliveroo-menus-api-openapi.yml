@@ -1,13 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Deliveroo Menu API
-  description: >-
-    Part of the Deliveroo Partner Platform Suite. The Menu API lets integrators
-    publish and retrieve restaurant menus, including items, modifiers, prices,
-    POS identifiers, stock levels, and allergen data, so that the consumer-facing
-    Deliveroo experience reflects merchant inventory and pricing. Menu uploads
-    are processed asynchronously and the result is delivered via a menu webhook.
-    Authentication uses an OAuth 2.0 client credentials bearer token.
+  title: Deliveroo Catalogue Menus API
+  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
   version: v1
   x-generated-from: documentation
   x-last-validated: '2026-06-02'
@@ -19,20 +13,16 @@ servers:
   description: Production
 - url: https://api-sandbox.developers.deliveroo.com
   description: Sandbox
-tags:
-- name: Menus
 security:
 - bearerAuth: []
+tags:
+- name: Menus
 paths:
   /menu/v1/brands/{brand_id}/menus/{id}:
     put:
       operationId: uploadMenu
       summary: Deliveroo Upload Menu
-      description: >-
-        Create a menu or update an existing menu so that customers see the most
-        up-to-date offerings, stock, pricing, and allergen data. Menu processing
-        is asynchronous; the result is delivered via the menu webhook. Rate
-        limited to 1 request per minute per site.
+      description: Create a menu or update an existing menu so that customers see the most up-to-date offerings, stock, pricing, and allergen data. Menu processing is asynchronous; the result is delivered via the menu webhook. Rate limited to 1 request per minute per site.
       tags:
       - Menus
       x-microcks-operation:
@@ -88,9 +78,7 @@ paths:
     get:
       operationId: getMenu
       summary: Deliveroo Get Menu
-      description: >-
-        Retrieve a menu previously created via Upload Menu and view the latest
-        status of the menu in Deliveroo.
+      description: Retrieve a menu previously created via Upload Menu and view the latest status of the menu in Deliveroo.
       tags:
       - Menus
       x-microcks-operation:
@@ -132,22 +120,10 @@ paths:
         '500':
           description: Server error.
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: >-
-        OAuth 2.0 client credentials access token obtained from
-        https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after
-        5 minutes; no refresh tokens are issued.
   schemas:
     MenuUpload:
       title: Menu Upload
-      description: >-
-        Request body for creating or updating a menu.
-        x-schema-source: documentation
-        x-source-url: https://api-docs.deliveroo.com/reference/put_v1-brands-brand-id-menus-id
+      description: 'Request body for creating or updating a menu. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/put_v1-brands-brand-id-menus-id'
       type: object
       required:
       - name
@@ -160,9 +136,7 @@ components:
           example: Lunch Menu
         menu:
           type: object
-          description: >-
-            The menu document containing categories, items, modifiers, prices,
-            POS identifiers, stock, and allergen data.
+          description: The menu document containing categories, items, modifiers, prices, POS identifiers, stock, and allergen data.
         site_ids:
           type: array
           description: The site identifiers this menu applies to.
@@ -170,3 +144,9 @@ components:
             type: string
           example:
           - gb-site-001
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.
