@@ -2,7 +2,20 @@ aid: deliveroo
 url: https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/apis.yml
 name: Deliveroo
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/deliveroo.png
 tags:
   - Food Delivery
   - Grocery
@@ -17,133 +30,161 @@ created: '2026-05-05'
 modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
-  - aid: deliveroo:order-api
-    name: Deliveroo Order API
-    tags:
-      - Orders
-      - Webhooks
-      - Restaurants
-      - Real-Time
-      - Riders
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.deliveroo.com/v2.0/docs
-    baseURL: https://api.developers.deliveroo.com
-    description: >-
-      The Deliveroo Order API is part of the Partner Platform Suite and manages restaurant orders and rider lifecycle
-      events in real time. Orders and rider status updates are delivered to integrators via webhooks so that POS,
-      kitchen display, and fulfillment systems can stay in sync without polling. Authentication uses OAuth-based
-      credentials provisioned through the Deliveroo Developer Portal.
-    properties:
-      - type: Documentation
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: Webhooks
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: OpenAPI
-        url: openapi/deliveroo-order-api-openapi.yml
-      - type: AsyncAPI
-        url: asyncapi/deliveroo-webhooks-asyncapi.yml
-  - aid: deliveroo:menu-api
-    name: Deliveroo Menu API
-    tags:
-      - Menus
-      - Pricing
-      - Stock
-      - Allergens
-      - POS
-      - Restaurants
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.deliveroo.com/v2.0/docs
-    baseURL: https://api.developers.deliveroo.com
-    description: >-
-      The Deliveroo Menu API lets Partner Platform integrators publish and maintain restaurant menus, including stock
-      levels, prices, POS identifiers, and allergen data. Menu updates can be pushed in near real time so that the
-      consumer-facing Deliveroo experience reflects merchant inventory and pricing changes.
-    properties:
-      - type: Documentation
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: OpenAPI
-        url: openapi/deliveroo-menu-api-openapi.yml
-  - aid: deliveroo:site-api
-    name: Deliveroo Site API
-    tags:
-      - Sites
-      - Restaurants
-      - Hours
-      - Status
-      - Operations
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.deliveroo.com/v2.0/docs
-    baseURL: https://api.developers.deliveroo.com
-    description: >-
-      The Deliveroo Site API controls a merchant site's open/close status, operating hours, and workload mode (e.g.,
-      busy, paused). It is shared by both the Partner Platform Suite and the Signature Suite so that restaurants and
-      merchants can govern fulfillment availability programmatically from their own systems.
-    properties:
-      - type: Documentation
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: OpenAPI
-        url: openapi/deliveroo-site-api-openapi.yml
-  - aid: deliveroo:catalogue-api
-    name: Deliveroo Catalogue API
-    tags:
-      - Catalogue
-      - Grocery
-      - Retail
-      - Products
-      - Inventory
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.deliveroo.com/v2.0/docs
-    baseURL: https://api.developers.deliveroo.com
-    description: >-
-      The Deliveroo Catalogue API is part of the Retail Platform Suite and manages master grocery catalogues of up to
-      30,000 items per merchant. Retailers use it to publish product data, variations, and availability across one or
-      more retail sites operating on Deliveroo.
-    properties:
-      - type: Documentation
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: OpenAPI
-        url: openapi/deliveroo-catalogue-api-openapi.yml
-  - aid: deliveroo:picking-api
-    name: Deliveroo Picking API
-    tags:
-      - Picking
-      - Grocery
-      - Retail
-      - Order Fulfillment
-      - Substitutions
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.deliveroo.com/v2.0/docs
-    baseURL: https://api.developers.deliveroo.com
-    description: >-
-      The Deliveroo Picking API supports the Retail Platform Suite picking flow, letting grocery operators process
-      incoming orders, remove unavailable items, propose substitutions, and accept or reject orders prior to handoff to
-      a courier.
-    properties:
-      - type: Documentation
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: OpenAPI
-        url: openapi/deliveroo-picking-api-openapi.yml
-  - aid: deliveroo:signature-api
-    name: Deliveroo Signature API
-    tags:
-      - On-Demand Delivery
-      - Couriers
-      - Logistics
-      - Merchant Integration
-      - Custom Apps
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api-docs.deliveroo.com/v2.0/docs
-    baseURL: https://api.developers.deliveroo.com
-    description: >-
-      The Deliveroo Signature API powers the Signature Suite, which lets merchants request on-demand delivery by
-      Deliveroo couriers for orders that originate in their own apps, websites, or channels — for example, a
-      restaurant's branded ordering app dispatching a Deliveroo rider.
-    properties:
-      - type: Documentation
-        url: https://api-docs.deliveroo.com/v2.0/docs
-      - type: OpenAPI
-        url: openapi/deliveroo-signature-api-openapi.yml
+- aid: deliveroo:catalogue-api
+  name: Deliveroo Catalogue API
+  tags:
+  - Catalogue
+  - Grocery
+  - Retail
+  - Products
+  - Inventory
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  description: >-
+    The Deliveroo Catalogue API is part of the Retail Platform Suite and manages master grocery catalogues
+    of up to 30,000 items per merchant. Retailers use it to publish product data, variations, and availability
+    across one or more retail sites operating on Deliveroo.
+  properties:
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: OpenAPI
+    url: openapi/deliveroo-catalogue-api-openapi.yml
+- aid: deliveroo:picking-api
+  name: Deliveroo Picking API
+  tags:
+  - Picking
+  - Grocery
+  - Retail
+  - Order Fulfillment
+  - Substitutions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  description: >-
+    The Deliveroo Picking API supports the Retail Platform Suite picking flow, letting grocery operators
+    process incoming orders, remove unavailable items, propose substitutions, and accept or reject orders
+    prior to handoff to a courier.
+  properties:
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: OpenAPI
+    url: openapi/deliveroo-picking-api-openapi.yml
+- aid: deliveroo:deliveroo-deliveries-api
+  name: Deliveroo Deliveries API
+  description: The Deliveries API from Deliveroo — 1 operation(s) for deliveries.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Deliveries
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-deliveries-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
+- aid: deliveroo:deliveroo-menus-api
+  name: Deliveroo Menus API
+  description: The Menus API from Deliveroo — 1 operation(s) for menus.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Menus
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-menus-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
+- aid: deliveroo:deliveroo-opening-hours-api
+  name: Deliveroo Opening Hours API
+  description: The Opening Hours API from Deliveroo — 1 operation(s) for opening hours.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Opening Hours
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-opening-hours-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
+- aid: deliveroo:deliveroo-orders-api
+  name: Deliveroo Orders API
+  description: The Orders API from Deliveroo — 2 operation(s) for orders.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-orders-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
+- aid: deliveroo:deliveroo-pricing-api
+  name: Deliveroo Pricing API
+  description: The Pricing API from Deliveroo — 1 operation(s) for pricing.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Pricing
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-pricing-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
+- aid: deliveroo:deliveroo-quotes-api
+  name: Deliveroo Quotes API
+  description: The Quotes API from Deliveroo — 1 operation(s) for quotes.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
+- aid: deliveroo:deliveroo-sync-status-api
+  name: Deliveroo Sync Status API
+  description: The Sync Status API from Deliveroo — 1 operation(s) for sync status.
+  humanURL: https://api-docs.deliveroo.com/v2.0/docs
+  baseURL: https://api.developers.deliveroo.com
+  tags:
+  - Sync Status
+  properties:
+  - type: OpenAPI
+    url: openapi/deliveroo-sync-status-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: Webhooks
+    url: https://api-docs.deliveroo.com/v2.0/docs
+  - type: AsyncAPI
+    url: asyncapi/deliveroo-webhooks-asyncapi.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/deliveroo/overview
   - type: AgenticAccess
     url: agentic-access/deliveroo-agentic-access.yml
   - type: VulnerabilityDisclosure
