@@ -1,0 +1,247 @@
+{
+  "info": {
+    "_postman_id": "ef9e4de8-8be7-4cae-8661-1b092a032d19",
+    "name": "Deliveroo Catalogue Deliveries API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:38.000Z",
+    "updatedAt": "2026-07-28T01:29:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ef9e4de8-8be7-4cae-8661-1b092a032d19"
+  },
+  "item": [
+    {
+      "name": "daas",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "deliveries",
+              "item": [
+                {
+                  "name": "Deliveroo Schedule Delivery",
+                  "id": "d9a21532-3fb0-4e71-8754-fccc992ce1bc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/daas/v1/deliveries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "daas",
+                        "v1",
+                        "deliveries"
+                      ]
+                    },
+                    "description": "Schedule a delivery via Deliveroo's delivery-as-a-service offering for an order managed by the merchant's own systems."
+                  },
+                  "response": [
+                    {
+                      "id": "0697f965-d3ff-483f-a49d-d852994034b7",
+                      "name": "The scheduled delivery.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/daas/v1/deliveries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "daas",
+                            "v1",
+                            "deliveries"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:29:38.000Z",
+                      "updatedAt": "2026-07-28T01:29:38.000Z",
+                      "uid": "35240-0697f965-d3ff-483f-a49d-d852994034b7"
+                    },
+                    {
+                      "id": "b258b67c-cd1f-4df3-a59a-5d6826b7e550",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/daas/v1/deliveries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "daas",
+                            "v1",
+                            "deliveries"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:29:38.000Z",
+                      "updatedAt": "2026-07-28T01:29:38.000Z",
+                      "uid": "35240-b258b67c-cd1f-4df3-a59a-5d6826b7e550"
+                    },
+                    {
+                      "id": "6179a287-424d-4295-aa5f-503d65ef5aee",
+                      "name": "Server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/daas/v1/deliveries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "daas",
+                            "v1",
+                            "deliveries"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:29:38.000Z",
+                      "updatedAt": "2026-07-28T01:29:38.000Z",
+                      "uid": "35240-6179a287-424d-4295-aa5f-503d65ef5aee"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:29:38.000Z",
+                  "updatedAt": "2026-07-28T01:29:38.000Z",
+                  "uid": "35240-d9a21532-3fb0-4e71-8754-fccc992ce1bc"
+                }
+              ],
+              "id": "181a268b-666a-4e85-8a03-dac62587587a",
+              "createdAt": "2026-07-28T01:29:38.000Z",
+              "updatedAt": "2026-07-28T01:29:38.000Z",
+              "uid": "35240-181a268b-666a-4e85-8a03-dac62587587a"
+            }
+          ],
+          "id": "3452d485-b754-4299-a069-6015a91a3c80",
+          "createdAt": "2026-07-28T01:29:38.000Z",
+          "updatedAt": "2026-07-28T01:29:38.000Z",
+          "uid": "35240-3452d485-b754-4299-a069-6015a91a3c80"
+        }
+      ],
+      "id": "8ab134f4-b2ca-4aa9-90c5-106884ba48ce",
+      "createdAt": "2026-07-28T01:29:38.000Z",
+      "updatedAt": "2026-07-28T01:29:38.000Z",
+      "uid": "35240-8ab134f4-b2ca-4aa9-90c5-106884ba48ce"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Menu API
+  description: >-
+    Part of the Deliveroo Partner Platform Suite. The Menu API lets integrators
+    publish and retrieve restaurant menus, including items, modifiers, prices,
+    POS identifiers, stock levels, and allergen data, so that the consumer-facing
+    Deliveroo experience reflects merchant inventory and pricing. Menu uploads
+    are processed asynchronously and the result is delivered via a menu webhook.
+    Authentication uses an OAuth 2.0 client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+tags:
+- name: Menus
+security:
+- bearerAuth: []
+paths:
+  /menu/v1/brands/{brand_id}/menus/{id}:
+    put:
+      operationId: uploadMenu
+      summary: Deliveroo Upload Menu
+      description: >-
+        Create a menu or update an existing menu so that customers see the most
+        up-to-date offerings, stock, pricing, and allergen data. Menu processing
+        is asynchronous; the result is delivered via the menu webhook. Rate
+        limited to 1 request per minute per site.
+      tags:
+      - Menus
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: brand_id
+        in: path
+        required: true
+        description: The brand identifier.
+        schema:
+          type: string
+        example: gb-12345
+      - name: id
+        in: path
+        required: true
+        description: The menu identifier.
+        schema:
+          type: string
+        example: gb-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuUpload'
+            examples:
+              UploadMenuRequestExample:
+                summary: Default uploadMenu request
+                x-microcks-default: true
+                value:
+                  name: Lunch Menu
+                  menu: {}
+                  site_ids:
+                  - example
+      responses:
+        '200':
+          description: OK. The menu upload was accepted for asynchronous processing.
+        '400':
+          description: Bad request.
+        '404':
+          description: Not found.
+        '409':
+          description: Conflict.
+        '422':
+          description: Unprocessable entity.
+        '429':
+          description: Too many requests.
+        '500':
+          description: Server error.
+        '503':
+          description: Service unavailable.
+    get:
+      operationId: getMenu
+      summary: Deliveroo Get Menu
+      description: >-
+        Retrieve a menu previously created via Upload Menu and view the latest
+        status of the menu in Deliveroo.
+      tags:
+      - Menus
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: brand_id
+        in: path
+        required: true
+        description: The brand identifier.
+        schema:
+          type: string
+        example: gb-12345
+      - name: id
+        in: path
+        required: true
+        description: The menu identifier.
+        schema:
+          type: string
+        example: gb-12345
+      responses:
+        '200':
+          description: The requested menu.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuUpload'
+              examples:
+                GetMenu200Example:
+                  summary: Default getMenu 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Lunch Menu
+                    menu: {}
+                    site_ids:
+                    - example
+        '404':
+          description: Not found.
+        '500':
+          description: Server error.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth 2.0 client credentials access token obtained from
+        https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after
+        5 minutes; no refresh tokens are issued.
+  schemas:
+    MenuUpload:
+      title: Menu Upload
+      description: >-
+        Request body for creating or updating a menu.
+        x-schema-source: documentation
+        x-source-url: https://api-docs.deliveroo.com/reference/put_v1-brands-brand-id-menus-id
+      type: object
+      required:
+      - name
+      - menu
+      - site_ids
+      properties:
+        name:
+          type: string
+          description: A human-readable name for the menu.
+          example: Lunch Menu
+        menu:
+          type: object
+          description: >-
+            The menu document containing categories, items, modifiers, prices,
+            POS identifiers, stock, and allergen data.
+        site_ids:
+          type: array
+          description: The site identifiers this menu applies to.
+          items:
+            type: string
+          example:
+          - gb-site-001

@@ -1,0 +1,1417 @@
+{
+  "info": {
+    "_postman_id": "143a0bee-402e-491b-bfa5-0c1baca37e2f",
+    "name": "Deliveroo Catalogue Picking API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:37.000Z",
+    "updatedAt": "2026-07-28T01:29:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-143a0bee-402e-491b-bfa5-0c1baca37e2f"
+  },
+  "item": [
+    {
+      "name": "picking",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "sites",
+              "item": [
+                {
+                  "name": "{restaurant_id}",
+                  "item": [
+                    {
+                      "name": "orders",
+                      "item": [
+                        {
+                          "name": "active",
+                          "item": [
+                            {
+                              "name": "Deliveroo Fetch Active Orders",
+                              "id": "357448ae-ad05-48fb-b45d-55746bf3cd3b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/sites/:restaurant_id/orders/active?page=<integer>&per_page=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "sites",
+                                    ":restaurant_id",
+                                    "orders",
+                                    "active"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The zero-based page index.",
+                                      "key": "page",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "(Required) The number of orders per page.",
+                                      "key": "per_page",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "debc01a3-e95e-4bb1-99cf-21805d5f2afe",
+                                      "key": "restaurant_id",
+                                      "value": "<string>",
+                                      "description": "(Required) The site (restaurant) identifier."
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve the active orders for a site, paginated."
+                              },
+                              "response": [
+                                {
+                                  "id": "8fc73af6-f7af-4d90-9c8d-e4ca65c7dd80",
+                                  "name": "A paginated list of active orders.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/picking/v1/sites/:restaurant_id/orders/active?page=<integer>&per_page=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "picking",
+                                        "v1",
+                                        "sites",
+                                        ":restaurant_id",
+                                        "orders",
+                                        "active"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The zero-based page index.",
+                                          "key": "page",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "(Required) The number of orders per page.",
+                                          "key": "per_page",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "restaurant_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:37.000Z",
+                                  "updatedAt": "2026-07-28T01:29:37.000Z",
+                                  "uid": "35240-8fc73af6-f7af-4d90-9c8d-e4ca65c7dd80"
+                                },
+                                {
+                                  "id": "bd76dae2-956a-4330-ae27-724b2cf8b988",
+                                  "name": "Bad request.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/picking/v1/sites/:restaurant_id/orders/active?page=<integer>&per_page=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "picking",
+                                        "v1",
+                                        "sites",
+                                        ":restaurant_id",
+                                        "orders",
+                                        "active"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The zero-based page index.",
+                                          "key": "page",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "(Required) The number of orders per page.",
+                                          "key": "per_page",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "restaurant_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:37.000Z",
+                                  "updatedAt": "2026-07-28T01:29:37.000Z",
+                                  "uid": "35240-bd76dae2-956a-4330-ae27-724b2cf8b988"
+                                },
+                                {
+                                  "id": "1fecdac4-fb22-478f-b758-3f21ccb24380",
+                                  "name": "Server error.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/picking/v1/sites/:restaurant_id/orders/active?page=<integer>&per_page=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "picking",
+                                        "v1",
+                                        "sites",
+                                        ":restaurant_id",
+                                        "orders",
+                                        "active"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The zero-based page index.",
+                                          "key": "page",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "(Required) The number of orders per page.",
+                                          "key": "per_page",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "restaurant_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:37.000Z",
+                                  "updatedAt": "2026-07-28T01:29:37.000Z",
+                                  "uid": "35240-1fecdac4-fb22-478f-b758-3f21ccb24380"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-357448ae-ad05-48fb-b45d-55746bf3cd3b"
+                            }
+                          ],
+                          "id": "5f70a0bf-4808-446a-a360-6b50057cd874",
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-5f70a0bf-4808-446a-a360-6b50057cd874"
+                        }
+                      ],
+                      "id": "55b1b1b6-6703-44a9-b32a-57f9a647194e",
+                      "createdAt": "2026-07-28T01:29:37.000Z",
+                      "updatedAt": "2026-07-28T01:29:37.000Z",
+                      "uid": "35240-55b1b1b6-6703-44a9-b32a-57f9a647194e"
+                    }
+                  ],
+                  "id": "b6ad6c78-3669-47fd-aa44-7ac61277d52f",
+                  "createdAt": "2026-07-28T01:29:37.000Z",
+                  "updatedAt": "2026-07-28T01:29:37.000Z",
+                  "uid": "35240-b6ad6c78-3669-47fd-aa44-7ac61277d52f"
+                }
+              ],
+              "id": "43f56180-fde8-46bb-8a3d-f283dcf455f1",
+              "createdAt": "2026-07-28T01:29:37.000Z",
+              "updatedAt": "2026-07-28T01:29:37.000Z",
+              "uid": "35240-43f56180-fde8-46bb-8a3d-f283dcf455f1"
+            },
+            {
+              "name": "orders",
+              "item": [
+                {
+                  "name": "{order_id}",
+                  "item": [
+                    {
+                      "name": "accept",
+                      "item": [
+                        {
+                          "name": "Deliveroo Accept Order",
+                          "id": "6de58da1-dd4c-4134-b1f9-c9c05b20a8ce",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v1",
+                                "orders",
+                                ":order_id",
+                                "accept"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "84ebc65a-31e7-4f07-8f56-2d63015ec0d2",
+                                  "key": "order_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the order."
+                                }
+                              ]
+                            },
+                            "description": "Accept an order. The order must be in PLACED status. Rate limited to 2 requests per second per order."
+                          },
+                          "response": [
+                            {
+                              "id": "fdf80a35-a841-4974-9e90-f8f5f7951af1",
+                              "name": "Order status information.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "accept"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-fdf80a35-a841-4974-9e90-f8f5f7951af1"
+                            },
+                            {
+                              "id": "8d2213e4-999a-43f2-8779-2c36511e41c2",
+                              "name": "Bad request.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "accept"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-8d2213e4-999a-43f2-8779-2c36511e41c2"
+                            },
+                            {
+                              "id": "189530db-1852-4330-9021-72bd26dfab46",
+                              "name": "Invalid API key/token or disabled integration.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "accept"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-189530db-1852-4330-9021-72bd26dfab46"
+                            },
+                            {
+                              "id": "86b051a6-c2a7-4e7c-87d1-63113ca02059",
+                              "name": "Order not found.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "accept"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-86b051a6-c2a7-4e7c-87d1-63113ca02059"
+                            },
+                            {
+                              "id": "7c640f8e-6a7d-4c0d-9984-b903e9fe2bc9",
+                              "name": "Rate limit exceeded (2 requests/second/order).",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "accept"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-7c640f8e-6a7d-4c0d-9984-b903e9fe2bc9"
+                            },
+                            {
+                              "id": "f97ce3c8-e09d-4ca3-b7cb-852a63d3c9a0",
+                              "name": "Server error.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/accept",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "accept"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-f97ce3c8-e09d-4ca3-b7cb-852a63d3c9a0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-6de58da1-dd4c-4134-b1f9-c9c05b20a8ce"
+                        }
+                      ],
+                      "id": "3ebfa84d-d864-4503-b744-5a23fe499917",
+                      "createdAt": "2026-07-28T01:29:37.000Z",
+                      "updatedAt": "2026-07-28T01:29:37.000Z",
+                      "uid": "35240-3ebfa84d-d864-4503-b744-5a23fe499917"
+                    },
+                    {
+                      "name": "reject",
+                      "item": [
+                        {
+                          "name": "Deliveroo Reject Order",
+                          "id": "373060dc-ff41-4350-93f0-73b3fd8a93c3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reject_reason\": \"INGREDIENT_UNAVAILABLE\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v1/orders/:order_id/reject",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v1",
+                                "orders",
+                                ":order_id",
+                                "reject"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3122a4e7-92d2-44ec-a983-7edbc3f7e16f",
+                                  "key": "order_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the order."
+                                }
+                              ]
+                            },
+                            "description": "Reject an order. The order must be in PLACED status and may only be rejected once. Rate limited to 1 request per order per 30 seconds."
+                          },
+                          "response": [
+                            {
+                              "id": "6452b695-ef82-4eaa-8f28-8720e763b4d8",
+                              "name": "Order rejected.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"reject_reason\": \"INGREDIENT_UNAVAILABLE\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/reject",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "reject"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-6452b695-ef82-4eaa-8f28-8720e763b4d8"
+                            },
+                            {
+                              "id": "304b0987-74f9-492d-be8c-16dd75e3f280",
+                              "name": "Bad request.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"reject_reason\": \"INGREDIENT_UNAVAILABLE\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/reject",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "reject"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-304b0987-74f9-492d-be8c-16dd75e3f280"
+                            },
+                            {
+                              "id": "131ddbf1-dc92-45c9-939c-43001ee9d334",
+                              "name": "Order not found.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"reject_reason\": \"INGREDIENT_UNAVAILABLE\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/reject",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "reject"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-131ddbf1-dc92-45c9-939c-43001ee9d334"
+                            },
+                            {
+                              "id": "e68efd08-c18e-46dc-8bce-56be4b1bdfe2",
+                              "name": "Server error.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"reject_reason\": \"INGREDIENT_UNAVAILABLE\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/reject",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "reject"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-e68efd08-c18e-46dc-8bce-56be4b1bdfe2"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-373060dc-ff41-4350-93f0-73b3fd8a93c3"
+                        }
+                      ],
+                      "id": "f5b063aa-e7c7-4034-9bf1-fca5d04c59dc",
+                      "createdAt": "2026-07-28T01:29:37.000Z",
+                      "updatedAt": "2026-07-28T01:29:37.000Z",
+                      "uid": "35240-f5b063aa-e7c7-4034-9bf1-fca5d04c59dc"
+                    },
+                    {
+                      "name": "start_picking",
+                      "item": [
+                        {
+                          "name": "Deliveroo Start Picking Process for Order",
+                          "id": "237aa02c-d5de-4028-87e6-533378627ce1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v1/orders/:order_id/start_picking",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v1",
+                                "orders",
+                                ":order_id",
+                                "start_picking"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2ec3e8e7-cd0e-4585-bfe8-208cc84a3b96",
+                                  "key": "order_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the order."
+                                }
+                              ]
+                            },
+                            "description": "Inform Deliveroo that the picking process for an order has started."
+                          },
+                          "response": [
+                            {
+                              "id": "82463c11-1a34-4f4f-9ee9-b3c48ee25686",
+                              "name": "Picking process started.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/start_picking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "start_picking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-82463c11-1a34-4f4f-9ee9-b3c48ee25686"
+                            },
+                            {
+                              "id": "323f7aba-b29f-4e6a-a468-32ff53a2d056",
+                              "name": "Bad request.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/start_picking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "start_picking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-323f7aba-b29f-4e6a-a468-32ff53a2d056"
+                            },
+                            {
+                              "id": "e93266fd-9009-4d77-8b14-a034d65845f9",
+                              "name": "Order not found.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/start_picking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "start_picking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-e93266fd-9009-4d77-8b14-a034d65845f9"
+                            },
+                            {
+                              "id": "1d50835f-d339-4538-915c-0a6c79e11683",
+                              "name": "Server error.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/picking/v1/orders/:order_id/start_picking",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "picking",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "start_picking"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:29:37.000Z",
+                              "updatedAt": "2026-07-28T01:29:37.000Z",
+                              "uid": "35240-1d50835f-d339-4538-915c-0a6c79e11683"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-237aa02c-d5de-4028-87e6-533378627ce1"
+                        }
+                      ],
+                      "id": "3c38be7a-c035-4b63-8e74-8bac97093e45",
+                      "createdAt": "2026-07-28T01:29:37.000Z",
+                      "updatedAt": "2026-07-28T01:29:37.000Z",
+                      "uid": "35240-3c38be7a-c035-4b63-8e74-8bac97093e45"
+                    }
+                  ],
+                  "id": "a5c4680f-3cae-4e03-b271-fe44f7090a97",
+                  "createdAt": "2026-07-28T01:29:37.000Z",
+                  "updatedAt": "2026-07-28T01:29:37.000Z",
+                  "uid": "35240-a5c4680f-3cae-4e03-b271-fe44f7090a97"
+                }
+              ],
+              "id": "e5d4b8a9-606c-4c8c-a41e-9345f290d397",
+              "createdAt": "2026-07-28T01:29:37.000Z",
+              "updatedAt": "2026-07-28T01:29:37.000Z",
+              "uid": "35240-e5d4b8a9-606c-4c8c-a41e-9345f290d397"
+            }
+          ],
+          "id": "395b83cc-e14b-47de-b890-13a23735234d",
+          "createdAt": "2026-07-28T01:29:37.000Z",
+          "updatedAt": "2026-07-28T01:29:37.000Z",
+          "uid": "35240-395b83cc-e14b-47de-b890-13a23735234d"
+        },
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "orders",
+              "item": [
+                {
+                  "name": "{order_id}",
+                  "item": [
+                    {
+                      "name": "Deliveroo Update Order Items Availability",
+                      "id": "ae5932a9-160a-4999-94c6-f5cef06b0be6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"item_amendments\": [\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/picking/v2/orders/:order_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "picking",
+                            "v2",
+                            "orders",
+                            ":order_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f6d751ec-3fd3-48fc-b6fd-d2dadc646d3f",
+                              "key": "order_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the order."
+                            }
+                          ]
+                        },
+                        "description": "Apply item amendments, such as removing unavailable items or proposing substitutions, before accepting or rejecting an order. Rate limited to 2 requests per second per order."
+                      },
+                      "response": [
+                        {
+                          "id": "442d530f-84e0-419c-83b5-d6d8b6db5277",
+                          "name": "Item availability updated.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"item_amendments\": [\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v2/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v2",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-442d530f-84e0-419c-83b5-d6d8b6db5277"
+                        },
+                        {
+                          "id": "dc3fc34c-f127-4290-92a3-179d910e3f9c",
+                          "name": "Validation failed for one or more items in the request.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"item_amendments\": [\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v2/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v2",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-dc3fc34c-f127-4290-92a3-179d910e3f9c"
+                        },
+                        {
+                          "id": "3c2d9a52-a228-4331-8805-cac040d33593",
+                          "name": "Order not found.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"item_amendments\": [\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v2/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v2",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-3c2d9a52-a228-4331-8805-cac040d33593"
+                        },
+                        {
+                          "id": "ea99765c-4fa2-4a23-87cd-9efe34d9e28d",
+                          "name": "Server error.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"item_amendments\": [\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/picking/v2/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "picking",
+                                "v2",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-ea99765c-4fa2-4a23-87cd-9efe34d9e28d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:37.000Z",
+                      "updatedAt": "2026-07-28T01:29:37.000Z",
+                      "uid": "35240-ae5932a9-160a-4999-94c6-f5cef06b0be6"
+                    }
+                  ],
+                  "id": "4192145a-70b7-4c70-b8eb-973cd14d806a",
+                  "createdAt": "2026-07-28T01:29:37.000Z",
+                  "updatedAt": "2026-07-28T01:29:37.000Z",
+                  "uid": "35240-4192145a-70b7-4c70-b8eb-973cd14d806a"
+                }
+              ],
+              "id": "3a9e9cb2-549e-4403-bfde-9523505928e1",
+              "createdAt": "2026-07-28T01:29:37.000Z",
+              "updatedAt": "2026-07-28T01:29:37.000Z",
+              "uid": "35240-3a9e9cb2-549e-4403-bfde-9523505928e1"
+            }
+          ],
+          "id": "51783af2-d53b-462e-8cf0-c2532052f6da",
+          "createdAt": "2026-07-28T01:29:37.000Z",
+          "updatedAt": "2026-07-28T01:29:37.000Z",
+          "uid": "35240-51783af2-d53b-462e-8cf0-c2532052f6da"
+        }
+      ],
+      "id": "9dfd7e99-66d6-46cd-8fb8-20b77aaabeb5",
+      "createdAt": "2026-07-28T01:29:37.000Z",
+      "updatedAt": "2026-07-28T01:29:37.000Z",
+      "uid": "35240-9dfd7e99-66d6-46cd-8fb8-20b77aaabeb5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

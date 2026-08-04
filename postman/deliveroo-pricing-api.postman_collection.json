@@ -1,0 +1,416 @@
+{
+  "info": {
+    "_postman_id": "1ed53d2d-d668-42ba-bcfe-b20ec2763ba0",
+    "name": "Deliveroo Catalogue Pricing API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:17.000Z",
+    "updatedAt": "2026-07-28T01:30:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1ed53d2d-d668-42ba-bcfe-b20ec2763ba0"
+  },
+  "item": [
+    {
+      "name": "brands",
+      "item": [
+        {
+          "name": "{brand_id}",
+          "item": [
+            {
+              "name": "catalogue",
+              "item": [
+                {
+                  "name": "{catalogue_id}",
+                  "item": [
+                    {
+                      "name": "sites",
+                      "item": [
+                        {
+                          "name": "{site_id}",
+                          "item": [
+                            {
+                              "name": "prices",
+                              "item": [
+                                {
+                                  "name": "Deliveroo Update Prices Per Site",
+                                  "id": "5ac5a038-38fa-484a-8793-22ad11b5ce3b",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "brands",
+                                        ":brand_id",
+                                        "catalogue",
+                                        ":catalogue_id",
+                                        "sites",
+                                        ":site_id",
+                                        "prices"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "61dfe4c2-0669-4e95-974d-997ce76c0ff1",
+                                          "key": "brand_id",
+                                          "value": "<string>",
+                                          "description": "(Required) The brand identifier."
+                                        },
+                                        {
+                                          "id": "782b57b4-a459-409f-8128-e5924a85fe0c",
+                                          "key": "catalogue_id",
+                                          "value": "<string>",
+                                          "description": "(Required) The catalogue identifier."
+                                        },
+                                        {
+                                          "id": "1c70f31c-f23a-4514-abf0-9c6eac11985c",
+                                          "key": "site_id",
+                                          "value": "<string>",
+                                          "description": "(Required) The site identifier whose prices are being overridden."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Override item prices at the site level, enabling site-specific pricing without creating multiple master catalogues."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "36718997-b606-461a-a3bd-7840129a65ad",
+                                      "name": "Prices updated.",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "brands",
+                                            ":brand_id",
+                                            "catalogue",
+                                            ":catalogue_id",
+                                            "sites",
+                                            ":site_id",
+                                            "prices"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "brand_id"
+                                            },
+                                            {
+                                              "key": "catalogue_id"
+                                            },
+                                            {
+                                              "key": "site_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:30:18.000Z",
+                                      "updatedAt": "2026-07-28T01:30:18.000Z",
+                                      "uid": "35240-36718997-b606-461a-a3bd-7840129a65ad"
+                                    },
+                                    {
+                                      "id": "c7b25527-0bd5-4e2f-9cf7-ed5fa4ac3888",
+                                      "name": "Bad request.",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "brands",
+                                            ":brand_id",
+                                            "catalogue",
+                                            ":catalogue_id",
+                                            "sites",
+                                            ":site_id",
+                                            "prices"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "brand_id"
+                                            },
+                                            {
+                                              "key": "catalogue_id"
+                                            },
+                                            {
+                                              "key": "site_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:30:18.000Z",
+                                      "updatedAt": "2026-07-28T01:30:18.000Z",
+                                      "uid": "35240-c7b25527-0bd5-4e2f-9cf7-ed5fa4ac3888"
+                                    },
+                                    {
+                                      "id": "f4b62d09-ea9e-453f-bde0-c5105ce2ad42",
+                                      "name": "Catalogue or site not found.",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "brands",
+                                            ":brand_id",
+                                            "catalogue",
+                                            ":catalogue_id",
+                                            "sites",
+                                            ":site_id",
+                                            "prices"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "brand_id"
+                                            },
+                                            {
+                                              "key": "catalogue_id"
+                                            },
+                                            {
+                                              "key": "site_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:30:18.000Z",
+                                      "updatedAt": "2026-07-28T01:30:18.000Z",
+                                      "uid": "35240-f4b62d09-ea9e-453f-bde0-c5105ce2ad42"
+                                    },
+                                    {
+                                      "id": "56253988-f793-4725-895f-5a8e31f8d576",
+                                      "name": "Server error.",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "brands",
+                                            ":brand_id",
+                                            "catalogue",
+                                            ":catalogue_id",
+                                            "sites",
+                                            ":site_id",
+                                            "prices"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "brand_id"
+                                            },
+                                            {
+                                              "key": "catalogue_id"
+                                            },
+                                            {
+                                              "key": "site_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:30:18.000Z",
+                                      "updatedAt": "2026-07-28T01:30:18.000Z",
+                                      "uid": "35240-56253988-f793-4725-895f-5a8e31f8d576"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:30:18.000Z",
+                                  "updatedAt": "2026-07-28T01:30:18.000Z",
+                                  "uid": "35240-5ac5a038-38fa-484a-8793-22ad11b5ce3b"
+                                }
+                              ],
+                              "id": "73ae3aee-033c-41b4-992d-51bef2b8ebfd",
+                              "createdAt": "2026-07-28T01:30:18.000Z",
+                              "updatedAt": "2026-07-28T01:30:18.000Z",
+                              "uid": "35240-73ae3aee-033c-41b4-992d-51bef2b8ebfd"
+                            }
+                          ],
+                          "id": "9c463b1c-a91e-4f2c-869d-ebda7043fd82",
+                          "createdAt": "2026-07-28T01:30:18.000Z",
+                          "updatedAt": "2026-07-28T01:30:18.000Z",
+                          "uid": "35240-9c463b1c-a91e-4f2c-869d-ebda7043fd82"
+                        }
+                      ],
+                      "id": "2cc67c43-01b0-4a2b-b6d9-bd3248a26cb5",
+                      "createdAt": "2026-07-28T01:30:18.000Z",
+                      "updatedAt": "2026-07-28T01:30:18.000Z",
+                      "uid": "35240-2cc67c43-01b0-4a2b-b6d9-bd3248a26cb5"
+                    }
+                  ],
+                  "id": "ccca4b9d-87e5-4678-a672-1661db7cebbb",
+                  "createdAt": "2026-07-28T01:30:18.000Z",
+                  "updatedAt": "2026-07-28T01:30:18.000Z",
+                  "uid": "35240-ccca4b9d-87e5-4678-a672-1661db7cebbb"
+                }
+              ],
+              "id": "70ae134f-afad-42d0-9cdc-f9dcaa3c8653",
+              "createdAt": "2026-07-28T01:30:18.000Z",
+              "updatedAt": "2026-07-28T01:30:18.000Z",
+              "uid": "35240-70ae134f-afad-42d0-9cdc-f9dcaa3c8653"
+            }
+          ],
+          "id": "2b0d84e2-fc8f-4fc6-94c7-e8957fc3b10a",
+          "createdAt": "2026-07-28T01:30:18.000Z",
+          "updatedAt": "2026-07-28T01:30:18.000Z",
+          "uid": "35240-2b0d84e2-fc8f-4fc6-94c7-e8957fc3b10a"
+        }
+      ],
+      "id": "49f4ae82-394e-4a59-8bd0-2c835e8258cc",
+      "createdAt": "2026-07-28T01:30:18.000Z",
+      "updatedAt": "2026-07-28T01:30:18.000Z",
+      "uid": "35240-49f4ae82-394e-4a59-8bd0-2c835e8258cc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

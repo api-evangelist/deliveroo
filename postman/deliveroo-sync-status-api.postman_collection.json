@@ -1,0 +1,464 @@
+{
+  "info": {
+    "_postman_id": "ce35028f-de34-44ef-bbb2-af1d98501313",
+    "name": "Deliveroo Catalogue Sync Status API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:19.000Z",
+    "updatedAt": "2026-07-28T01:30:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ce35028f-de34-44ef-bbb2-af1d98501313"
+  },
+  "item": [
+    {
+      "name": "order",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "orders",
+              "item": [
+                {
+                  "name": "{order_id}",
+                  "item": [
+                    {
+                      "name": "sync_status",
+                      "item": [
+                        {
+                          "name": "Deliveroo Create Sync Status for an Order",
+                          "id": "79bd39fa-08f2-47fc-b76e-fdcf8c16371b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "order",
+                                "v1",
+                                "orders",
+                                ":order_id",
+                                "sync_status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "65d23289-67a0-4e5c-b7f3-7b1298aa00ef",
+                                  "key": "order_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the Deliveroo order."
+                                }
+                              ]
+                            },
+                            "description": "Report whether the order was successfully sent to the site's in-store system. If Deliveroo does not receive a sync status within 3 minutes, or receives a failed status, it prompts site staff via the Deliveroo tablet to check their in-store system."
+                          },
+                          "response": [
+                            {
+                              "id": "fb356425-5cfc-43bd-928c-deed1288eba0",
+                              "name": "Everything worked as expected.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "order",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "sync_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:30:20.000Z",
+                              "updatedAt": "2026-07-28T01:30:20.000Z",
+                              "uid": "35240-fb356425-5cfc-43bd-928c-deed1288eba0"
+                            },
+                            {
+                              "id": "995925b6-ab0e-42f1-bade-3aa2db6c7b00",
+                              "name": "Bad request, missing required parameter or incorrect content type.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "order",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "sync_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:30:20.000Z",
+                              "updatedAt": "2026-07-28T01:30:20.000Z",
+                              "uid": "35240-995925b6-ab0e-42f1-bade-3aa2db6c7b00"
+                            },
+                            {
+                              "id": "ba2d4a81-01f5-43a5-a4ca-b9fc6f43847c",
+                              "name": "Invalid API credentials or disabled integration.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "order",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "sync_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:30:20.000Z",
+                              "updatedAt": "2026-07-28T01:30:20.000Z",
+                              "uid": "35240-ba2d4a81-01f5-43a5-a4ca-b9fc6f43847c"
+                            },
+                            {
+                              "id": "e947b273-db69-4d66-a790-0c1e8b112d72",
+                              "name": "An order with that ID was not found.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "order",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "sync_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:30:20.000Z",
+                              "updatedAt": "2026-07-28T01:30:20.000Z",
+                              "uid": "35240-e947b273-db69-4d66-a790-0c1e8b112d72"
+                            },
+                            {
+                              "id": "20d3510e-7a74-4ef9-ab1c-d1ab97dfc61f",
+                              "name": "Sync status was already sent or the timeout occurred.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "order",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "sync_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Conflict",
+                              "code": 409,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:30:20.000Z",
+                              "updatedAt": "2026-07-28T01:30:20.000Z",
+                              "uid": "35240-20d3510e-7a74-4ef9-ab1c-d1ab97dfc61f"
+                            },
+                            {
+                              "id": "e48114e5-0df6-442f-a45e-5e621e9172a8",
+                              "name": "Server error. Retry later.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"status\": \"failed\",\n  \"occurred_at\": \"<dateTime>\",\n  \"reason\": \"other\",\n  \"notes\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/order/v1/orders/:order_id/sync_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "order",
+                                    "v1",
+                                    "orders",
+                                    ":order_id",
+                                    "sync_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "order_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:30:20.000Z",
+                              "updatedAt": "2026-07-28T01:30:20.000Z",
+                              "uid": "35240-e48114e5-0df6-442f-a45e-5e621e9172a8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:30:20.000Z",
+                          "updatedAt": "2026-07-28T01:30:20.000Z",
+                          "uid": "35240-79bd39fa-08f2-47fc-b76e-fdcf8c16371b"
+                        }
+                      ],
+                      "id": "ec924e6d-2433-49b7-897b-d09ec86037e0",
+                      "createdAt": "2026-07-28T01:30:20.000Z",
+                      "updatedAt": "2026-07-28T01:30:20.000Z",
+                      "uid": "35240-ec924e6d-2433-49b7-897b-d09ec86037e0"
+                    }
+                  ],
+                  "id": "7adda5a3-178e-4424-b158-2cc3c3b8f0f7",
+                  "createdAt": "2026-07-28T01:30:20.000Z",
+                  "updatedAt": "2026-07-28T01:30:20.000Z",
+                  "uid": "35240-7adda5a3-178e-4424-b158-2cc3c3b8f0f7"
+                }
+              ],
+              "id": "7359f100-88ef-4272-b640-260cdda06730",
+              "createdAt": "2026-07-28T01:30:20.000Z",
+              "updatedAt": "2026-07-28T01:30:20.000Z",
+              "uid": "35240-7359f100-88ef-4272-b640-260cdda06730"
+            }
+          ],
+          "id": "56dad587-e6d9-4521-a671-9a0c6a9ded82",
+          "createdAt": "2026-07-28T01:30:20.000Z",
+          "updatedAt": "2026-07-28T01:30:20.000Z",
+          "uid": "35240-56dad587-e6d9-4521-a671-9a0c6a9ded82"
+        }
+      ],
+      "id": "00aecc28-29ed-4138-a8d3-cd6c70667fbc",
+      "createdAt": "2026-07-28T01:30:20.000Z",
+      "updatedAt": "2026-07-28T01:30:20.000Z",
+      "uid": "35240-00aecc28-29ed-4138-a8d3-cd6c70667fbc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

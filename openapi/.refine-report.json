@@ -1,0 +1,30 @@
+{
+  "provider": "deliveroo",
+  "sources": [
+    "deliveroo-catalogue-api-openapi.yml",
+    "deliveroo-deliveries-api-openapi.yml",
+    "deliveroo-menus-api-openapi.yml",
+    "deliveroo-opening-hours-api-openapi.yml",
+    "deliveroo-orders-api-openapi.yml",
+    "deliveroo-picking-api-openapi.yml",
+    "deliveroo-pricing-api-openapi.yml",
+    "deliveroo-quotes-api-openapi.yml",
+    "deliveroo-sync-status-api-openapi.yml"
+  ],
+  "outputs": [
+    "deliveroo-catalogue-api-openapi.yml",
+    "deliveroo-deliveries-api-openapi.yml",
+    "deliveroo-menus-api-openapi.yml",
+    "deliveroo-opening-hours-api-openapi.yml",
+    "deliveroo-orders-api-openapi.yml",
+    "deliveroo-picking-api-openapi.yml",
+    "deliveroo-pricing-api-openapi.yml",
+    "deliveroo-quotes-api-openapi.yml",
+    "deliveroo-sync-status-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

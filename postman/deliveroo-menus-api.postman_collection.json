@@ -1,0 +1,821 @@
+{
+  "info": {
+    "_postman_id": "f6c73b67-cc99-4c3d-94d1-ca1f65af3380",
+    "name": "Deliveroo Catalogue Menus API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:39.000Z",
+    "updatedAt": "2026-07-28T01:29:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f6c73b67-cc99-4c3d-94d1-ca1f65af3380"
+  },
+  "item": [
+    {
+      "name": "menu",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "brands",
+              "item": [
+                {
+                  "name": "{brand_id}",
+                  "item": [
+                    {
+                      "name": "menus",
+                      "item": [
+                        {
+                          "name": "{id}",
+                          "item": [
+                            {
+                              "name": "Deliveroo Upload Menu",
+                              "id": "5fe6eff0-601b-4d91-bcbe-e02606b255ef",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "menu",
+                                    "v1",
+                                    "brands",
+                                    ":brand_id",
+                                    "menus",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "656ddcc8-1134-4013-916e-eebdce47c906",
+                                      "key": "brand_id",
+                                      "value": "<string>",
+                                      "description": "(Required) The brand identifier."
+                                    },
+                                    {
+                                      "id": "451431e6-36c9-4797-a7fe-965981c09143",
+                                      "key": "id",
+                                      "value": "<string>",
+                                      "description": "(Required) The menu identifier."
+                                    }
+                                  ]
+                                },
+                                "description": "Create a menu or update an existing menu so that customers see the most up-to-date offerings, stock, pricing, and allergen data. Menu processing is asynchronous; the result is delivered via the menu webhook. Rate limited to 1 request per minute per site."
+                              },
+                              "response": [
+                                {
+                                  "id": "56af49b4-2248-487b-ba68-c089ae8c6814",
+                                  "name": "OK. The menu upload was accepted for asynchronous processing.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-56af49b4-2248-487b-ba68-c089ae8c6814"
+                                },
+                                {
+                                  "id": "d8b257a0-a5d8-4b87-8c7f-5b9b93568834",
+                                  "name": "Bad request.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-d8b257a0-a5d8-4b87-8c7f-5b9b93568834"
+                                },
+                                {
+                                  "id": "58220eda-554e-4983-acbf-8145bd07617d",
+                                  "name": "Not found.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-58220eda-554e-4983-acbf-8145bd07617d"
+                                },
+                                {
+                                  "id": "78d48867-e9a5-42ae-af2e-21f809476225",
+                                  "name": "Conflict.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Conflict",
+                                  "code": 409,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-78d48867-e9a5-42ae-af2e-21f809476225"
+                                },
+                                {
+                                  "id": "e1a7f492-d5fd-4737-8bb8-762b1a2e2b41",
+                                  "name": "Unprocessable entity.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                                  "code": 422,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-e1a7f492-d5fd-4737-8bb8-762b1a2e2b41"
+                                },
+                                {
+                                  "id": "95e97730-e4a3-4d57-a103-3f44f3d06b0a",
+                                  "name": "Too many requests.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-95e97730-e4a3-4d57-a103-3f44f3d06b0a"
+                                },
+                                {
+                                  "id": "dd2a262a-4d15-40f7-bc8c-1f619fa68315",
+                                  "name": "Server error.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-dd2a262a-4d15-40f7-bc8c-1f619fa68315"
+                                },
+                                {
+                                  "id": "63c740a1-907c-4c79-bf3c-baf42aef5719",
+                                  "name": "Service unavailable.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Service Unavailable",
+                                  "code": 503,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-63c740a1-907c-4c79-bf3c-baf42aef5719"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:29:39.000Z",
+                              "updatedAt": "2026-07-28T01:29:39.000Z",
+                              "uid": "35240-5fe6eff0-601b-4d91-bcbe-e02606b255ef"
+                            },
+                            {
+                              "name": "Deliveroo Get Menu",
+                              "id": "31e3f030-33fd-4eea-b2ab-45702d7584a4",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "menu",
+                                    "v1",
+                                    "brands",
+                                    ":brand_id",
+                                    "menus",
+                                    ":id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4bcaf598-2464-472f-bd49-2c551efc5aef",
+                                      "key": "brand_id",
+                                      "value": "<string>",
+                                      "description": "(Required) The brand identifier."
+                                    },
+                                    {
+                                      "id": "c555e0c6-cf21-4467-9a2f-ded10ca1c9ad",
+                                      "key": "id",
+                                      "value": "<string>",
+                                      "description": "(Required) The menu identifier."
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve a menu previously created via Upload Menu and view the latest status of the menu in Deliveroo."
+                              },
+                              "response": [
+                                {
+                                  "id": "02336d81-6942-4588-94a6-646040d906b2",
+                                  "name": "The requested menu.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"name\": \"<string>\",\n  \"menu\": {},\n  \"site_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-02336d81-6942-4588-94a6-646040d906b2"
+                                },
+                                {
+                                  "id": "242f479e-aeb2-40ec-a9f0-5c9a802d2c26",
+                                  "name": "Not found.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-242f479e-aeb2-40ec-a9f0-5c9a802d2c26"
+                                },
+                                {
+                                  "id": "d62d3c8f-b6de-4c40-bdec-2fc36e87d49e",
+                                  "name": "Server error.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/menu/v1/brands/:brand_id/menus/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "menu",
+                                        "v1",
+                                        "brands",
+                                        ":brand_id",
+                                        "menus",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "brand_id"
+                                        },
+                                        {
+                                          "key": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:29:39.000Z",
+                                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                                  "uid": "35240-d62d3c8f-b6de-4c40-bdec-2fc36e87d49e"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:29:39.000Z",
+                              "updatedAt": "2026-07-28T01:29:39.000Z",
+                              "uid": "35240-31e3f030-33fd-4eea-b2ab-45702d7584a4"
+                            }
+                          ],
+                          "id": "1c515fc9-b57a-4a1e-ae59-602c6677baf5",
+                          "createdAt": "2026-07-28T01:29:39.000Z",
+                          "updatedAt": "2026-07-28T01:29:39.000Z",
+                          "uid": "35240-1c515fc9-b57a-4a1e-ae59-602c6677baf5"
+                        }
+                      ],
+                      "id": "fdc745e7-de3f-483f-b62d-2c7903e7aba0",
+                      "createdAt": "2026-07-28T01:29:39.000Z",
+                      "updatedAt": "2026-07-28T01:29:39.000Z",
+                      "uid": "35240-fdc745e7-de3f-483f-b62d-2c7903e7aba0"
+                    }
+                  ],
+                  "id": "4d1b6341-cd9b-49d8-b0c0-b7e771969ba8",
+                  "createdAt": "2026-07-28T01:29:39.000Z",
+                  "updatedAt": "2026-07-28T01:29:39.000Z",
+                  "uid": "35240-4d1b6341-cd9b-49d8-b0c0-b7e771969ba8"
+                }
+              ],
+              "id": "dd92c063-5f43-45f3-953b-02144274fc06",
+              "createdAt": "2026-07-28T01:29:39.000Z",
+              "updatedAt": "2026-07-28T01:29:39.000Z",
+              "uid": "35240-dd92c063-5f43-45f3-953b-02144274fc06"
+            }
+          ],
+          "id": "70febbd6-ce95-4b1e-ba58-dc7aec0632d5",
+          "createdAt": "2026-07-28T01:29:39.000Z",
+          "updatedAt": "2026-07-28T01:29:39.000Z",
+          "uid": "35240-70febbd6-ce95-4b1e-ba58-dc7aec0632d5"
+        }
+      ],
+      "id": "c0963004-db2d-4c08-ace0-6ff012eab751",
+      "createdAt": "2026-07-28T01:29:39.000Z",
+      "updatedAt": "2026-07-28T01:29:39.000Z",
+      "uid": "35240-c0963004-db2d-4c08-ace0-6ff012eab751"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

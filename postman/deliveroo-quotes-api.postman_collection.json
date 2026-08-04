@@ -1,0 +1,260 @@
+{
+  "info": {
+    "_postman_id": "344e0a67-a792-45d7-85ea-0c770f574b0b",
+    "name": "Deliveroo Catalogue Quotes API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:18.000Z",
+    "updatedAt": "2026-07-28T01:30:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-344e0a67-a792-45d7-85ea-0c770f574b0b"
+  },
+  "item": [
+    {
+      "name": "signature",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "quotes",
+              "item": [
+                {
+                  "name": "Deliveroo Create Quote",
+                  "id": "6ed7b097-2e52-4058-8ecd-0949905a1a35",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/signature/v1/quotes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "signature",
+                        "v1",
+                        "quotes"
+                      ]
+                    },
+                    "description": "Return an estimate and the delivery fee Deliveroo would charge for a given delivery. Creating a quote runs validation steps that surface errors which might otherwise cause order rejection. A quote is valid for 5 minutes, after which a new quote must be created before placing the order."
+                  },
+                  "response": [
+                    {
+                      "id": "e38e4386-e8d3-419e-ae3f-7648b136b197",
+                      "name": "The quote estimate and delivery fee.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/signature/v1/quotes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "signature",
+                            "v1",
+                            "quotes"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"quote_id\": \"<string>\",\n  \"fee\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:30:19.000Z",
+                      "updatedAt": "2026-07-28T01:30:19.000Z",
+                      "uid": "35240-e38e4386-e8d3-419e-ae3f-7648b136b197"
+                    },
+                    {
+                      "id": "db2d031e-46f9-4037-ac6e-a562f6f8c383",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/signature/v1/quotes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "signature",
+                            "v1",
+                            "quotes"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:30:19.000Z",
+                      "updatedAt": "2026-07-28T01:30:19.000Z",
+                      "uid": "35240-db2d031e-46f9-4037-ac6e-a562f6f8c383"
+                    },
+                    {
+                      "id": "d00ab641-0e10-457d-9fd2-1bdf59335fe5",
+                      "name": "Server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/signature/v1/quotes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "signature",
+                            "v1",
+                            "quotes"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:30:19.000Z",
+                      "updatedAt": "2026-07-28T01:30:19.000Z",
+                      "uid": "35240-d00ab641-0e10-457d-9fd2-1bdf59335fe5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:30:19.000Z",
+                  "updatedAt": "2026-07-28T01:30:19.000Z",
+                  "uid": "35240-6ed7b097-2e52-4058-8ecd-0949905a1a35"
+                }
+              ],
+              "id": "64e88cac-1367-443f-9079-4b0d649c47c8",
+              "createdAt": "2026-07-28T01:30:19.000Z",
+              "updatedAt": "2026-07-28T01:30:19.000Z",
+              "uid": "35240-64e88cac-1367-443f-9079-4b0d649c47c8"
+            }
+          ],
+          "id": "fec5256e-8ed8-4bf9-9664-26fd314c34ae",
+          "createdAt": "2026-07-28T01:30:19.000Z",
+          "updatedAt": "2026-07-28T01:30:19.000Z",
+          "uid": "35240-fec5256e-8ed8-4bf9-9664-26fd314c34ae"
+        }
+      ],
+      "id": "fbc19bd0-8413-4850-81ed-629c4fda39e8",
+      "createdAt": "2026-07-28T01:30:19.000Z",
+      "updatedAt": "2026-07-28T01:30:19.000Z",
+      "uid": "35240-fbc19bd0-8413-4850-81ed-629c4fda39e8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

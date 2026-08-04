@@ -1,0 +1,623 @@
+{
+  "info": {
+    "_postman_id": "5bee7a31-e7f7-4a24-9477-7324b64ed30f",
+    "name": "Deliveroo Catalogue Orders API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:16.000Z",
+    "updatedAt": "2026-07-28T01:30:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5bee7a31-e7f7-4a24-9477-7324b64ed30f"
+  },
+  "item": [
+    {
+      "name": "order",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "orders",
+              "item": [
+                {
+                  "name": "{order_id}",
+                  "item": [
+                    {
+                      "name": "Deliveroo Update Order Status",
+                      "id": "7d786737-fba5-47ee-ad2d-acaab001efb5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"confirmed\",\n  \"reject_reason\": \"busy\",\n  \"notes\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/v1/orders/:order_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "v1",
+                            "orders",
+                            ":order_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "62707334-1a87-4a0b-a5da-8bb2bae7ce90",
+                              "key": "order_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the Deliveroo order."
+                            }
+                          ]
+                        },
+                        "description": "Accept, reject, or confirm an order. The order must be in the PLACED status to be accepted or rejected. ASAP orders not accepted within 10 minutes (7 minutes for the Kuwait and UAE markets) are rejected automatically. Rate limited to 5 requests per minute per order."
+                      },
+                      "response": [
+                        {
+                          "id": "ae9402cd-149c-4e93-8db9-4c2e4d5b8028",
+                          "name": "The order was successfully accepted, rejected, or confirmed.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"confirmed\",\n  \"reject_reason\": \"busy\",\n  \"notes\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/order/v1/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "order",
+                                "v1",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:30:17.000Z",
+                          "updatedAt": "2026-07-28T01:30:17.000Z",
+                          "uid": "35240-ae9402cd-149c-4e93-8db9-4c2e4d5b8028"
+                        },
+                        {
+                          "id": "5810dc90-7cc1-4876-8b23-d2ba8e5adf21",
+                          "name": "Bad request, often a missing required parameter or incorrect content type.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"confirmed\",\n  \"reject_reason\": \"busy\",\n  \"notes\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/order/v1/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "order",
+                                "v1",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:30:17.000Z",
+                          "updatedAt": "2026-07-28T01:30:17.000Z",
+                          "uid": "35240-5810dc90-7cc1-4876-8b23-d2ba8e5adf21"
+                        },
+                        {
+                          "id": "620a51a8-b509-445b-bdf7-511c78bc5af5",
+                          "name": "The API key and token combination is invalid or the integration is disabled.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"confirmed\",\n  \"reject_reason\": \"busy\",\n  \"notes\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/order/v1/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "order",
+                                "v1",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:30:17.000Z",
+                          "updatedAt": "2026-07-28T01:30:17.000Z",
+                          "uid": "35240-620a51a8-b509-445b-bdf7-511c78bc5af5"
+                        },
+                        {
+                          "id": "09c397d6-971c-427a-9214-7d83898658b7",
+                          "name": "Conflict, for example the status was already sent or a timeout occurred.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"confirmed\",\n  \"reject_reason\": \"busy\",\n  \"notes\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/order/v1/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "order",
+                                "v1",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:30:17.000Z",
+                          "updatedAt": "2026-07-28T01:30:17.000Z",
+                          "uid": "35240-09c397d6-971c-427a-9214-7d83898658b7"
+                        },
+                        {
+                          "id": "3be2dec9-36de-412d-a0e4-4d333899d23f",
+                          "name": "Server error. Retry later.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"confirmed\",\n  \"reject_reason\": \"busy\",\n  \"notes\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/order/v1/orders/:order_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "order",
+                                "v1",
+                                "orders",
+                                ":order_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "order_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:30:17.000Z",
+                          "updatedAt": "2026-07-28T01:30:17.000Z",
+                          "uid": "35240-3be2dec9-36de-412d-a0e4-4d333899d23f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:30:17.000Z",
+                      "updatedAt": "2026-07-28T01:30:17.000Z",
+                      "uid": "35240-7d786737-fba5-47ee-ad2d-acaab001efb5"
+                    }
+                  ],
+                  "id": "2cb70b43-e68f-4e76-bdb1-66d562a3bbbf",
+                  "createdAt": "2026-07-28T01:30:17.000Z",
+                  "updatedAt": "2026-07-28T01:30:17.000Z",
+                  "uid": "35240-2cb70b43-e68f-4e76-bdb1-66d562a3bbbf"
+                }
+              ],
+              "id": "637b428a-bc97-4342-87ca-f117c0bac89c",
+              "createdAt": "2026-07-28T01:30:17.000Z",
+              "updatedAt": "2026-07-28T01:30:17.000Z",
+              "uid": "35240-637b428a-bc97-4342-87ca-f117c0bac89c"
+            }
+          ],
+          "id": "c99e6931-4485-4ed3-9f71-fd2db5bf9627",
+          "createdAt": "2026-07-28T01:30:17.000Z",
+          "updatedAt": "2026-07-28T01:30:17.000Z",
+          "uid": "35240-c99e6931-4485-4ed3-9f71-fd2db5bf9627"
+        }
+      ],
+      "id": "342eafbb-3405-4786-b0aa-399e0b0785ad",
+      "createdAt": "2026-07-28T01:30:17.000Z",
+      "updatedAt": "2026-07-28T01:30:17.000Z",
+      "uid": "35240-342eafbb-3405-4786-b0aa-399e0b0785ad"
+    },
+    {
+      "name": "signature",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "orders",
+              "item": [
+                {
+                  "name": "Deliveroo Create a New Order",
+                  "id": "025ffdcf-5c5c-47a9-a6a8-1b3d85f76c00",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"quote_id\": \"<string>\",\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/signature/v1/orders",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "signature",
+                        "v1",
+                        "orders"
+                      ]
+                    },
+                    "description": "Create a new order for fulfillment by Deliveroo. It is recommended to create a quote first; the quote must be valid (created within the last 5 minutes) when the order is placed."
+                  },
+                  "response": [
+                    {
+                      "id": "aaa3eb7b-4652-423c-8108-bce01aa39e63",
+                      "name": "The created order.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"quote_id\": \"<string>\",\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/signature/v1/orders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "signature",
+                            "v1",
+                            "orders"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"order_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:30:17.000Z",
+                      "updatedAt": "2026-07-28T01:30:17.000Z",
+                      "uid": "35240-aaa3eb7b-4652-423c-8108-bce01aa39e63"
+                    },
+                    {
+                      "id": "2eff902b-e58d-41ed-8e40-062cdcec433c",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"quote_id\": \"<string>\",\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/signature/v1/orders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "signature",
+                            "v1",
+                            "orders"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:30:17.000Z",
+                      "updatedAt": "2026-07-28T01:30:17.000Z",
+                      "uid": "35240-2eff902b-e58d-41ed-8e40-062cdcec433c"
+                    },
+                    {
+                      "id": "4ad13aea-f5e8-4baf-b17b-60ed4a51640a",
+                      "name": "Server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"quote_id\": \"<string>\",\n  \"pickup\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"dropoff\": {\n    \"address\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/signature/v1/orders",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "signature",
+                            "v1",
+                            "orders"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:30:17.000Z",
+                      "updatedAt": "2026-07-28T01:30:17.000Z",
+                      "uid": "35240-4ad13aea-f5e8-4baf-b17b-60ed4a51640a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:30:17.000Z",
+                  "updatedAt": "2026-07-28T01:30:17.000Z",
+                  "uid": "35240-025ffdcf-5c5c-47a9-a6a8-1b3d85f76c00"
+                }
+              ],
+              "id": "0fa7b43b-d44e-43ab-80bb-d4d94fd13977",
+              "createdAt": "2026-07-28T01:30:17.000Z",
+              "updatedAt": "2026-07-28T01:30:17.000Z",
+              "uid": "35240-0fa7b43b-d44e-43ab-80bb-d4d94fd13977"
+            }
+          ],
+          "id": "891999b1-d22c-4d76-bbc3-5c0a8e94d1a7",
+          "createdAt": "2026-07-28T01:30:17.000Z",
+          "updatedAt": "2026-07-28T01:30:17.000Z",
+          "uid": "35240-891999b1-d22c-4d76-bbc3-5c0a8e94d1a7"
+        }
+      ],
+      "id": "3125ed5d-18b0-4f43-8ef5-ca3f11787c6f",
+      "createdAt": "2026-07-28T01:30:17.000Z",
+      "updatedAt": "2026-07-28T01:30:17.000Z",
+      "uid": "35240-3125ed5d-18b0-4f43-8ef5-ca3f11787c6f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}

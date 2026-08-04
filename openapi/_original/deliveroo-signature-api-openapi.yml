@@ -1,0 +1,262 @@
+openapi: 3.0.3
+info:
+  title: Deliveroo Signature API
+  description: >-
+    Powers the Deliveroo Signature Suite, letting merchants request on-demand
+    delivery by Deliveroo couriers for orders that originate in their own apps,
+    websites, or channels. Integrators create a quote, then create an order for
+    fulfillment, and can schedule deliveries via the delivery-as-a-service
+    endpoint. Authentication uses an OAuth 2.0 client credentials bearer token.
+  version: v1
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+servers:
+- url: https://api.developers.deliveroo.com
+  description: Production
+- url: https://api-sandbox.developers.deliveroo.com
+  description: Sandbox
+tags:
+- name: Quotes
+- name: Orders
+- name: Deliveries
+security:
+- bearerAuth: []
+paths:
+  /signature/v1/quotes:
+    post:
+      operationId: createQuote
+      summary: Deliveroo Create Quote
+      description: >-
+        Return an estimate and the delivery fee Deliveroo would charge for a
+        given delivery. Creating a quote runs validation steps that surface
+        errors which might otherwise cause order rejection. A quote is valid for
+        5 minutes, after which a new quote must be created before placing the
+        order.
+      tags:
+      - Quotes
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+            examples:
+              CreateQuoteRequestExample:
+                summary: Default createQuote request
+                x-microcks-default: true
+                value:
+                  pickup:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+                  dropoff:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+      responses:
+        '200':
+          description: The quote estimate and delivery fee.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+              examples:
+                CreateQuote200Example:
+                  summary: Default createQuote 200 response
+                  x-microcks-default: true
+                  value:
+                    quote_id: gb-12345
+                    fee: 299
+        '400':
+          description: Bad request.
+        '500':
+          description: Server error.
+  /signature/v1/orders:
+    post:
+      operationId: createOrder
+      summary: Deliveroo Create a New Order
+      description: >-
+        Create a new order for fulfillment by Deliveroo. It is recommended to
+        create a quote first; the quote must be valid (created within the last 5
+        minutes) when the order is placed.
+      tags:
+      - Orders
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+            examples:
+              CreateOrderRequestExample:
+                summary: Default createOrder request
+                x-microcks-default: true
+                value:
+                  quote_id: gb-12345
+                  pickup:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+                  dropoff:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+      responses:
+        '200':
+          description: The created order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+              examples:
+                CreateOrder200Example:
+                  summary: Default createOrder 200 response
+                  x-microcks-default: true
+                  value:
+                    order_id: gb-12345
+                    status: active
+        '400':
+          description: Bad request.
+        '500':
+          description: Server error.
+  /daas/v1/deliveries:
+    post:
+      operationId: scheduleDelivery
+      summary: Deliveroo Schedule Delivery
+      description: >-
+        Schedule a delivery via Deliveroo's delivery-as-a-service offering for an
+        order managed by the merchant's own systems.
+      tags:
+      - Deliveries
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryRequest'
+            examples:
+              ScheduleDeliveryRequestExample:
+                summary: Default scheduleDelivery request
+                x-microcks-default: true
+                value:
+                  pickup:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+                  dropoff:
+                    address: 123 Example Street, London
+                    latitude: 1.0
+                    longitude: 1.0
+      responses:
+        '200':
+          description: The scheduled delivery.
+        '400':
+          description: Bad request.
+        '500':
+          description: Server error.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth 2.0 client credentials access token obtained from
+        https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after
+        5 minutes; no refresh tokens are issued.
+  schemas:
+    QuoteRequest:
+      title: Quote Request
+      description: >-
+        Request body for creating a delivery quote.
+        x-schema-source: documentation
+        x-source-url: https://api-docs.deliveroo.com/reference/create-quote
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
+    Quote:
+      title: Quote
+      description: A delivery estimate and fee.
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of the quote, valid for 5 minutes.
+          example: gb-12345
+        fee:
+          type: integer
+          description: The delivery fee in minor currency units.
+          example: 299
+    OrderRequest:
+      title: Order Request
+      description: >-
+        Request body for creating a Signature order.
+        x-schema-source: documentation
+        x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of a valid quote.
+          example: gb-12345
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
+    Order:
+      title: Order
+      description: A created Signature order.
+      type: object
+      properties:
+        order_id:
+          type: string
+          description: The identifier of the created order.
+          example: gb-12345
+        status:
+          type: string
+          description: The current order status.
+          example: active
+    DeliveryRequest:
+      title: Delivery Request
+      description: >-
+        Request body for scheduling a delivery-as-a-service delivery.
+        x-schema-source: documentation
+        x-source-url: https://api-docs.deliveroo.com/reference/scheduledeliveryv1
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
+    Location:
+      title: Location
+      description: A pickup or dropoff location.
+      type: object
+      properties:
+        address:
+          type: string
+          description: The location address.
+          example: 123 Example Street, London
+        latitude:
+          type: number
+          description: The location latitude.
+          example: 1.0
+        longitude:
+          type: number
+          description: The location longitude.
+          example: 1.0

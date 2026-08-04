@@ -1,0 +1,299 @@
+{
+  "info": {
+    "_postman_id": "688760bb-7184-422a-aac5-d073a856fc8d",
+    "name": "Deliveroo Catalogue API",
+    "description": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:36.000Z",
+    "updatedAt": "2026-07-28T01:29:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-688760bb-7184-422a-aac5-d073a856fc8d"
+  },
+  "item": [
+    {
+      "name": "brands",
+      "item": [
+        {
+          "name": "{brand_id}",
+          "item": [
+            {
+              "name": "catalogue",
+              "item": [
+                {
+                  "name": "{catalogue_id}",
+                  "item": [
+                    {
+                      "name": "Deliveroo Get Catalogue",
+                      "id": "335c9037-3b1b-4959-b0a1-74db2f1d04a0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "brands",
+                            ":brand_id",
+                            "catalogue",
+                            ":catalogue_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ccd10ce5-6ad0-4d37-b2cd-769bb7a4dda0",
+                              "key": "brand_id",
+                              "value": "<string>",
+                              "description": "(Required) The brand identifier."
+                            },
+                            {
+                              "id": "135bbac1-c343-4a3a-a731-4ca1e43462d4",
+                              "key": "catalogue_id",
+                              "value": "<string>",
+                              "description": "(Required) The catalogue identifier."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve the latest uploaded catalogue for a brand by catalogue ID. Rate limited to 95 requests per catalogue per minute."
+                      },
+                      "response": [
+                        {
+                          "id": "8af39ab8-8973-44df-8087-22bb5232043d",
+                          "name": "The requested catalogue.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "brands",
+                                ":brand_id",
+                                "catalogue",
+                                ":catalogue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                },
+                                {
+                                  "key": "catalogue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"catalogue_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-8af39ab8-8973-44df-8087-22bb5232043d"
+                        },
+                        {
+                          "id": "c4fa7325-3593-4784-96d0-14f0416cd3eb",
+                          "name": "Catalogue not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "brands",
+                                ":brand_id",
+                                "catalogue",
+                                ":catalogue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                },
+                                {
+                                  "key": "catalogue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-c4fa7325-3593-4784-96d0-14f0416cd3eb"
+                        },
+                        {
+                          "id": "070728ea-bd77-4981-b10b-e0ee629b9ddb",
+                          "name": "Too many requests.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "brands",
+                                ":brand_id",
+                                "catalogue",
+                                ":catalogue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                },
+                                {
+                                  "key": "catalogue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-070728ea-bd77-4981-b10b-e0ee629b9ddb"
+                        },
+                        {
+                          "id": "0fe3b6b9-0a4b-4101-89bc-6569b3bef6ce",
+                          "name": "Server error.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/brands/:brand_id/catalogue/:catalogue_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "brands",
+                                ":brand_id",
+                                "catalogue",
+                                ":catalogue_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "brand_id"
+                                },
+                                {
+                                  "key": "catalogue_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:37.000Z",
+                          "updatedAt": "2026-07-28T01:29:37.000Z",
+                          "uid": "35240-0fe3b6b9-0a4b-4101-89bc-6569b3bef6ce"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:36.000Z",
+                      "updatedAt": "2026-07-28T01:29:36.000Z",
+                      "uid": "35240-335c9037-3b1b-4959-b0a1-74db2f1d04a0"
+                    }
+                  ],
+                  "id": "915cb3da-f95c-4907-a464-bbedcb0671b6",
+                  "createdAt": "2026-07-28T01:29:36.000Z",
+                  "updatedAt": "2026-07-28T01:29:36.000Z",
+                  "uid": "35240-915cb3da-f95c-4907-a464-bbedcb0671b6"
+                }
+              ],
+              "id": "d58c98cc-b453-4be7-aa53-cf2c5194a423",
+              "createdAt": "2026-07-28T01:29:36.000Z",
+              "updatedAt": "2026-07-28T01:29:36.000Z",
+              "uid": "35240-d58c98cc-b453-4be7-aa53-cf2c5194a423"
+            }
+          ],
+          "id": "1ea40c20-a66f-4fbd-a826-e4debd27dc10",
+          "createdAt": "2026-07-28T01:29:36.000Z",
+          "updatedAt": "2026-07-28T01:29:36.000Z",
+          "uid": "35240-1ea40c20-a66f-4fbd-a826-e4debd27dc10"
+        }
+      ],
+      "id": "ebae511a-d3ad-453e-9523-f186908d96e8",
+      "createdAt": "2026-07-28T01:29:36.000Z",
+      "updatedAt": "2026-07-28T01:29:36.000Z",
+      "uid": "35240-ebae511a-d3ad-453e-9523-f186908d96e8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.developers.deliveroo.com"
+    }
+  ]
+}
