@@ -1,28 +1,31 @@
 {
   "item": [
     {
-      "id": "2a26e0d4-9077-40ea-b317-af939f9738b5",
-      "name": "Catalogue",
+      "id": "984d823f-97c8-42e2-982c-7ac0e06d67ca",
+      "name": "Opening Hours",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "99a41092-00ed-4197-a9ce-d1c34e45fd3c",
-          "name": "Deliveroo Get Catalogue",
+          "id": "a6b8f645-3845-436c-b04a-ea388b616300",
+          "name": "Deliveroo Get Site Opening Hours",
           "request": {
-            "name": "Deliveroo Get Catalogue",
+            "name": "Deliveroo Get Site Opening Hours",
             "description": {
-              "content": "Retrieve the latest uploaded catalogue for a brand by catalogue ID. Rate limited to 95 requests per catalogue per minute.",
+              "content": "Retrieve the configured opening hours for a site.",
               "type": "text/plain"
             },
             "url": {
               "path": [
+                "site",
+                "v1",
                 "brands",
                 ":brand_id",
-                "catalogue",
-                ":catalogue_id"
+                "sites",
+                ":site_id",
+                "opening_hours"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -40,8 +43,8 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "catalogue_id",
-                  "description": "(Required) The catalogue identifier."
+                  "key": "site_id",
+                  "description": "(Required) The site identifier."
                 }
               ]
             },
@@ -56,15 +59,18 @@
           },
           "response": [
             {
-              "id": "83fe9214-5dd8-4e53-abab-d41c739e001a",
-              "name": "The requested catalogue.",
+              "id": "6eecdb5b-beb2-4012-a47e-64f0e7960ff7",
+              "name": "The site's opening hours.",
               "originalRequest": {
                 "url": {
                   "path": [
+                    "site",
+                    "v1",
                     "brands",
                     ":brand_id",
-                    "catalogue",
-                    ":catalogue_id"
+                    "sites",
+                    ":site_id",
+                    "opening_hours"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -82,8 +88,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "catalogue_id",
-                      "description": "(Required) The catalogue identifier."
+                      "key": "site_id",
+                      "description": "(Required) The site identifier."
                     }
                   ]
                 },
@@ -112,20 +118,23 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"catalogue_id\": \"gb-12345\",\n  \"name\": \"Example\",\n  \"items\": [\n    {\n      \"id\": \"gb-12345\",\n      \"name\": \"Example\",\n      \"price\": 0\n    }\n  ]\n}",
+              "body": "{\n  \"opening_hours\": [\n    {\n      \"day_of_week\": \"monday\",\n      \"time_periods\": [\n        {\n          \"start\": \"09:00\",\n          \"end\": \"22:00\"\n        }\n      ]\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "ddf69ec4-a2d5-4dfb-8a30-5014fb5e0424",
-              "name": "Catalogue not found.",
+              "id": "d5d997e7-9ffd-45cf-a190-f78ad997d0a7",
+              "name": "Bad request.",
               "originalRequest": {
                 "url": {
                   "path": [
+                    "site",
+                    "v1",
                     "brands",
                     ":brand_id",
-                    "catalogue",
-                    ":catalogue_id"
+                    "sites",
+                    ":site_id",
+                    "opening_hours"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -143,8 +152,68 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "catalogue_id",
-                      "description": "(Required) The catalogue identifier."
+                      "key": "site_id",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33707e92-af71-43c9-93d2-c6b650a04d4b",
+              "name": "Site not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site",
+                    "v1",
+                    "brands",
+                    ":brand_id",
+                    "sites",
+                    ":site_id",
+                    "opening_hours"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "brand_id",
+                      "description": "(Required) The brand identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "site_id",
+                      "description": "(Required) The site identifier."
                     }
                   ]
                 },
@@ -174,72 +243,18 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "c098a9e5-20e4-4d4d-9fff-42fcae1000db",
-              "name": "Too many requests.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "brands",
-                    ":brand_id",
-                    "catalogue",
-                    ":catalogue_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "brand_id",
-                      "description": "(Required) The brand identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "catalogue_id",
-                      "description": "(Required) The catalogue identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "488848ad-ab26-47cc-b618-9f27c9fe98f6",
+              "id": "1ce53307-1154-4ae2-81d5-68219fb51626",
               "name": "Server error.",
               "originalRequest": {
                 "url": {
                   "path": [
+                    "site",
+                    "v1",
                     "brands",
                     ":brand_id",
-                    "catalogue",
-                    ":catalogue_id"
+                    "sites",
+                    ":site_id",
+                    "opening_hours"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -257,8 +272,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "catalogue_id",
-                      "description": "(Required) The catalogue identifier."
+                      "key": "site_id",
+                      "description": "(Required) The site identifier."
                     }
                   ]
                 },
@@ -315,8 +330,8 @@
     ]
   },
   "info": {
-    "_postman_id": "38b817a7-f2cb-4180-8ae2-29abaef0c193",
-    "name": "Deliveroo Catalogue API",
+    "_postman_id": "c132f82d-3866-4940-a781-0068eacf081b",
+    "name": "Deliveroo Catalogue Opening Hours API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Catalogue Quotes API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Create Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developers.deliveroo.com/signature/v1/quotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return an estimate and the delivery fee Deliveroo would charge for a given delivery. Creating a quote runs validation steps that surface errors which might otherwise cause order rejection. A quote is valid for 5 minutes, after which a new quote must be created before placing the order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

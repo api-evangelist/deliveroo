@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Deliveroo Picking API",
+    "name": "Deliveroo Catalogue Picking API",
     "version": "v1"
   },
   "request": {

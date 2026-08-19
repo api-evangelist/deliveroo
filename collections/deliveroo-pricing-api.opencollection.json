@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Deliveroo Catalogue API",
+    "name": "Deliveroo Catalogue Pricing API",
     "version": "v1"
   },
   "request": {
@@ -13,18 +13,18 @@
   "items": [
     {
       "info": {
-        "name": "Catalogue",
+        "name": "Pricing",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Deliveroo Get Catalogue",
+            "name": "Deliveroo Update Prices Per Site",
             "type": "http"
           },
           "http": {
-            "method": "GET",
-            "url": "https://api.developers.deliveroo.com/brands/:brand_id/catalogue/:catalogue_id",
+            "method": "PUT",
+            "url": "https://api.developers.deliveroo.com/brands/:brand_id/catalogue/:catalogue_id/sites/:site_id/prices",
             "params": [
               {
                 "name": "brand_id",
@@ -37,10 +37,20 @@
                 "value": "gb-12345",
                 "type": "path",
                 "description": "The catalogue identifier."
+              },
+              {
+                "name": "site_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The site identifier whose prices are being overridden."
               }
-            ]
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
           },
-          "docs": "Retrieve the latest uploaded catalogue for a brand by catalogue ID. Rate limited to 95 requests per catalogue per minute."
+          "docs": "Override item prices at the site level, enabling site-specific pricing without creating multiple master catalogues."
         }
       ]
     }

@@ -1,20 +1,20 @@
 {
   "item": [
     {
-      "id": "2a26e0d4-9077-40ea-b317-af939f9738b5",
-      "name": "Catalogue",
+      "id": "1258845d-f32f-4356-b238-282a1dbcda9a",
+      "name": "Pricing",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "99a41092-00ed-4197-a9ce-d1c34e45fd3c",
-          "name": "Deliveroo Get Catalogue",
+          "id": "3f778909-1378-46cd-89e8-94e56ef6bfc4",
+          "name": "Deliveroo Update Prices Per Site",
           "request": {
-            "name": "Deliveroo Get Catalogue",
+            "name": "Deliveroo Update Prices Per Site",
             "description": {
-              "content": "Retrieve the latest uploaded catalogue for a brand by catalogue ID. Rate limited to 95 requests per catalogue per minute.",
+              "content": "Override item prices at the site level, enabling site-specific pricing without creating multiple master catalogues.",
               "type": "text/plain"
             },
             "url": {
@@ -22,7 +22,10 @@
                 "brands",
                 ":brand_id",
                 "catalogue",
-                ":catalogue_id"
+                ":catalogue_id",
+                "sites",
+                ":site_id",
+                "prices"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -42,29 +45,48 @@
                   "value": "<string>",
                   "key": "catalogue_id",
                   "description": "(Required) The catalogue identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "site_id",
+                  "description": "(Required) The site identifier whose prices are being overridden."
                 }
               ]
             },
             "header": [
               {
-                "key": "Accept",
+                "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    },\n    {\n      \"item_id\": \"<string>\",\n      \"price\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
           },
           "response": [
             {
-              "id": "83fe9214-5dd8-4e53-abab-d41c739e001a",
-              "name": "The requested catalogue.",
+              "id": "0f25fb78-fcad-44fd-b7cd-369783b99cbb",
+              "name": "Prices updated.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "brands",
                     ":brand_id",
                     "catalogue",
-                    ":catalogue_id"
+                    ":catalogue_id",
+                    "sites",
+                    ":site_id",
+                    "prices"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -84,6 +106,13 @@
                       "value": "<string>",
                       "key": "catalogue_id",
                       "description": "(Required) The catalogue identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "site_id",
+                      "description": "(Required) The site identifier whose prices are being overridden."
                     }
                   ]
                 },
@@ -95,37 +124,44 @@
                     },
                     "key": "Authorization",
                     "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"gb-12345\",\n      \"price\": 499\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "OK",
               "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"catalogue_id\": \"gb-12345\",\n  \"name\": \"Example\",\n  \"items\": [\n    {\n      \"id\": \"gb-12345\",\n      \"name\": \"Example\",\n      \"price\": 0\n    }\n  ]\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "ddf69ec4-a2d5-4dfb-8a30-5014fb5e0424",
-              "name": "Catalogue not found.",
+              "id": "c75a6c6b-a188-4cb8-9384-8d2ef61c94f1",
+              "name": "Bad request.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "brands",
                     ":brand_id",
                     "catalogue",
-                    ":catalogue_id"
+                    ":catalogue_id",
+                    "sites",
+                    ":site_id",
+                    "prices"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -145,6 +181,13 @@
                       "value": "<string>",
                       "key": "catalogue_id",
                       "description": "(Required) The catalogue identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "site_id",
+                      "description": "(Required) The site identifier whose prices are being overridden."
                     }
                   ]
                 },
@@ -158,8 +201,91 @@
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"gb-12345\",\n      \"price\": 499\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c7c45c2-a842-4ea1-9dc8-94058daaf52c",
+              "name": "Catalogue or site not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brands",
+                    ":brand_id",
+                    "catalogue",
+                    ":catalogue_id",
+                    "sites",
+                    ":site_id",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "brand_id",
+                      "description": "(Required) The brand identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogue_id",
+                      "description": "(Required) The catalogue identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "site_id",
+                      "description": "(Required) The site identifier whose prices are being overridden."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"gb-12345\",\n      \"price\": 499\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Not Found",
               "code": 404,
@@ -174,64 +300,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "c098a9e5-20e4-4d4d-9fff-42fcae1000db",
-              "name": "Too many requests.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "brands",
-                    ":brand_id",
-                    "catalogue",
-                    ":catalogue_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "brand_id",
-                      "description": "(Required) The brand identifier."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "catalogue_id",
-                      "description": "(Required) The catalogue identifier."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "488848ad-ab26-47cc-b618-9f27c9fe98f6",
+              "id": "f8a7833d-7b9b-4605-bebd-c6ad9c7fc9d1",
               "name": "Server error.",
               "originalRequest": {
                 "url": {
@@ -239,7 +308,10 @@
                     "brands",
                     ":brand_id",
                     "catalogue",
-                    ":catalogue_id"
+                    ":catalogue_id",
+                    "sites",
+                    ":site_id",
+                    "prices"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -259,6 +331,13 @@
                       "value": "<string>",
                       "key": "catalogue_id",
                       "description": "(Required) The catalogue identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "site_id",
+                      "description": "(Required) The site identifier whose prices are being overridden."
                     }
                   ]
                 },
@@ -272,8 +351,16 @@
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prices\": [\n    {\n      \"item_id\": \"gb-12345\",\n      \"price\": 499\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
@@ -315,8 +402,8 @@
     ]
   },
   "info": {
-    "_postman_id": "38b817a7-f2cb-4180-8ae2-29abaef0c193",
-    "name": "Deliveroo Catalogue API",
+    "_postman_id": "cff4bc1b-3a4e-45b1-9486-5c530d25db9f",
+    "name": "Deliveroo Catalogue Pricing API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deliveroo Catalogue Sync Status API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sync Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deliveroo Create Sync Status for an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.developers.deliveroo.com/order/v1/orders/:order_id/sync_status",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "gb-12345",
+                "type": "path",
+                "description": "The unique identifier of the Deliveroo order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Report whether the order was successfully sent to the site's in-store system. If Deliveroo does not receive a sync status within 3 minutes, or receives a failed status, it prompts site staff via the Deliveroo tablet to check their in-store system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

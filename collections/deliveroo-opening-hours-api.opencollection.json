@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Deliveroo Catalogue API",
+    "name": "Deliveroo Catalogue Opening Hours API",
     "version": "v1"
   },
   "request": {
@@ -13,18 +13,18 @@
   "items": [
     {
       "info": {
-        "name": "Catalogue",
+        "name": "Opening Hours",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Deliveroo Get Catalogue",
+            "name": "Deliveroo Get Site Opening Hours",
             "type": "http"
           },
           "http": {
             "method": "GET",
-            "url": "https://api.developers.deliveroo.com/brands/:brand_id/catalogue/:catalogue_id",
+            "url": "https://api.developers.deliveroo.com/site/v1/brands/:brand_id/sites/:site_id/opening_hours",
             "params": [
               {
                 "name": "brand_id",
@@ -33,14 +33,14 @@
                 "description": "The brand identifier."
               },
               {
-                "name": "catalogue_id",
+                "name": "site_id",
                 "value": "gb-12345",
                 "type": "path",
-                "description": "The catalogue identifier."
+                "description": "The site identifier."
               }
             ]
           },
-          "docs": "Retrieve the latest uploaded catalogue for a brand by catalogue ID. Rate limited to 95 requests per catalogue per minute."
+          "docs": "Retrieve the configured opening hours for a site."
         }
       ]
     }
