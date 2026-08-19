@@ -28,7 +28,7 @@ description: >-
   restaurants, grocers, and merchants use to integrate menus, orders, sites, and on-demand courier delivery.
 created: '2026-05-05'
 modified: '2026-06-02'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: deliveroo:catalogue-api
   name: Deliveroo Catalogue API
