@@ -21,6 +21,12 @@ tags:
   - Grocery
   - Marketplace
   - Logistics
+  - Restaurant
+tags_raw:
+  - Food Delivery
+  - Grocery
+  - Marketplace
+  - Logistics
   - Restaurants
 description: >-
   A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East.
@@ -33,6 +39,12 @@ apis:
 - aid: deliveroo:catalogue-api
   name: Deliveroo Catalogue API
   tags:
+  - Catalogue
+  - Grocery
+  - Retail
+  - Product
+  - Inventory
+  tags_raw:
   - Catalogue
   - Grocery
   - Retail
@@ -124,6 +136,8 @@ apis:
   humanURL: https://api-docs.deliveroo.com/v2.0/docs
   baseURL: https://api.developers.deliveroo.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
