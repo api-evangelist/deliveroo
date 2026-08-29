@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Deliveroo Catalogue Sync Status API
   description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
@@ -82,8 +82,9 @@ components:
           description: Whether the order was successfully sent to the in-store system.
           example: succeeded
         reason:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           enum:
           - price_mismatched
           - pos_item_id_mismatched
@@ -100,8 +101,9 @@ components:
           description: Reason for a failed sync status.
           example: items_out_of_stock
         notes:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Free-text notes about the sync result.
           example: example
         occurred_at:

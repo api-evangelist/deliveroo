@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Deliveroo Catalogue Quotes API
   description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
@@ -67,6 +67,15 @@ paths:
           description: Server error.
 components:
   schemas:
+    QuoteRequest:
+      title: Quote Request
+      description: 'Request body for creating a delivery quote. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-quote'
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
     Location:
       title: Location
       description: A pickup or dropoff location.
@@ -97,15 +106,6 @@ components:
           type: integer
           description: The delivery fee in minor currency units.
           example: 299
-    QuoteRequest:
-      title: Quote Request
-      description: 'Request body for creating a delivery quote. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-quote'
-      type: object
-      properties:
-        pickup:
-          $ref: '#/components/schemas/Location'
-        dropoff:
-          $ref: '#/components/schemas/Location'
   securitySchemes:
     bearerAuth:
       type: http

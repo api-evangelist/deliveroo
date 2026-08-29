@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Deliveroo Catalogue Orders API
   description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
@@ -112,6 +112,32 @@ paths:
           description: Server error.
 components:
   schemas:
+    Order:
+      title: Order
+      description: A created Signature order.
+      type: object
+      properties:
+        order_id:
+          type: string
+          description: The identifier of the created order.
+          example: gb-12345
+        status:
+          type: string
+          description: The current order status.
+          example: active
+    OrderRequest:
+      title: Order Request
+      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of a valid quote.
+          example: gb-12345
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
     Location:
       title: Location
       description: A pickup or dropoff location.
@@ -129,32 +155,6 @@ components:
           type: number
           description: The location longitude.
           example: 1.0
-    OrderRequest:
-      title: Order Request
-      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
-      type: object
-      properties:
-        quote_id:
-          type: string
-          description: The identifier of a valid quote.
-          example: gb-12345
-        pickup:
-          $ref: '#/components/schemas/Location'
-        dropoff:
-          $ref: '#/components/schemas/Location'
-    Order:
-      title: Order
-      description: A created Signature order.
-      type: object
-      properties:
-        order_id:
-          type: string
-          description: The identifier of the created order.
-          example: gb-12345
-        status:
-          type: string
-          description: The current order status.
-          example: active
     OrderStatusUpdate:
       title: Order Status Update
       description: 'Request body for updating an order''s status. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/patch-order-1'
@@ -171,8 +171,9 @@ components:
           description: The new status for the order.
           example: accepted
         reject_reason:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           enum:
           - closing_early
           - busy
@@ -181,8 +182,9 @@ components:
           description: Required when status is rejected. The reason for rejection.
           example: busy
         notes:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Free-text notes accompanying the status change.
           example: example
   securitySchemes:

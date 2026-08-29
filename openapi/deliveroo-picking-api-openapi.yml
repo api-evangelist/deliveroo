@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Deliveroo Catalogue Picking API
   description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
@@ -201,22 +201,6 @@ paths:
           description: Server error.
 components:
   schemas:
-    RejectOrder:
-      title: Reject Order
-      description: 'Request body for rejecting a picking order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order'
-      type: object
-      required:
-      - reject_reason
-      properties:
-        reject_reason:
-          type: string
-          enum:
-          - INGREDIENT_UNAVAILABLE
-          - CLOSING_EARLY
-          - BUSY
-          - OTHER
-          description: The reason for rejecting the order.
-          example: OTHER
     ItemAmendments:
       title: Item Amendments
       description: 'Request body for amending order item availability. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v2-update-order'
@@ -237,6 +221,22 @@ components:
                 type: integer
                 description: The amended available quantity.
                 example: 0
+    RejectOrder:
+      title: Reject Order
+      description: 'Request body for rejecting a picking order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order'
+      type: object
+      required:
+      - reject_reason
+      properties:
+        reject_reason:
+          type: string
+          enum:
+          - INGREDIENT_UNAVAILABLE
+          - CLOSING_EARLY
+          - BUSY
+          - OTHER
+          description: The reason for rejecting the order.
+          example: OTHER
   securitySchemes:
     bearerAuth:
       type: http
