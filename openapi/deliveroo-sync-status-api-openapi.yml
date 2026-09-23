@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Deliveroo Catalogue Sync Status API
-  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  title: Deliveroo Order Sync Status API
+  description: Part of the Deliveroo Partner Platform Suite. The Order API lets restaurant integrators receive and manage Deliveroo orders in real time. Orders and rider lifecycle events are delivered via webhooks, and integrators update order status, confirm preparation, and report in-store synchronization status back to Deliveroo. Authentication uses an OAuth 2.0 client credentials bearer token issued by the Deliveroo Developer Portal.
   version: v1
   x-generated-from: documentation
   x-last-validated: '2026-06-02'

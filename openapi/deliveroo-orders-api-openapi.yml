@@ -1,13 +1,13 @@
 openapi: 3.2.0
 info:
-  title: Deliveroo Catalogue Orders API
-  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  title: Deliveroo Orders API
   version: v1
-  x-generated-from: documentation
-  x-last-validated: '2026-06-02'
   contact:
     name: Kin Lane
     email: kin@apievangelist.com
+  x-generated-from: documentation
+  x-last-validated: '2026-06-02'
+  description: 'Operations tagged Orders across 2 of this provider''s published API definitions: deliveroo-order-api-openapi.yml, deliveroo-signature-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.developers.deliveroo.com
   description: Production
@@ -62,6 +62,11 @@ paths:
           description: Conflict, for example the status was already sent or a timeout occurred.
         '500':
           description: Server error. Retry later.
+    servers:
+    - url: https://api.developers.deliveroo.com
+      description: Production
+    - url: https://api-sandbox.developers.deliveroo.com
+      description: Sandbox
   /signature/v1/orders:
     post:
       operationId: createOrder
@@ -110,51 +115,13 @@ paths:
           description: Bad request.
         '500':
           description: Server error.
+    servers:
+    - url: https://api.developers.deliveroo.com
+      description: Production
+    - url: https://api-sandbox.developers.deliveroo.com
+      description: Sandbox
 components:
   schemas:
-    Order:
-      title: Order
-      description: A created Signature order.
-      type: object
-      properties:
-        order_id:
-          type: string
-          description: The identifier of the created order.
-          example: gb-12345
-        status:
-          type: string
-          description: The current order status.
-          example: active
-    OrderRequest:
-      title: Order Request
-      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
-      type: object
-      properties:
-        quote_id:
-          type: string
-          description: The identifier of a valid quote.
-          example: gb-12345
-        pickup:
-          $ref: '#/components/schemas/Location'
-        dropoff:
-          $ref: '#/components/schemas/Location'
-    Location:
-      title: Location
-      description: A pickup or dropoff location.
-      type: object
-      properties:
-        address:
-          type: string
-          description: The location address.
-          example: 123 Example Street, London
-        latitude:
-          type: number
-          description: The location latitude.
-          example: 1.0
-        longitude:
-          type: number
-          description: The location longitude.
-          example: 1.0
     OrderStatusUpdate:
       title: Order Status Update
       description: 'Request body for updating an order''s status. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/patch-order-1'
@@ -187,9 +154,55 @@ components:
           - 'null'
           description: Free-text notes accompanying the status change.
           example: example
+    OrderRequest:
+      title: Order Request
+      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of a valid quote.
+          example: gb-12345
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
+    Location:
+      title: Location
+      description: A pickup or dropoff location.
+      type: object
+      properties:
+        address:
+          type: string
+          description: The location address.
+          example: 123 Example Street, London
+        latitude:
+          type: number
+          description: The location latitude.
+          example: 1.0
+        longitude:
+          type: number
+          description: The location longitude.
+          example: 1.0
+    Order:
+      title: Order
+      description: A created Signature order.
+      type: object
+      properties:
+        order_id:
+          type: string
+          description: The identifier of the created order.
+          example: gb-12345
+        status:
+          type: string
+          description: The current order status.
+          example: active
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
       description: OAuth 2.0 client credentials access token obtained from https://auth.developers.deliveroo.com/oauth2/token. Tokens expire after 5 minutes; no refresh tokens are issued.
+x-refined-from:
+- deliveroo-order-api-openapi.yml
+- deliveroo-signature-api-openapi.yml

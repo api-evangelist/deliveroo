@@ -1,41 +1,47 @@
 {
   "provider": "deliveroo",
   "sources": [
+    "_ae-authored/deliveroo-menu-api-openapi.yml",
+    "_ae-authored/deliveroo-order-api-openapi.yml",
+    "_ae-authored/deliveroo-signature-api-openapi.yml",
+    "_ae-authored/deliveroo-site-api-openapi.yml",
     "deliveroo-catalogue-api-openapi.yml",
-    "deliveroo-deliveries-api-openapi.yml",
-    "deliveroo-menus-api-openapi.yml",
-    "deliveroo-opening-hours-api-openapi.yml",
-    "deliveroo-orders-api-openapi.yml",
     "deliveroo-picking-api-openapi.yml",
-    "deliveroo-pricing-api-openapi.yml",
-    "deliveroo-quotes-api-openapi.yml",
-    "deliveroo-sync-status-api-openapi.yml"
+    "deliveroo-pricing-api-openapi.yml"
   ],
   "outputs": [
-    "deliveroo-catalogue-api-openapi.yml",
-    "deliveroo-deliveries-api-openapi.yml",
     "deliveroo-menus-api-openapi.yml",
-    "deliveroo-opening-hours-api-openapi.yml",
     "deliveroo-orders-api-openapi.yml",
-    "deliveroo-picking-api-openapi.yml",
-    "deliveroo-pricing-api-openapi.yml",
+    "deliveroo-sync-status-api-openapi.yml",
+    "deliveroo-deliveries-api-openapi.yml",
     "deliveroo-quotes-api-openapi.yml",
-    "deliveroo-sync-status-api-openapi.yml"
+    "deliveroo-opening-hours-api-openapi.yml",
+    "deliveroo-catalogue-api-openapi.yml",
+    "deliveroo-picking-api-openapi.yml",
+    "deliveroo-pricing-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "deliveroo-catalogue-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /brands/{brand_id}/catalogue/{catalogue_id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "deliveroo-picking-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /picking/v1/orders/{order_id}/accept put, /picking/v1/orders/{order_id}/reject put, /picking/v1/orders/{order_id}/start_picking put); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "deliveroo-pricing-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /brands/{brand_id}/catalogue/{catalogue_id}/sites/{site_id}/prices put); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
   "notes": [
-    "deliveroo-catalogue-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-deliveries-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-menus-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-opening-hours-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-picking-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-pricing-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-quotes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "deliveroo-sync-status-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "deliveroo-menu-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "deliveroo-order-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "deliveroo-signature-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "deliveroo-site-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Orders' spans 2 source specs (deliveroo-order-api-openapi.yml, deliveroo-signature-api-openapi.yml): per-path servers applied",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "deliveroo-deliveries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "deliveroo-menus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "deliveroo-opening-hours-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "deliveroo-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "deliveroo-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "deliveroo-sync-status-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

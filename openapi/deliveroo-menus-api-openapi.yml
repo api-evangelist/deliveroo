@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Deliveroo Catalogue Menus API
-  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  title: Deliveroo Menu Menus API
+  description: Part of the Deliveroo Partner Platform Suite. The Menu API lets integrators publish and retrieve restaurant menus, including items, modifiers, prices, POS identifiers, stock levels, and allergen data, so that the consumer-facing Deliveroo experience reflects merchant inventory and pricing. Menu uploads are processed asynchronously and the result is delivered via a menu webhook. Authentication uses an OAuth 2.0 client credentials bearer token.
   version: v1
   x-generated-from: documentation
   x-last-validated: '2026-06-02'

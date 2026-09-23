@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Deliveroo Catalogue Opening Hours API
-  description: Part of the Deliveroo Retail Platform Suite. The Catalogue API lets grocery and non-food retailers manage a master catalogue of up to 30,000 items per brand, publish product data and availability across retail sites, and override item prices at the site level. Authentication uses an OAuth 2.0 client credentials bearer token.
+  title: Deliveroo Site Opening Hours API
+  description: Shared by the Deliveroo Partner Platform Suite and the Signature Suite. The Site API lets merchants govern fulfillment availability programmatically, including a site's open/close status, operating hours, days off, and workload mode. Authentication uses an OAuth 2.0 client credentials bearer token.
   version: v1
   x-generated-from: documentation
   x-last-validated: '2026-06-02'
