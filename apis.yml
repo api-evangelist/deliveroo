@@ -35,12 +35,14 @@ tags:
   - Marketplace
   - Logistics
   - Restaurant
+  - Delivery
 tags_raw:
   - Food Delivery
   - Grocery
   - Marketplace
   - Logistics
   - Restaurants
+  - Delivery
 description: >-
   A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East.
   Deliveroo's Developer Portal exposes three API suites — Partner Platform, Retail Platform, and Signature — that
