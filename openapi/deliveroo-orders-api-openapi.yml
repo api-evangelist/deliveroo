@@ -154,19 +154,6 @@ components:
           - 'null'
           description: Free-text notes accompanying the status change.
           example: example
-    OrderRequest:
-      title: Order Request
-      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
-      type: object
-      properties:
-        quote_id:
-          type: string
-          description: The identifier of a valid quote.
-          example: gb-12345
-        pickup:
-          $ref: '#/components/schemas/Location'
-        dropoff:
-          $ref: '#/components/schemas/Location'
     Location:
       title: Location
       description: A pickup or dropoff location.
@@ -197,6 +184,19 @@ components:
           type: string
           description: The current order status.
           example: active
+    OrderRequest:
+      title: Order Request
+      description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of a valid quote.
+          example: gb-12345
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
   securitySchemes:
     bearerAuth:
       type: http

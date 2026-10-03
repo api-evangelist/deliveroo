@@ -67,19 +67,6 @@ paths:
           description: Server error.
 components:
   schemas:
-    Quote:
-      title: Quote
-      description: A delivery estimate and fee.
-      type: object
-      properties:
-        quote_id:
-          type: string
-          description: The identifier of the quote, valid for 5 minutes.
-          example: gb-12345
-        fee:
-          type: integer
-          description: The delivery fee in minor currency units.
-          example: 299
     Location:
       title: Location
       description: A pickup or dropoff location.
@@ -97,6 +84,19 @@ components:
           type: number
           description: The location longitude.
           example: 1.0
+    Quote:
+      title: Quote
+      description: A delivery estimate and fee.
+      type: object
+      properties:
+        quote_id:
+          type: string
+          description: The identifier of the quote, valid for 5 minutes.
+          example: gb-12345
+        fee:
+          type: integer
+          description: The delivery fee in minor currency units.
+          example: 299
     QuoteRequest:
       title: Quote Request
       description: 'Request body for creating a delivery quote. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-quote'
