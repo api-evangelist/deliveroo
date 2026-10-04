@@ -154,6 +154,19 @@ components:
           - 'null'
           description: Free-text notes accompanying the status change.
           example: example
+    Order:
+      title: Order
+      description: A created Signature order.
+      type: object
+      properties:
+        order_id:
+          type: string
+          description: The identifier of the created order.
+          example: gb-12345
+        status:
+          type: string
+          description: The current order status.
+          example: active
     Location:
       title: Location
       description: A pickup or dropoff location.
@@ -171,19 +184,6 @@ components:
           type: number
           description: The location longitude.
           example: 1.0
-    Order:
-      title: Order
-      description: A created Signature order.
-      type: object
-      properties:
-        order_id:
-          type: string
-          description: The identifier of the created order.
-          example: gb-12345
-        status:
-          type: string
-          description: The current order status.
-          example: active
     OrderRequest:
       title: Order Request
       description: 'Request body for creating a Signature order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-order-v1'

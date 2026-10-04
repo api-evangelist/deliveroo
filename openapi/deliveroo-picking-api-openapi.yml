@@ -201,6 +201,22 @@ paths:
           description: Server error.
 components:
   schemas:
+    RejectOrder:
+      title: Reject Order
+      description: 'Request body for rejecting a picking order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order'
+      type: object
+      required:
+      - reject_reason
+      properties:
+        reject_reason:
+          type: string
+          enum:
+          - INGREDIENT_UNAVAILABLE
+          - CLOSING_EARLY
+          - BUSY
+          - OTHER
+          description: The reason for rejecting the order.
+          example: OTHER
     ItemAmendments:
       title: Item Amendments
       description: 'Request body for amending order item availability. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v2-update-order'
@@ -221,22 +237,6 @@ components:
                 type: integer
                 description: The amended available quantity.
                 example: 0
-    RejectOrder:
-      title: Reject Order
-      description: 'Request body for rejecting a picking order. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/picking-v1-reject-order'
-      type: object
-      required:
-      - reject_reason
-      properties:
-        reject_reason:
-          type: string
-          enum:
-          - INGREDIENT_UNAVAILABLE
-          - CLOSING_EARLY
-          - BUSY
-          - OTHER
-          description: The reason for rejecting the order.
-          example: OTHER
   securitySchemes:
     bearerAuth:
       type: http

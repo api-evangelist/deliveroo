@@ -56,6 +56,15 @@ paths:
           description: Server error.
 components:
   schemas:
+    DeliveryRequest:
+      title: Delivery Request
+      description: 'Request body for scheduling a delivery-as-a-service delivery. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/scheduledeliveryv1'
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Location'
+        dropoff:
+          $ref: '#/components/schemas/Location'
     Location:
       title: Location
       description: A pickup or dropoff location.
@@ -73,15 +82,6 @@ components:
           type: number
           description: The location longitude.
           example: 1.0
-    DeliveryRequest:
-      title: Delivery Request
-      description: 'Request body for scheduling a delivery-as-a-service delivery. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/scheduledeliveryv1'
-      type: object
-      properties:
-        pickup:
-          $ref: '#/components/schemas/Location'
-        dropoff:
-          $ref: '#/components/schemas/Location'
   securitySchemes:
     bearerAuth:
       type: http
