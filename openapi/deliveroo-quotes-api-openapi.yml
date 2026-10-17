@@ -67,6 +67,23 @@ paths:
           description: Server error.
 components:
   schemas:
+    Location:
+      title: Location
+      description: A pickup or dropoff location.
+      type: object
+      properties:
+        address:
+          type: string
+          description: The location address.
+          example: 123 Example Street, London
+        latitude:
+          type: number
+          description: The location latitude.
+          example: 1.0
+        longitude:
+          type: number
+          description: The location longitude.
+          example: 1.0
     QuoteRequest:
       title: Quote Request
       description: 'Request body for creating a delivery quote. x-schema-source: documentation x-source-url: https://api-docs.deliveroo.com/reference/create-quote'
@@ -89,23 +106,6 @@ components:
           type: integer
           description: The delivery fee in minor currency units.
           example: 299
-    Location:
-      title: Location
-      description: A pickup or dropoff location.
-      type: object
-      properties:
-        address:
-          type: string
-          description: The location address.
-          example: 123 Example Street, London
-        latitude:
-          type: number
-          description: The location latitude.
-          example: 1.0
-        longitude:
-          type: number
-          description: The location longitude.
-          example: 1.0
   securitySchemes:
     bearerAuth:
       type: http
