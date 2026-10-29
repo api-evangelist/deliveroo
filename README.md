@@ -1,4 +1,4 @@
-# Deliveroo (deliveroo)
+# Deliveroo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,177 +66,254 @@
 
 A British online food delivery company operating across the United Kingdom, Europe, Asia, and the Middle East. Deliveroo's Developer Portal exposes three API suites — Partner Platform, Retail Platform, and Signature — that restaurants, grocers, and merchants use to integrate menus, orders, sites, and on-demand courier delivery.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/deliveroo/refs/heads/main/apis.yml)
+**Areas:** Food Delivery · Grocery · Marketplace · Logistics · Restaurant · Delivery
 
-## Scope
+## Deliveroo on APIs.io
 
-- **Type:** Index
+Everything profiled for Deliveroo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/deliveroo/](https://apis.io/providers/deliveroo/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Food Delivery
-- Grocery
-- Marketplace
-- Logistics
-- Restaurants
+- [Deliveroo Catalogue API](https://apis.io/apis/deliveroo/catalogue-api/) — The Deliveroo Catalogue API is part of the Retail Platform Suite and manages master grocery catalogues of up to 30,000 items per merchant. Retailers use it…
+- [Deliveroo Picking API](https://apis.io/apis/deliveroo/picking-api/) — The Deliveroo Picking API supports the Retail Platform Suite picking flow, letting grocery operators process incoming orders, remove unavailable items,…
+- [Deliveroo Deliveries API](https://apis.io/apis/deliveroo/deliveroo-deliveries-api/) — The Deliveries API from Deliveroo — 1 operation(s) for deliveries.
+- [Deliveroo Menus API](https://apis.io/apis/deliveroo/deliveroo-menus-api/) — The Menus API from Deliveroo — 1 operation(s) for menus.
+- [Deliveroo Opening Hours API](https://apis.io/apis/deliveroo/deliveroo-opening-hours-api/) — The Opening Hours API from Deliveroo — 1 operation(s) for opening hours.
+- [Deliveroo Orders API](https://apis.io/apis/deliveroo/deliveroo-orders-api/) — The Orders API from Deliveroo — 2 operation(s) for orders.
+- [Deliveroo Pricing API](https://apis.io/apis/deliveroo/deliveroo-pricing-api/) — The Pricing API from Deliveroo — 1 operation(s) for pricing.
+- [Deliveroo Quotes API](https://apis.io/apis/deliveroo/deliveroo-quotes-api/) — The Quotes API from Deliveroo — 1 operation(s) for quotes.
+- [Deliveroo Sync Status API](https://apis.io/apis/deliveroo/deliveroo-sync-status-api/) — The Sync Status API from Deliveroo — 1 operation(s) for sync status.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-05
-- **Modified:** 2026-06-02
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Deliveroo Order API
+Event-driven and webhook contracts.
 
-The Deliveroo Order API is part of the Partner Platform Suite and manages restaurant orders and rider lifecycle events in real time. Orders and rider status updates are delivered to integrators via webhooks so that POS, kitchen display, and fulfillment systems can stay in sync without polling. Authentication uses OAuth-based credentials provisioned through the Deliveroo Developer Portal.
+- [Deliveroo Webhooks](https://apis.io/asyncapis/deliveroo/deliveroo-webhooks-asyncapi/)
 
-- **Human URL:** [https://api-docs.deliveroo.com/v2.0/docs](https://api-docs.deliveroo.com/v2.0/docs)
-- **Base URL:** `https://api.developers.deliveroo.com`
+#### Event channels (3)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Orders
-- Webhooks
-- Restaurants
-- Real-Time
-- Riders
+- [menu-events](https://apis.io/channels/deliveroo/menu-events/)
+- [order-events](https://apis.io/channels/deliveroo/order-events/)
+- [rider-events](https://apis.io/channels/deliveroo/rider-events/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [Webhooks](https://api-docs.deliveroo.com/v2.0/docs)
-- [OpenAPI](openapi/deliveroo-order-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/deliveroo-order-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/deliveroo-order-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/deliveroo-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Deliveroo Menu API
+- [Deliveroo Agentic Access](https://apis.io/agentic-access/deliveroo/deliveroo-agentic-access/)
 
-The Deliveroo Menu API lets Partner Platform integrators publish and maintain restaurant menus, including stock levels, prices, POS identifiers, and allergen data. Menu updates can be pushed in near real time so that the consumer-facing Deliveroo experience reflects merchant inventory and pricing changes.
+#### JSON Schema (17)
 
-- **Human URL:** [https://api-docs.deliveroo.com/v2.0/docs](https://api-docs.deliveroo.com/v2.0/docs)
-- **Base URL:** `https://api.developers.deliveroo.com`
+The data models the API reads and writes.
 
-#### Tags
+- [Catalogue](https://apis.io/schemas/deliveroo/catalogue-api-catalogue/)
+- [SitePriceOverrides](https://apis.io/schemas/deliveroo/catalogue-api-site-price-overrides/)
+- [MenuUpload](https://apis.io/schemas/deliveroo/menu-api-menu-upload/)
+- [OrderStatusUpdate](https://apis.io/schemas/deliveroo/order-api-order-status-update/)
+- [SyncStatus](https://apis.io/schemas/deliveroo/order-api-sync-status/)
+- [ItemAmendments](https://apis.io/schemas/deliveroo/picking-api-item-amendments/)
+- [RejectOrder](https://apis.io/schemas/deliveroo/picking-api-reject-order/)
+- [DeliveryRequest](https://apis.io/schemas/deliveroo/signature-api-delivery-request/)
+- [Location](https://apis.io/schemas/deliveroo/signature-api-location/)
+- [Order](https://apis.io/schemas/deliveroo/signature-api-order/)
+- [OrderRequest](https://apis.io/schemas/deliveroo/signature-api-order-request/)
+- [Quote](https://apis.io/schemas/deliveroo/signature-api-quote/)
+- [QuoteRequest](https://apis.io/schemas/deliveroo/signature-api-quote-request/)
+- [OpeningHours](https://apis.io/schemas/deliveroo/site-api-opening-hours/)
+- [MenuEventPayload](https://apis.io/schemas/deliveroo/webhooks-menu-event-payload/)
+- [OrderEventPayload](https://apis.io/schemas/deliveroo/webhooks-order-event-payload/)
+- [RiderEventPayload](https://apis.io/schemas/deliveroo/webhooks-rider-event-payload/)
 
-- Menus
-- Pricing
-- Stock
-- Allergens
-- POS
-- Restaurants
+#### JSON Structure (17)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [OpenAPI](openapi/deliveroo-menu-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/deliveroo-menu-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/deliveroo-menu-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Catalogue Api Catalogue Structure](https://apis.io/json-structure/deliveroo/catalogue-api-catalogue-structure/)
+- [Catalogue Api Site Price Overrides Structure](https://apis.io/json-structure/deliveroo/catalogue-api-site-price-overrides-structure/)
+- [Menu Api Menu Upload Structure](https://apis.io/json-structure/deliveroo/menu-api-menu-upload-structure/)
+- [Order Api Order Status Update Structure](https://apis.io/json-structure/deliveroo/order-api-order-status-update-structure/)
+- [Order Api Sync Status Structure](https://apis.io/json-structure/deliveroo/order-api-sync-status-structure/)
+- [Picking Api Item Amendments Structure](https://apis.io/json-structure/deliveroo/picking-api-item-amendments-structure/)
+- [Picking Api Reject Order Structure](https://apis.io/json-structure/deliveroo/picking-api-reject-order-structure/)
+- [Signature Api Delivery Request Structure](https://apis.io/json-structure/deliveroo/signature-api-delivery-request-structure/)
+- [Signature Api Location Structure](https://apis.io/json-structure/deliveroo/signature-api-location-structure/)
+- [Signature Api Order Request Structure](https://apis.io/json-structure/deliveroo/signature-api-order-request-structure/)
+- [Signature Api Order Structure](https://apis.io/json-structure/deliveroo/signature-api-order-structure/)
+- [Signature Api Quote Request Structure](https://apis.io/json-structure/deliveroo/signature-api-quote-request-structure/)
+- [Signature Api Quote Structure](https://apis.io/json-structure/deliveroo/signature-api-quote-structure/)
+- [Site Api Opening Hours Structure](https://apis.io/json-structure/deliveroo/site-api-opening-hours-structure/)
+- [Webhooks Menu Event Payload Structure](https://apis.io/json-structure/deliveroo/webhooks-menu-event-payload-structure/)
+- [Webhooks Order Event Payload Structure](https://apis.io/json-structure/deliveroo/webhooks-order-event-payload-structure/)
+- [Webhooks Rider Event Payload Structure](https://apis.io/json-structure/deliveroo/webhooks-rider-event-payload-structure/)
 
-### Deliveroo Site API
+#### JSON-LD (7)
 
-The Deliveroo Site API controls a merchant site's open/close status, operating hours, and workload mode (e.g., busy, paused). It is shared by both the Partner Platform Suite and the Signature Suite so that restaurants and merchants can govern fulfillment availability programmatically from their own systems.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://api-docs.deliveroo.com/v2.0/docs](https://api-docs.deliveroo.com/v2.0/docs)
-- **Base URL:** `https://api.developers.deliveroo.com`
+- [Deliveroo Catalogue Api Context](https://apis.io/jsonld/deliveroo/deliveroo-catalogue-api-context/)
+- [Deliveroo Menu Api Context](https://apis.io/jsonld/deliveroo/deliveroo-menu-api-context/)
+- [Deliveroo Order Api Context](https://apis.io/jsonld/deliveroo/deliveroo-order-api-context/)
+- [Deliveroo Picking Api Context](https://apis.io/jsonld/deliveroo/deliveroo-picking-api-context/)
+- [Deliveroo Signature Api Context](https://apis.io/jsonld/deliveroo/deliveroo-signature-api-context/)
+- [Deliveroo Site Api Context](https://apis.io/jsonld/deliveroo/deliveroo-site-api-context/)
+- [Deliveroo Webhooks Context](https://apis.io/jsonld/deliveroo/deliveroo-webhooks-context/)
 
-#### Tags
+#### Vocabulary (1)
 
-- Sites
-- Restaurants
-- Hours
-- Status
-- Operations
+The provider's domain terms, defined.
 
-#### Properties
+- [Deliveroo Vocabulary](https://apis.io/vocabularies/deliveroo/deliveroo-vocabulary/)
 
-- [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [OpenAPI](openapi/deliveroo-site-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/deliveroo-site-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/deliveroo-site-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Examples (17)
 
-### Deliveroo Catalogue API
+Example requests and responses.
 
-The Deliveroo Catalogue API is part of the Retail Platform Suite and manages master grocery catalogues of up to 30,000 items per merchant. Retailers use it to publish product data, variations, and availability across one or more retail sites operating on Deliveroo.
+- [Catalogue Api Catalogue Example](https://apis.io/examples/deliveroo/catalogue-api-catalogue-example/)
+- [Catalogue Api Site Price Overrides Example](https://apis.io/examples/deliveroo/catalogue-api-site-price-overrides-example/)
+- [Menu Api Menu Upload Example](https://apis.io/examples/deliveroo/menu-api-menu-upload-example/)
+- [Order Api Order Status Update Example](https://apis.io/examples/deliveroo/order-api-order-status-update-example/)
+- [Order Api Sync Status Example](https://apis.io/examples/deliveroo/order-api-sync-status-example/)
+- [Picking Api Item Amendments Example](https://apis.io/examples/deliveroo/picking-api-item-amendments-example/)
+- [Picking Api Reject Order Example](https://apis.io/examples/deliveroo/picking-api-reject-order-example/)
+- [Signature Api Delivery Request Example](https://apis.io/examples/deliveroo/signature-api-delivery-request-example/)
+- [Signature Api Location Example](https://apis.io/examples/deliveroo/signature-api-location-example/)
+- [Signature Api Order Example](https://apis.io/examples/deliveroo/signature-api-order-example/)
+- [Signature Api Order Request Example](https://apis.io/examples/deliveroo/signature-api-order-request-example/)
+- [Signature Api Quote Example](https://apis.io/examples/deliveroo/signature-api-quote-example/)
+- [Signature Api Quote Request Example](https://apis.io/examples/deliveroo/signature-api-quote-request-example/)
+- [Site Api Opening Hours Example](https://apis.io/examples/deliveroo/site-api-opening-hours-example/)
+- [Webhooks Menu Event Payload Example](https://apis.io/examples/deliveroo/webhooks-menu-event-payload-example/)
+- [Webhooks Order Event Payload Example](https://apis.io/examples/deliveroo/webhooks-order-event-payload-example/)
+- [Webhooks Rider Event Payload Example](https://apis.io/examples/deliveroo/webhooks-rider-event-payload-example/)
 
-- **Human URL:** [https://api-docs.deliveroo.com/v2.0/docs](https://api-docs.deliveroo.com/v2.0/docs)
-- **Base URL:** `https://api.developers.deliveroo.com`
+#### Collections (22)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Catalogue
-- Grocery
-- Retail
-- Products
-- Inventory
+- [Deliveroo Catalogue API](https://apis.io/collections/deliveroo/open-deliveroo-catalogue-api/)
+- [Deliveroo Catalogue Deliveries API](https://apis.io/collections/deliveroo/open-deliveroo-deliveries-api/)
+- [Deliveroo Menu API](https://apis.io/collections/deliveroo/open-deliveroo-menu-api/)
+- [Deliveroo Catalogue Menus API](https://apis.io/collections/deliveroo/open-deliveroo-menus-api/)
+- [Deliveroo Catalogue Opening Hours API](https://apis.io/collections/deliveroo/open-deliveroo-opening-hours-api/)
+- [Deliveroo Order API](https://apis.io/collections/deliveroo/open-deliveroo-order-api/)
+- [Deliveroo Catalogue Orders API](https://apis.io/collections/deliveroo/open-deliveroo-orders-api/)
+- [Deliveroo Catalogue Picking API](https://apis.io/collections/deliveroo/open-deliveroo-picking-api/)
+- [Deliveroo Catalogue Pricing API](https://apis.io/collections/deliveroo/open-deliveroo-pricing-api/)
+- [Deliveroo Catalogue Quotes API](https://apis.io/collections/deliveroo/open-deliveroo-quotes-api/)
+- [Deliveroo Signature API](https://apis.io/collections/deliveroo/open-deliveroo-signature-api/)
+- [Deliveroo Site API](https://apis.io/collections/deliveroo/open-deliveroo-site-api/)
+- [Deliveroo Catalogue Sync Status API](https://apis.io/collections/deliveroo/open-deliveroo-sync-status-api/)
+- [Deliveroo Catalogue API](https://apis.io/collections/deliveroo/postman-deliveroo-catalogue-api/)
+- [Deliveroo Catalogue Deliveries API](https://apis.io/collections/deliveroo/postman-deliveroo-deliveries-api/)
+- [Deliveroo Catalogue Menus API](https://apis.io/collections/deliveroo/postman-deliveroo-menus-api/)
+- [Deliveroo Catalogue Opening Hours API](https://apis.io/collections/deliveroo/postman-deliveroo-opening-hours-api/)
+- [Deliveroo Catalogue Orders API](https://apis.io/collections/deliveroo/postman-deliveroo-orders-api/)
+- [Deliveroo Catalogue Picking API](https://apis.io/collections/deliveroo/postman-deliveroo-picking-api/)
+- [Deliveroo Catalogue Pricing API](https://apis.io/collections/deliveroo/postman-deliveroo-pricing-api/)
+- [Deliveroo Catalogue Quotes API](https://apis.io/collections/deliveroo/postman-deliveroo-quotes-api/)
+- [Deliveroo Catalogue Sync Status API](https://apis.io/collections/deliveroo/postman-deliveroo-sync-status-api/)
 
-#### Properties
+#### Governance rules (3)
 
-- [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [OpenAPI](openapi/deliveroo-catalogue-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/deliveroo-catalogue-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/deliveroo-catalogue-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-### Deliveroo Picking API
+- [Deliveroo — asyncapi rules](https://apis.io/rules/deliveroo/deliveroo-asyncapi-spectral-rules/)
+- [Deliveroo — jsonschema rules](https://apis.io/rules/deliveroo/deliveroo-jsonschema-spectral-rules/)
+- [Deliveroo API Rules](https://apis.io/rules/deliveroo/deliveroo-spectral-rules/)
 
-The Deliveroo Picking API supports the Retail Platform Suite picking flow, letting grocery operators process incoming orders, remove unavailable items, propose substitutions, and accept or reject orders prior to handoff to a courier.
+#### Security (3)
 
-- **Human URL:** [https://api-docs.deliveroo.com/v2.0/docs](https://api-docs.deliveroo.com/v2.0/docs)
-- **Base URL:** `https://api.developers.deliveroo.com`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Deliveroo Authentication](https://apis.io/security/deliveroo/deliveroo-authentication/)
+- [Deliveroo Domain Security](https://apis.io/security/deliveroo/deliveroo-domain-security/)
+- [Deliveroo Vulnerability Disclosure](https://apis.io/security/deliveroo/deliveroo-vulnerability-disclosure/)
 
-- Picking
-- Grocery
-- Retail
-- Order Fulfillment
-- Substitutions
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [OpenAPI](openapi/deliveroo-picking-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/deliveroo-picking-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/deliveroo-picking-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Deliveroo Plans Pricing](https://apis.io/plans/deliveroo/deliveroo-plans-pricing/)
 
-### Deliveroo Signature API
+#### Rate limits (1)
 
-The Deliveroo Signature API powers the Signature Suite, which lets merchants request on-demand delivery by Deliveroo couriers for orders that originate in their own apps, websites, or channels — for example, a restaurant's branded ordering app dispatching a Deliveroo rider.
+Published request limits.
 
-- **Human URL:** [https://api-docs.deliveroo.com/v2.0/docs](https://api-docs.deliveroo.com/v2.0/docs)
-- **Base URL:** `https://api.developers.deliveroo.com`
+- [Deliveroo Rate Limits](https://apis.io/rate-limits/deliveroo/deliveroo-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- On-Demand Delivery
-- Couriers
-- Logistics
-- Merchant Integration
-- Custom Apps
+What the API costs to run, by operation.
 
-#### Properties
+- [Deliveroo Finops](https://apis.io/finops/deliveroo/deliveroo-finops/)
 
-- [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [OpenAPI](openapi/deliveroo-signature-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/deliveroo-signature-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/deliveroo-signature-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [GitHub Organization](https://github.com/deliveroo)
-- [LinkedIn](https://www.linkedin.com/company/deliveroo)
 - [Website](https://deliveroo.co.uk/)
-- [Developer Portal](https://developers.deliveroo.com/)
 - [Documentation](https://api-docs.deliveroo.com/v2.0/docs)
-- [Signup U R L](https://developers.deliveroo.com/)
-- [Authentication](https://api-docs.deliveroo.com/v2.0/docs)
-- [Privacy Policy](https://deliveroo.co.uk/privacy)
-- [Terms of Service](https://deliveroo.co.uk/legal)
 - [Support](https://deliveroo.co.uk/help)
 - [Blog](https://deliveroo.co.uk/blog)
-- [Spectral Rules](rules/deliveroo-spectral-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
-- [Vocabulary](vocabulary/deliveroo-vocabulary.yml)
-- [Plans](plans/deliveroo-plans-pricing.yml)
-- [Rate Limits](rate-limits/deliveroo-rate-limits.yml)
-- [Fin Ops](finops/deliveroo-finops.yml)
+- [Terms of service](https://deliveroo.co.uk/legal)
+- [Privacy policy](https://deliveroo.co.uk/privacy)
+- [GitHub](https://github.com/deliveroo)
+
+## API Evangelist rating
+
+**Kin Score 31.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 28.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 14.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 28.9 |
+
+**Agent readiness 24.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 30.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/deliveroo/](https://apis.io/providers/deliveroo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Deliveroo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/deliveroo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
